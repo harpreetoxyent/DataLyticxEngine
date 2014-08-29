@@ -1,0 +1,427 @@
+<zk id="basic_new" name="basic">
+<zscript src="/library/uilibrary.zs"/>
+<?page id="basic"?>	
+<zscript>
+<![CDATA[
+         import java.text.SimpleDateFormat;
+         import java.util.Calendar;
+         import java.util.Date;
+         import org.apache.commons.lang.time.DateUtils;
+         import java.text.DateFormat;
+         import java.text.ParseException;
+         import java.util.*;
+         
+         
+         public void previousDate()
+         {
+         	DateFormat formatter =null;
+         	Date convertedDate=null;
+         	int MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
+         	Date dd=this.self.getFellow("headerDate").getValue();
+         	SimpleDateFormat dateformat=new SimpleDateFormat("dd/MM/yyyy");
+         	String prevDate=dateformat.format(dd.getTime() - MILLIS_IN_DAY);
+         	Date parsedDate=dateformat.parse(prevDate);
+         	formatter=new SimpleDateFormat("dd-MM-yyyy");
+         	this.self.getFellow("headerDate").setValue(parsedDate);
+         	}
+
+         public void nextDate()
+         {
+         	DateFormat formatter =null;
+         	Date convertedDate=null;
+         	int MILLIS_IN_DAY=1000*60*60*24;
+         	Date dd=this.self.getFellow("headerDate").getValue();
+         	SimpleDateFormat dateformat=new SimpleDateFormat("dd-MM-yyyy");
+         	String nextDate=dateformat.format(dd.getTime()+ MILLIS_IN_DAY);
+         	Date parsedDate=dateformat.parse(nextDate);
+         	formatter=new SimpleDateFormat("dd-MM-yyyy");
+         	this.self.getFellow("headerDate").setValue(parsedDate);
+         }
+         public void showChildMenu()
+		{
+			this.self.getFellow("childMenu").setStyle("display:block;");
+		}
+
+]]>
+</zscript>
+<style>
+body{background: #f0f0f0;}
+.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+.z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+.z-center,.z-east{border:none;}
+.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+.z-toolbar{background: #f0f0f0!important; border:none!important;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:0.5; background:none; background-color: none;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:0.5; background:none; background-color: none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1; background: #f0f0f0;}
+..z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 90px;}
+.z-textbox{width: 90px; border:1; resize:none;}
+.z-textbox:focus{outline:none;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+div.z.tr.z-row td.z-row-inner{border:1px solid #CCC;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #CCC;border-collapse: collapse; }
+table{table-layout:initial!important;}
+div.z-grid-body{background:none;border:1px}
+div.z-grid{background:none}
+.z-label{float:left; width: 185px; border:1}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:1px 0; border:1}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+.z-grid-header-bg{background:none;}
+.heading{float:left; width: 300px;}
+..z-a{text-decoration:none; color:#333;}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+.child_menu{margin-left: 20px; display:none}
+..z-north-body{width:585px;}
+..z-north,.z-north-noborder{width:585px;}
+..headerDate .z-datebox-btn{display:none; }
+.class{width: 50px;}
+..z-datebox-disd{opacity:1!important;}
+..z-datebox-text-disd {
+background-color: #FFFFFF;
+color: #000000 !important;}
+</style>
+
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <a href="menu.zul"><image src="images/fortis.png"/></a>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>                              <a href="list_of_admission.zul"><label value="List Of Admission" class="sub_menu"/></a>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu active"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                                <a href="patient_device.zul"><label value="Patient Device" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                                <a href="ventilator_setting_chart.zul"><label value="Ventilator Setting Chart" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="doctor_progress_notes.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list.zul"><label value="Infusion List" class="sub_menu"/></a>
+	                                <a href="regular_medi.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                                                                           
+	                                </div>
+                                <a href="nurse_administration.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="blood_gas_tests.zul"><label value="Blood Gas Tests" class="sub_menu"/></a>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="basic.zul"><label value="Basic " class="sub_menu active"/></a>
+                                 <a href="specialised.zul"><label value="Specialised " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="screening_tests.zul"><label value="Screening Tests" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="cranial.zul"><label value="Cranial" class="sub_menu"/></a>
+                                <a href="abdomen.zul"><label value="Abdomen" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="xray.zul"><label value="Xray" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>                 
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="discharge_summary.zul"><label value="Discharge Summary" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+
+		<center>
+			<borderlayout sclass="inner-border">
+				<center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+				<div style="padding: 0; width: 100%; height: 1000px; overflow-y: auto; overflow-x: hidden">                    
+					<panel> 
+						<panelchildren style="background:#f0f0f0">
+							<label value=" Basic Blood Tests"   class="heading" style="font-size:17px; color: #fff; background: green; padding: 5px 10px; font-weight: bold; width: 67%;" />
+							<div style=" background:green;padding-top:15px; margin-top:-10px; margin-bottom: 10px; height: 40px; text-align:right; margin-right:10px">
+								<label value="&lt;&lt;" style ="width: 20px; float :none; color: #fff; cursor:pointer;" onClick="previousDate()"></label>
+								<datebox onCreate="self.value= new Date()" style=" margin-right:40px; width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="false" id="headerDate"  />
+								<label value="&gt;&gt;" style ="width: 20px;margin-right:5px; float :none; color: #fff; cursor:pointer;" onClick="nextDate()"></label>
+							</div>
+							<grid  class="tablegrid" style="width:24%;border:0.5;">
+							<rows>
+								<row>
+									<div style=" background: none ">
+										<label value="Date" class="class"/>
+									</div>
+									<div style=" background: none;margin-left:2px;">
+										<datebox id="headerDate1" class="headerDate" style="width:90px;opacity:1;"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Hb" class="class" />
+										</div>
+										<div style=" background: none;margin-left:2px; ">
+										<textbox id="hb" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="WBC" class="class" />
+										</div>
+										<div style=" background: none;margin-left:2px; ">
+										<textbox id="wbc" />
+									</div>
+								</row>
+								<row>
+								<div style=" background: none;">
+										<label value="PLT" class="class" />
+										</div>
+										<div style=" background: none;margin-left:2px; ">
+										<textbox id="plt" style="background:#CCCCCC" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Neutr" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="neutr" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Lymph" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="lymph" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Eosinophil Monocytes" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="eosinophilMonocytes" />
+									</div>
+								 </row>
+								 <row>
+									<div style=" background: none;">
+										<label value="Retics" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="retics" style="background:#CCCCCC" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="CRP" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="crp" />
+									</div>
+								</row>
+								 <row>
+									<div style=" background: none;">
+										<label value="Na" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="na" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="K" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="k" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Urea" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="urea" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Creat" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="creat" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="T Prot" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="tProt" style="background:#CCCCCC"/>
+									</div>
+								  </row>
+								  <row>
+									<div style=" background: none;">
+										<label value="Alb" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="alb" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Ca" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="ca" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								 <row>
+									<div style=" background: none;">
+										<label value="Phosph" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="phosph" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="T Bili/Conj Bil" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="tBili" style="background:#CCCCCC"/>
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Alk Ph4" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="alkPh4" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="ALT" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="alt" style="background:#CCCCCC"/>
+									</div>
+								 </row>
+								  <row>
+									<div style=" background: none;">
+										<label value="AST" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="ast" />
+									</div>
+								</row>
+								<row>
+									<div style=" background: none;">
+										<label value="Blood C/S" class="class" />
+										</div>
+										<div style=" background: none ;margin-left:2px;">
+										<textbox id="blood" style="background:#CCCCCC"/>
+									</div>
+								</row>
+							
+					  </rows>
+					
+					</grid>
+	
+				</panelchildren>
+				</panel>  
+							   
+			</div>
+			</center>    
+			<south border="1" size="100px" height="20%" margins="0,0,3,3" style="background: none repeat scroll 0 0 " >
+				<panel border="normal" >
+					<panelchildren >
+						<toolbar align="center" >
+							<button label="Submit" onClick="" class="submit"/>
+							<button label="Cancel" onClick="" class="cancel"/>
+						</toolbar>
+					</panelchildren>
+				</panel>
+			</south>
+		</borderlayout>
+	</center>
+
+        </borderlayout>
+    </div>
+
+</window>
+
+</zk>

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
 	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/RuleComponent"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HICFrameworkServlet"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/RenderingComponent"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/basecomponent.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/jaap.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/logging.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

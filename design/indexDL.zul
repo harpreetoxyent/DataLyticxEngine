@@ -340,9 +340,9 @@ table.first tbody tr td{text-align:left;}
 .first tbody tr td{text-align:left;}
 table,tr,td{background: none!important; border:none!important; vertical-align:middle!important;}
 .z-button{background:#ccc!important;}
-.materialDefinition .z-label{float:none!important; width: auto!important;}
-.materialDefinition{margin:auto;}
-.materialDefinition .z-textbox{width: 85px!important;}
+.entityDefinition .z-label{float:none!important; width: auto!important;}
+.entityDefinition{margin:auto;}
+.entityDefinition .z-textbox{width: 85px!important;}
 </style>
 
 
@@ -370,10 +370,11 @@ table,tr,td{background: none!important; border:none!important; vertical-align:mi
 				<textbox id= "CSVFileName"/>
 				<button label="Upload File" upload="true,native,maxsize=300">
 						<attribute name="onUpload"><![CDATA[
-							String materialFieldName;
-							String materiallegitimateValue;
-							String materialMandatory;
-							File csvFile = new File("/DatalyticxEngine/definition/Material_Master_Definition.csv");
+							String entityName;
+							String entityFieldName;
+							String entitylegitimateValue;
+							String entityMandatory;
+							File csvFile = new File("/home/oxyent/DataLyticxEngine_Local/definition/Entity_Definition.csv");
 							Media media = event.getMedia();
 							Files.copy(csvFile, media.getStreamData());
 							CSVFileName.setValue(csvFile.getAbsolutePath());
@@ -382,7 +383,7 @@ table,tr,td{background: none!important; border:none!important; vertical-align:mi
 							addFormValue("csvFileNameToImport" , csvFile.getAbsolutePath());
 							invokeComponent("importComponent","importCSVAllRowsAndSaveInDatabase","com.oxymedical.component.importcomponent.ImportComponent","indexDL");
 							
-							invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Material_Master_Definition.FieldName , Material_Master_Definition.LegitimateValue, Material_Master_Definition.Mandatory from datalyticx.Material_Master_Definition");
+							invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Entity_Definition.Entity , Entity_Definition.FieldName , Entity_Definition.LegitimateValue, Entity_Definition.Mandatory from datalyticx.Entity_Definition");
 							if(returnHicData ==null)
 							{
 								return;
@@ -391,7 +392,7 @@ table,tr,td{background: none!important; border:none!important; vertical-align:mi
 							{
 							hicData = returnHicData;
 							}
-							showListData(hicData,materialDefinitionData );	
+							showListData(hicData,entityDefinitionData );	
 					]]></attribute>
 					</button>
 				</row>
@@ -420,18 +421,19 @@ table,tr,td{background: none!important; border:none!important; vertical-align:mi
 				</rows>
 			</grid>
 
-					<grid  id = "materialDefinitionGrid" width="650px">
+					<grid  id = "entityDefinitionGrid" width="650px">
 					<rows sclass="narrow" >
 						<row id = "">
+							<label value="Entity"/>
 							<label value="Field Name"/>
-							<label value= "Legitimate"/>
+							<label value="Legitimate"/>
 							<label value="Required Field"/>
 													
 						</row>
 					</rows>
 					</grid>  
 	
-			<listbox id="materialDefinitionData" class= "materialDefinition" width="650px">
+			<listbox id="entityDefinitionData" class= "entityDefinition" width="650px">
 	
 			</listbox>
 		<div class="button">

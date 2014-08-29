@@ -1,0 +1,956 @@
+<zk id="nursing_progress_notes" name="nursing_progress_notes">
+<?page id="nursing_progress_notes"?>	
+<zscript src="/library/uilibrary.zs"/>
+<zscript>
+		<![CDATA[
+		import java.text.DateFormat;
+		import java.text.DecimalFormat;
+		import java.text.SimpleDateFormat;
+		import java.lang.Long;
+		import java.lang.String;
+		import java.text.SimpleDateFormat;
+		import java.util.Calendar;
+		import java.util.Date;
+		import org.apache.commons.lang.time.DateUtils;
+		import com.oxymedical.component.render.resource_FORTIS.NursingProgressReport;
+		import com.oxymedical.component.render.resource_FORTIS.MasterMethod;
+		import com.oxymedical.component.render.resource_FORTIS.MasterFeedType;
+		import com.oxymedical.component.render.resource_FORTIS.MasterIvfluid;
+		import com.oxymedical.component.render.resource_FORTIS.MasterBo;
+		import com.oxymedical.component.render.resource_FORTIS.MasterFio2;
+		import com.oxymedical.component.render.resource_FORTIS.MasterTempIncBed;
+		import com.oxymedical.component.nicu.NICUComponent;
+		
+		
+		
+		public void calculateUrinePerMl()
+		{
+			Double defaultCalculatedUrine = 0.0;
+			Double selectedTotalUrineInTextbox;
+			Double workingWeight = new Double(this.self.getFellow("workingwt").getValue());
+			Double workingWeightInKgs = workingWeight/1000;
+			selectedTotalUrineInTextbox = new Double(this.self.getFellow("totalUrine").getValue());
+			defaultCalculatedUrine = selectedTotalUrineInTextbox/workingWeightInKgs/24;
+			DecimalFormat df = new DecimalFormat("#.00");
+        	String calculationDecimal = df.format(defaultCalculatedUrine);
+			this.self.getFellow("calculatedUrine").setValue(calculationDecimal);	
+		}
+				
+		public void calculateTotal()
+		{
+			Double defaultVol = 0.0;
+			Double defaultIVPerHr = 0.0;
+			Double defaultAAPerHr = 0.0;
+			Double defaultLipidPerHr = 0.0;
+			Double defaultIVTotal = 0.0;
+			Double defaultAspire = 0.0;
+			Double defaultUrine = 0.0;
+			Double calculatedUrinePerML = 0.0;
+				
+			Double selectedVolumeInTextbox;
+			Double selectedIVInTextbox;
+			Double selectedAAInTextbox;
+			Double selectedLipidInTextbox;
+			Double selectedIVTotalInTextbox;
+			Double selectedAspireInTextbox;
+			Double selectedUrineInTextbox;
+			
+			Rows gridRows = this.self.getFellow("nursingDataGrid").getRows();
+			int numberOfRows = this.self.getFellow("nursingDataGrid").getRows().getVisibleItemCount();
+			for (Row row : gridRows.getChildren()) 
+			{
+				
+				String uniqueId = row.getAttribute("uniquevalue");
+				
+				selectedVolumeInTextbox =  (new Double(this.self.getFellow("Volume"+uniqueId).getValue()));
+				defaultVol = defaultVol + selectedVolumeInTextbox;
+				
+				selectedIVInTextbox =  (new Double(this.self.getFellow("IVPerHour"+uniqueId).getValue()));
+				defaultIVPerHr = defaultIVPerHr + selectedIVInTextbox;
+				
+				selectedAAInTextbox =  (new Double(this.self.getFellow("AAPerHr"+uniqueId).getValue()));
+				defaultAAPerHr = defaultAAPerHr + selectedAAInTextbox;
+				
+				selectedLipidInTextbox = (new Double(this.self.getFellow("LipidPerHr"+uniqueId).getValue()));
+				defaultLipidPerHr = defaultLipidPerHr + selectedLipidInTextbox;
+				
+				selectedIVTotalInTextbox = (new Double(this.self.getFellow("IVTotal"+uniqueId).getValue()));
+				defaultIVTotal = defaultIVTotal + selectedIVTotalInTextbox;
+				
+				selectedAspireInTextbox =  (new Double(this.self.getFellow("AspireVomit"+uniqueId).getValue()));
+				defaultAspire = defaultAspire + selectedAspireInTextbox;
+				
+			  	selectedUrineInTextbox = (new Double(this.self.getFellow("UrineGrid"+uniqueId).getValue()));
+				defaultUrine = selectedUrineInTextbox + defaultUrine;	
+				
+				
+				
+			}
+			this.self.getFellow("totalVol").setValue(String.valueOf(defaultVol));
+			this.self.getFellow("totalIVPerHour").setValue(String.valueOf(defaultIVPerHr));
+			this.self.getFellow("totalaaPerHour").setValue(String.valueOf(defaultAAPerHr));
+			this.self.getFellow("totallipidPerHour").setValue(String.valueOf(defaultLipidPerHr));
+			this.self.getFellow("totalIv").setValue(String.valueOf(defaultIVTotal));
+			this.self.getFellow("totalaspireVomit").setValue(String.valueOf(defaultAspire));
+			this.self.getFellow("totalUrine").setValue(String.valueOf(defaultUrine));	
+			
+
+		}
+		
+		public void checkyesterdayweight()
+		{
+		 String yesterday =  this.self.getFellow("yesterdaywt").getValue();
+		 if(yesterday.length() < 3)
+		 {
+		  alert ("Please Enter Yesterday Weight Again. The weight should be in grams");
+		 } 
+		}
+		
+		public void CalculateWeight()
+		 {
+			
+		   String birthWeightString= this.self.getFellow("birthwt").getValue();
+		   String presentWeightString = this.self.getFellow("presentwt").getValue();
+		   String yesterdayWeightString =  this.self.getFellow("yesterdaywt").getValue();
+			
+		   if(presentWeightString.length() < 3)
+		   {
+				alert ("Please Enter Present Weight Again. The weight should be in grams");
+				return;
+		   }
+		   int presentWeight = Integer.parseInt(presentWeightString);
+		   int yesterdayWeight = Integer.parseInt(yesterdayWeightString);
+		   float birthWeight = Float.parseFloat(birthWeightString);
+		   int birthWeightInGrams = birthWeight * 1000;
+		   int diffbirth = presentWeight - birthWeightInGrams;	
+		   int diffyesterdaywt = presentWeight - yesterdayWeight;
+		  
+		   int presentWeightMultiplier = presentWeight*10;
+		   int presentWeightDivider = presentWeightMultiplier/100;
+		   int incrementalPresentWtPercentage = (float)presentWeight + presentWeightDivider;
+		   int diffpercentage = incrementalPresentWtPercentage - presentWeight;
+		   if(diffyesterdaywt > diffpercentage)
+		   {
+				alert ("Please check the present weight and enter working weight as increment from yesterday is high");
+		   }
+		 
+		 
+		   if(presentWeight < birthWeightInGrams)
+		   {
+			   this.self.getFellow("workingwt").setValue(String.valueOf(birthWeightInGrams));
+		   }	
+		   else if(presentWeight > birthWeightInGrams)
+		   {
+				if(diffyesterdaywt > diffpercentage)
+				{
+					String workingweight="";
+					this.self.getFellow("workingwt").setValue(workingweight);
+				}
+			   else
+			   {
+				   this.self.getFellow("workingwt").setValue(String.valueOf(presentWeight));
+			   }	
+		   }
+		  
+		   this.self.getFellow("diffyesterdaywt").setValue(String.valueOf(diffyesterdaywt));
+		   this.self.getFellow("diffbirthwt").setValue(String.valueOf(diffbirth));
+		}
+					 
+					 
+	 	public void CalculateVolumeIncrement()
+	 	{
+
+		 	Double defaultVolumetotal = 0.0;
+			Double selectedVolumeInTextbox;
+			Rows gridRows = this.self.getFellow("nursingDataGrid").getRows();
+			int numberOfRows = this.self.getFellow("nursingDataGrid").getRows().getVisibleItemCount();
+			for (Row row : gridRows.getChildren()) 
+			{
+				
+				String uniqueId = row.getAttribute("uniquevalue");
+			  	selectedVolumeInTextbox = (new Double(this.self.getFellow("Volume"+uniqueId).getValue()));
+			  	alert(selectedVolumeInTextbox);
+				defaultVolumetotal = selectedVolumeInTextbox + defaultVolumetotal;
+				alert(defaultVolumetotal);	
+				this.self.getFellow("Total"+uniqueId).setValue(String.valueOf(defaultVolumetotal));
+										
+			}		
+	 	}
+			
+		public void calculateIVFluids() 
+		{
+				String ivFluids = this.self.getFellow("ivFluidsAbove").getValue();
+				if (ivFluids == "")
+				{
+					alert ("Please Enter the IV Fluids value");
+				}
+				String workingWeightString = this.self.getFellow("workingwt").getValue();
+				if(workingWeightString == "")
+				{
+					alert ("Please Enter the Present Weight");
+				}
+				float workingWeightInGrams = Float.parseFloat(workingWeightString);
+				float workingWeightInKg = workingWeightInGrams/1000;
+				float calculation = Float.parseFloat(ivFluids)/workingWeightInKg/24;
+				DecimalFormat df = new DecimalFormat("#.00");
+        		String calculationDecimal = df.format(calculation);
+				this.self.getFellow("ivFluidsMLPRHour").setValue((calculationDecimal)+"ml/hr");		
+			}
+			
+			
+		public void calculateEnteralFeeds() 
+			{
+				String enteralFeeds = this.self.getFellow("enteralFeeds").getValue();
+				if (enteralFeeds == "")
+				{
+					alert ("Please Enter the Enteral Feeds value");
+				}
+				String workingWeightString = this.self.getFellow("workingwt").getValue();
+				if(workingWeightString == "")
+				{
+					alert ("Please Enter the Present Weight");
+				}
+				float workingWeightInGrams = Float.parseFloat(workingWeightString);
+				float workingWeightInKg = workingWeightInGrams/1000;
+				String value= this.self.getFellow("chooseOption").getValue();
+				String intValue = value.replaceAll("[^0-9]", "");
+				Integer chosenValue = Integer.parseInt(intValue);
+				if(chosenValue == 1)
+				{
+					float calculation = Float.parseFloat(enteralFeeds)/workingWeightInKg/24;
+					DecimalFormat df = new DecimalFormat("#.00");
+        			String calculationDecimal = df.format(calculation);
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculationDecimal)+" ml/1hr");
+				}
+				else if(chosenValue == 2)
+				{
+					float calculation = Float.parseFloat(enteralFeeds)/workingWeightInKg/12;
+					DecimalFormat df = new DecimalFormat("#.00");
+        			String calculationDecimal = df.format(calculation);
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculationDecimal)+" ml/2hr");
+				}        
+				else if(chosenValue == 3)
+				{
+					float calculation = Float.parseFloat(enteralFeeds)/workingWeightInKg/8;
+					DecimalFormat df = new DecimalFormat("#.00");
+        			String calculationDecimal = df.format(calculation);
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculationDecimal)+" ml/3hr");
+				}
+			}	
+
+			public void totalFluids() {
+				String enteralFeeds = this.self.getFellow("enteralFeeds").getValue();
+				if (enteralFeeds == "")
+				{
+					alert ("Please Enter the Enteral Feeds value");
+				}        
+				String ivFluids = this.self.getFellow("ivFluidsAbove").getValue();
+				if (ivFluids == "")
+				{
+					alert ("Please Enter the Iv Fluids value");
+				}
+				
+				int totalFluids = Integer.parseInt(enteralFeeds) + Integer.parseInt(ivFluids);
+				this.self.getFellow("totalFluids").setValue(String.valueOf(totalFluids));
+			}
+			public void DayOfLife()
+			{
+				   
+				String uidInfant = session.getAttribute("UID");
+				System.out.println(" Value of uidInfant" +uidInfant );
+				if(this.self.getFellow("headerDate").getValue() != null) 
+				{
+					Date currentdate=this.self.getFellow("headerDate").getValue();
+					Date dobdate = (Date)session.getAttribute("DOB");	
+					if(currentdate.getTime() >= dobdate.getTime())
+					{
+						long calculatedTime = currentdate.getTime()-dobdate.getTime();
+						int calculatedDays= calculatedTime/1000/60/60/24;
+						Date timeOfBirth =(Date) session.getAttribute("timeofBirth");
+						String strDateFormat = "HH:mm:ss a";
+						SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+						String timeInFormat=(sdf.format(timeOfBirth.getTime()));
+						String time=new String(timeInFormat);
+						String subtime=time.substring(9);
+						if(subtime.equals("AM"))
+						{
+							calculatedDays=calculatedDays+1;
+						}
+						else
+						{
+							calculatedDays=calculatedDays;	
+						}
+						this.self.getFellow("dayOfLife").setValue(String.valueOf(calculatedDays));
+					}
+					else
+					{
+						alert("Please check values of CurrentDate and DOB");
+					}
+				}
+				else
+				{
+					alert("Please enter DOB and Time of Birth ");
+				}	
+			}
+			public void CorrectGestation()
+			{
+				if(this.self.getFellow("dayOfLife").getValue()=="")
+				{
+					alert ("Please Calculate Day of Life First ");
+				}
+				else
+				{
+					
+					String dayOfLife=this.self.getFellow("dayOfLife").getValue();
+					String gestation = this.self.getFellow("gestaionatBirth").getValue();
+					int intdayOfLife=Integer.parseInt(dayOfLife);
+					String gestationWeek = gestation.substring(0,gestation.indexOf("+"));
+					// if it is 32+ 5 it will give me 32
+					String gestationDay = gestation.substring(5);
+					gestationWeek = gestationWeek.trim();
+					gestationDay = gestationDay.trim();
+					System.out.println("gestationWeek value ="+gestationWeek);
+					System.out.println("gestationDay value ="+gestationDay);
+					int gestationWeekDays = Integer.parseInt(gestationWeek) * 7;
+					int totalGestationDays = Integer.parseInt(gestationDay) + gestationWeekDays;
+					int correctedGestation = totalGestationDays + intdayOfLife;
+					int correctedGestationWeeks = correctedGestation / 7;
+					int correctedGestationDays = (correctedGestation) - (correctedGestationWeeks * 7);
+					this.self.getFellow("correctedGestation").setValue(correctedGestationWeeks + "+" + correctedGestationDays);
+				}
+			}
+			public void previousDate()
+			 {
+				DateFormat formatter =null;
+				Date convertedDate=null;
+				int MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
+				Date dd=this.self.getFellow("headerDate").getValue();
+				SimpleDateFormat dateformat=new SimpleDateFormat("dd/MM/yyyy");
+				String prevDate=dateformat.format(dd.getTime() - MILLIS_IN_DAY);
+				Date parsedDate=dateformat.parse(prevDate);
+				formatter=new SimpleDateFormat("dd-MM-yyyy");
+				this.self.getFellow("headerDate").setValue(parsedDate);
+				displayDataForDate(parsedDate);
+			}
+
+			 public void nextDate()
+			 {
+				Date currentDate = new Date();
+				DateFormat formatter =null;
+				Date convertedDate=null;
+				int MILLIS_IN_DAY=1000*60*60*24;
+				Date dd=this.self.getFellow("headerDate").getValue();
+				int result = currentDate.compareTo(dd);
+				//check if selected date if higher than current date
+				if(result <0 || result==0)
+				{
+					alert ("Date can not be later than today's today");
+				}
+				else
+				{
+					SimpleDateFormat dateformat=new SimpleDateFormat("dd-MM-yyyy");
+					String nextDate=dateformat.format(dd.getTime()+ MILLIS_IN_DAY);
+					Date parsedDate=dateformat.parse(nextDate);
+					formatter=new SimpleDateFormat("dd-MM-yyyy");
+					this.self.getFellow("headerDate").setValue(parsedDate);
+					displayDataForDate(parsedDate);
+				}
+			 } 
+		  
+			public void displayDataForDate(Date currrentSelectedDate)
+			{
+			    String uidInfant = session.getAttribute("UID");
+				java.sql.Date sqlDate = new java.sql.Date(currrentSelectedDate.getTime());
+				System.out.println("---------------sqlDate=------------------------"+sqlDate+"---UID---="+uidInfant);
+				String result = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Nursing_Progress_Report.Time , MASTERMETHOD.MethodName , MasterFeedType.FeedName,Nursing_Progress_Report.Volume, MasterIVFluid.IVFluidName,  Nursing_Progress_Report.IV_Hr ,Nursing_Progress_Report.AA_Hr , Nursing_Progress_Report.Lipid_Hr, Nursing_Progress_Report.IVTotal , Nursing_Progress_Report.Aspirate_Vomit , Nursing_Progress_Report.Urine , MasterBO.BOName ,Nursing_Progress_Report.Sao2 , Nursing_Progress_Report.HR , Nursing_Progress_Report.RR , Nursing_Progress_Report.BP ,  MasterFIO2.FIO2name ,Nursing_Progress_Report.TempAxilla ,  MasterTempIncBed.TempIncName , Nursing_Progress_Report.CPAP, Nursing_Progress_Report.ID from FORTIS.Nursing_Progress_Report ,FORTIS.MASTERMETHOD , FORTIS.MasterFeedType , FORTIS.MasterIVFluid , FORTIS.MasterBO , FORTIS.MasterFIO2 , FORTIS.MasterTempIncBed  conditions Nursing_Progress_Report.methodId:=mastermethod.methodId and Nursing_Progress_Report.FeedId:=MasterFeedType.FeedTypeId and Nursing_Progress_Report.IVFluidId:=MasterIVFluid.IVFluidId and Nursing_Progress_Report.BOId:=MasterBO.BOId and Nursing_Progress_Report.FIO2Id:=MasterFIO2.FIO2Id and Nursing_Progress_Report.TempIncBedId:=MasterTempIncBed.TempIncBedId and Nursing_Progress_Report.UID:="+uidInfant+" and Nursing_Progress_Report.Date:=["+ sqlDate+ "] orderby Nursing_Progress_Report.Time");
+				//String result = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Nursing_Progress_Report.Time , MASTERMETHOD.MethodName , MasterFeedType.FeedName,Nursing_Progress_Report.Volume, Nursing_Progress_Report.Total ,  MasterIVFluid.IVFluidName,  Nursing_Progress_Report.IV_Hr ,Nursing_Progress_Report.AA_Hr , Nursing_Progress_Report.Lipid_Hr, Nursing_Progress_Report.IVTotal , Nursing_Progress_Report.Aspirate_Vomit , Nursing_Progress_Report.Urine , MasterBO.BOName ,Nursing_Progress_Report.Sao2 , Nursing_Progress_Report.HR , Nursing_Progress_Report.RR , Nursing_Progress_Report.BP ,  MasterFIO2.FIO2name ,Nursing_Progress_Report.TempAxilla ,  MasterTempIncBed.TempIncName , Nursing_Progress_Report.CPAP, Nursing_Progress_Report.ID from FORTIS.Nursing_Progress_Report ,FORTIS.MASTERMETHOD , FORTIS.MasterFeedType , FORTIS.MasterIVFluid , FORTIS.MasterBO , FORTIS.MasterFIO2 , FORTIS.MasterTempIncBed  conditions Nursing_Progress_Report.methodId:=mastermethod.methodId and Nursing_Progress_Report.FeedId:=MasterFeedType.FeedTypeId and Nursing_Progress_Report.IVFluidId:=MasterIVFluid.IVFluidId and Nursing_Progress_Report.BOId:=MasterBO.BOId and Nursing_Progress_Report.FIO2Id:=MasterFIO2.FIO2Id and Nursing_Progress_Report.TempIncBedId:=MasterTempIncBed.TempIncBedId and Nursing_Progress_Report.Date:=["+ sqlDate+ "]  orderby Nursing_Progress_Report.Time");				
+				displayDataInControl("nursingDataGrid");
+			}
+			public static String toddMMyy(Date day)
+			{
+				SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+				String date = formatter.format(day);
+				return date;
+
+			}
+			
+			public void submitNursingEnteredData()
+
+			{
+				NursingProgressReport nursingProgressReport = new NursingProgressReport();
+				Long methodId;
+				Long feedId;
+				Long ivFluidId;
+				Long boId;
+				Long fio2Id;
+				Long tempIncBedId;
+				java.sql.Date sqlDate = new java.sql.Date(((Date)this.self.getFellow("headerDate").getValue()).getTime());
+				nursingProgressReport.setDate(sqlDate);
+				Rows gridRows = this.self.getFellow("nursingDataGrid").getRows();
+				int numberOfRows = this.self.getFellow("nursingDataGrid").getRows().getVisibleItemCount();
+				for (Row row : gridRows.getChildren()) 
+				{
+					String uniqueId = row.getAttribute("uniquevalue");
+					nursingProgressReport.setId(new Long(uniqueId));
+					nursingProgressReport.setTime(new Long (this.self.getFellow("Time"+uniqueId).getValue()));
+					String selectedMethodInCombo = this.self.getFellow("Method"+uniqueId).getValue();
+					selectedMethodInCombo = selectedMethodInCombo.trim();
+					if(selectedMethodInCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterMethod.MethodID from FORTIS.MasterMethod conditions MasterMethod.methodName:=["+selectedMethodInCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							methodId =new Long(allValues[0][0]);
+							nursingProgressReport.setMethodId(methodId);
+						}
+					}
+					String selectedFeedInCombo = this.self.getFellow("FeedType"+uniqueId).getValue();
+					selectedFeedInCombo = selectedFeedInCombo.trim();
+					System.out.println("----ZK list need-----"+selectedFeedInCombo);
+					if(selectedFeedInCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterFeedType.FeedTypeId from FORTIS.MasterFeedType conditions MasterFeedType.FeedName:=["+selectedFeedInCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							feedId =new Long(allValues[0][0]);
+							nursingProgressReport.setFeedId(feedId);
+						}
+					}
+					nursingProgressReport.setVolume(new Double(this.self.getFellow("Volume"+uniqueId).getValue()));
+				
+					String selectedIVInCombo = this.self.getFellow("IVFluidsGrid"+uniqueId).getValue();
+					selectedIVInCombo = selectedIVInCombo.trim();
+					System.out.println("~~~~ZK list need~~~~-"+selectedIVInCombo);
+					if(selectedIVInCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterIVFluid.IVFluidId from FORTIS.MasterIVFluid conditions MasterIVFluid.IVFluidName:=["+selectedIVInCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							ivFluidId =new Long(allValues[0][0]);
+							nursingProgressReport.setIvfluidId(ivFluidId);
+						}
+					}
+					
+					 nursingProgressReport.setIvHr(new Double(this.self.getFellow("IVPerHour"+uniqueId).getValue()));	
+					 nursingProgressReport.setAaHr(new Double(this.self.getFellow("AAPerHr"+uniqueId).getValue()));
+					 nursingProgressReport.setLipidHr(new Double(this.self.getFellow("LipidPerHr"+uniqueId).getValue()));
+					 nursingProgressReport.setIvtotal(new Double(this.self.getFellow("IVTotal"+uniqueId).getValue()));
+					 nursingProgressReport.setAspirateVomit(new Double(this.self.getFellow("AspireVomit"+ uniqueId).getValue()));
+					 nursingProgressReport.setUrine(new Double(this.self.getFellow("UrineGrid"+uniqueId).getValue()));
+					
+					String selectedBOInCombo = this.self.getFellow("BO"+ uniqueId).getValue();
+					selectedBOInCombo = selectedBOInCombo.trim();
+					System.out.println("----ZK list need-----"+selectedBOInCombo);
+					if(selectedBOInCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterBO.BOId from FORTIS.MasterBO conditions MasterBO.BOName:=["+selectedBOInCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							boId =new Long(allValues[0][0]);
+							nursingProgressReport.setBoid(boId);
+						}
+					}
+					
+					 nursingProgressReport.setSao2(this.self.getFellow("SAO2"+ uniqueId).getValue());
+					 nursingProgressReport.setHr(this.self.getFellow("HR"+uniqueId).getValue());
+					 nursingProgressReport.setRr(this.self.getFellow("RR"+uniqueId).getValue());
+					 nursingProgressReport.setBp(this.self.getFellow("BP"+uniqueId).getValue());
+					 
+				
+				
+					String selectedFIO2InCombo = this.self.getFellow("FIO2"+ uniqueId).getValue();
+					selectedFIO2InCombo = selectedFIO2InCombo.trim();
+					System.out.println("----ZK list need-----"+selectedFIO2InCombo);
+					if(selectedFIO2InCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterFIO2.FIO2Id from FORTIS.MasterFIO2 conditions MasterFIO2.FIO2Name:=["+selectedFIO2InCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							fio2Id =new Long(allValues[0][0]);
+							nursingProgressReport.setFio2id(fio2Id);
+						}
+					}
+					 
+					nursingProgressReport.setTempAxilla(this.self.getFellow("TempAxilla"+ uniqueId).getValue());
+					
+					String selectedTempIncBedInCombo = this.self.getFellow("TempIncBed"+ uniqueId).getValue();
+					selectedTempIncBedInCombo = selectedTempIncBedInCombo.trim();
+					System.out.println("----ZK list need-----"+selectedTempIncBedInCombo);
+					if(selectedTempIncBedInCombo != null)
+					{
+						setFormPatternId("nursing_progress_notes");
+						setDatapatternId("FORTIS");
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get MasterTempIncBed.TempIncBedId from FORTIS.MasterTempIncBed conditions MasterTempIncBed.TempIncName:=["+selectedTempIncBedInCombo+"]");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+							hicData = returnHicData;
+						}
+						
+						IData data = hicData.getData();	
+						List listValue = data.getQueryData().getListData();
+						String[][] allValues = data.getQueryData().iterateListData(listValue);
+						if(allValues!= null)
+						{
+							tempIncBedId =new Long(allValues[0][0]);
+							nursingProgressReport.setTempIncBedId(tempIncBedId);
+						}
+					}
+					
+					nursingProgressReport.setCpap(this.self.getFellow("CPAP"+ uniqueId).getValue());
+					
+					NICUComponent.SaveNursingProgressRowInDatabase(nursingProgressReport);
+				}	
+			}	
+		]]>
+</zscript>
+<style dynamic="true">
+    body{background: #f0f0f0; }
+    *:focus{outline:none;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu .z-toolbarbutton-cnt{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+     tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: none;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important;}
+    .sub_menu .z-toolbarbutton-cnt:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+    .z-center,.z-east{border:none; background: none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important; padding:0px!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+	.z-vlayout{height: auto!important;}
+	.z-borderlayout{background:none;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse; width: 48px!important; white-space:initial;}
+	.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; border-collapse: collapse;}
+	.z-label{text-align:center; cursor:pointer;}
+	.z-column-sort-img{text-align:center;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:0px;}
+	.z-combobox-inp{width: 20px;}
+	.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+	.z-textbox{width: 70px;}
+	div.z-column-cnt, div.z-row-cnt{font-weight: normal; padding:0px 4px 0px;}
+	div.z-column-cnt{8px 4px 5px 0px}
+	.submit,.cancel{background: #708090; padding:5px 15px; border:none; color: black; font-weight: bold; border-radius:5px; cursor:pointer;}
+	.headerDate .z-datebox-btn{display:none;}
+	.z-datebox-disd{opacity:1!important; width: 150px;}
+	.z-datebox-text-disd {background-color: #FFFFFF;color: #000000 !important;}
+	.z-grid-body{width:1040px!important; margin:auto!important;}
+	.main .z-center{box-shadow:none!important; border: 2px solid #ccc!important;}
+	.main .z-center-noborder{box-shadow:none!important; border: none!important;}
+	.tablegrid .z-cell{box-shadow:none!important;}
+	.z-north{box-shadow:none!important;}
+	.urine table{width: 20%!important;}
+        </style>
+
+<window id = "bodybackground" style="background: #F7F7F7">
+ <timer id="timerKeepAliveSession" repeats="true" delay="86400000" onTimer=""/>	
+	<div style="width:1060px; margin:auto;">
+       	<borderlayout sclass="complex-layout" height="40px">
+            <north id = "northTopBackground" size="40px" border="0" style="background:#F7F7F7;">
+				<a href= "admission.zul">
+						<image src="images/fortis.png" />
+				</a>
+			</north>
+        </borderlayout>
+    </div>
+ 	<attribute name="onCreate"><![CDATA[
+    				String uidInfant = session.getAttribute("UID");
+    				session.setAttribute("UID",uidInfant);
+    				System.out.println(" Value of uidInfant -----" +uidInfant );
+    				if (uidInfant != null)
+					{
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Sex from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+					}
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+						hicData = returnHicData;
+					}
+					IData data = hicData.getData();	
+					List listValue = data.getQueryData().getListData();
+					String[][] allValues = data.getQueryData().iterateListData(listValue);
+					String gender = "";
+					if(allValues!= null)
+					{
+						gender = (String) allValues[0][0];
+					}						
+					String genderMale ="M";
+					String genderFemale = "F";
+
+					if (gender.equals(genderMale))
+					{
+						
+						changeScreenColorAsPerInput("87CEFA");
+				
+					}	
+					else if (gender.equals(genderFemale))
+					{
+						changeScreenColorAsPerInput("FFCCFF");
+				
+					}	
+    				if (uidInfant != null)
+    				{
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.BirthWeight from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+						birthWtdata=createArray("String", "birthwt");
+						showData(birthWtdata);
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Gestation from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+						gestationData=createArray("String", "gestaionatBirth");
+						showData(gestationData);
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.InfantName from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+						nameData=createArray("String", "Name");
+						showData(nameData);
+						invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.UID from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+						uidData=createArray("String", "UID");
+						showData(uidData);
+					}	
+					Date parsedDate = this.self.getFellow("headerDate").getValue();
+					displayDataForDate(parsedDate);	
+					//Enable the present weight only at 5 am
+					Calendar cal = Calendar.getInstance();
+					int hour = cal.get(Calendar.HOUR_OF_DAY);
+					int minute = cal.get(Calendar.MINUTE);
+					if(hour == 5 && minute < 60)
+					{
+						//presentwt.setDisabled(false);
+					}
+					else
+					{
+						//presentwt.setDisabled(true);
+					}			
+					]]></attribute>
+
+ 	<div style="margin:auto; width:1060px; margin-top:10px;">        
+        <grid style="padding:10px; border:1; background: none;" class="tablegrid">
+			<rows>
+				<row>
+						<cell id = "gridCellDateBackground" style="width:200px;">
+							<label value="&lt;&lt;" onClick="previousDate()"/>
+							<datebox style="width: 100px; opacity=1" onCreate="self.value = new Date()" id="headerDate" class="headerDate" readonly="true" constraint="no future: now or never" lenient="false"/>
+							<label value="&gt;&gt;" onClick="nextDate()"/>
+						</cell>	
+						<cell id = "gridCellDOLBackground" style="width: 200px;">				
+							<label value="Day of Life" />
+							<textbox style="width: 80px;" id="dayOfLife" onClick="DayOfLife()"/>
+					</cell>
+					<cell id = "gridCellGestBackground" style="width: 200px;">				
+						<label value="Gestation at Birth"/>
+						<textbox style="width: 80px;" value="31+5"  id="gestaionatBirth"/>
+					</cell>
+					<cell  id = "gridCellCorrBackground" style="width: 180px;">				
+						<label value="Corrected Gestation"/>
+						<textbox style="width: 80px;" id="correctedGestation" onClick="CorrectGestation()"/>
+					</cell>										
+				</row>
+			</rows>
+		</grid>            
+	</div>
+<div align="center" style="margin:20px" class="main">
+	<borderlayout height="800px" width="1060px">
+  		<center>
+    		<borderlayout>
+          	<center border="0" margins="0,3,3,3" style=" overflow:auto; background:#F7F7F7">
+				<panel> 
+					<panelchildren>
+						<div  id = "divNameBackground" align="left" style=" background: #F7F7F7" class="border">
+							<label value="Name" />
+							<space bar="false" spacing="58px" />
+							<textbox id="Name"/>
+							<space bar="false" spacing="20px" />
+							<label value="Present Wt." />
+							<space bar="false" spacing="109px" />
+							<textbox id="presentwt" onBlur="CalculateWeight()"/>
+							<space bar="false" spacing="50px" /> 
+							<space bar="false" spacing="70px" />
+							<label value="ml/kg/day" />
+							<space bar="false" spacing="115px" />
+					   </div>
+				 		<div  id = "divUIDBackground" align="left"  style=" background: #F7F7F7">
+							<label value="UID" />
+							<space bar="false" spacing="69px" />
+							<textbox id = "UID"/>
+							<space bar="false" spacing="19px" />
+                            <label value="Working Wt."/>
+                            <space bar="false" spacing="108px" /> 
+                            <textbox id="workingwt" />
+                            <space bar="false" spacing="26px" />                            
+							<label value="I.V.Fluids" />
+							<space bar="false" spacing="30px" />
+							<textbox id="ivFluidsAbove" onBlur="calculateIVFluids()"/>
+							<space bar="false" spacing="20px" />
+							<label value="" />
+							<space bar="false" spacing="55px" />
+							<textbox id="ivFluidsMLPRHour"/>                                                    
+						</div>
+						 <div id = "divBirthBackground" align="left"  style=" background: #F7F7F7">
+						 	<label value="Birth Wt." />
+							<space bar="false" spacing="44px" />
+							<textbox id="birthwt" />
+							<space bar="false" spacing="20px" />
+                            <label value="Weight Change from Birth" />
+                            <space bar="false" spacing="35px" />
+                            <textbox id="diffbirthwt"/>
+							<space bar="false" spacing="24px" />
+							 <label value="Enteral Feeds" />
+							<space bar="false" spacing="10px" />
+							<textbox id="enteralFeeds"  />
+							<space bar="false" spacing="23px" />
+							<combobox id="chooseOption" onBlur="calculateEnteralFeeds()">
+							<comboitem label="1 hrly"   id="one"/>
+							<comboitem label="2 hrly"   id="two"/>
+							<comboitem label="3 hrly"   id="three"/>
+							</combobox>
+							<space bar="false" spacing="0px" />
+							<label value="" />
+							<space bar="false" spacing="0px" />
+							<textbox id="enteralFluidsMLPRHour"/>                                                                                                        
+						</div>
+						<div  id = "divYesterdayBackground" align="left"  style=" background: #F7F7F7">
+							<label value="Yesterday Wt." />
+							<space bar="false" spacing="15px" />
+							<textbox id = "yesterdaywt" />
+							<space bar="false" spacing="20px" />
+							<label value="Weight Change from Yesterday"/>
+							<space bar="false" spacing="6px" />
+							<textbox id="diffyesterdaywt"/>
+							<space bar="false" spacing="24px" />                                                                                                 
+							<label value="Total Fluids" />
+							<space bar="false" spacing="21px" />
+							<textbox id="totalFluids" onClick="totalFluids()"/>                                                     
+						</div>
+						<div id = "nursingFrame" style="background: #F7F7F7; width: 1060px;">             
+							<toolbar align="center">     
+							 	<hlayout>
+				    				<grid  id = "nursingDataGrid" width="1040px"  rowRenderer="com.oxymedical.component.renderer.uiBuilder.zk.library.GridRowCustomRenderer">
+									<attribute name="onAfterRender"><![CDATA[
+									 calculateTotal();
+										]]></attribute> 
+									<columns>
+										<column id = "TimeLabel" label="Time"  align="center">
+										</column>
+										<column id = "MethodLabel" label= "Method" align="center">
+										</column>
+										<column id= "FeedTypeLabel" label="Feed Type"
+											 align="center">
+										</column>
+										<column id= "VolumeLabel" label="Vol."
+											 align="center">
+										</column>
+										<column id="IVFluidsLabel" label="I.V. Fluids"
+											 align="center">
+										</column>
+										<column id="IV_HrLabel" label="I.V/Hr"
+											 align="center">
+										</column>
+										<column id="AA_HrLabel" label="AA/Hr"
+											 align="center">
+										</column>
+										<column id="Lipid_HrLabel" label="Lipid / Hr"
+											 align="center">
+										</column>
+										<column id="IVTotaLabell" label="I.V. Total"
+											 align="center">
+										</column>
+										<column id="Aspirate_VomitLabel" label="Aspire/
+											Vomit (ml)"
+											 align="center">
+										</column>
+										<column id="UrineLabel" label="Urine (ml)"
+											 align="center">
+										</column>
+										<column id="BOLabel" label="BO"
+											 align="center">
+										</column>
+										<column id="Sao2Label" label="SaO2 %"
+											 align="center">
+										</column>
+										<column id="HRLabel" label="HR"
+											 align="center">
+										</column>
+										<column id="RRLabel" label="RR"
+											 align="center">
+										</column>
+										<column id="BPLabel" label="B.P"
+											 align="center">
+										</column>
+										<column id="FIO2Label" label="FIO2 (%)"
+											 align="center">
+										</column>
+										<column id="TempAxillaLabel" label="Temp Axilla
+											(C)"
+											 align="center">
+										</column>
+										<column id="TempIncBedLabel" label="Temp Inc/Bed
+											(C)"
+											 align="center">
+										</column>
+										<column id="CPAPLabel" label="CPAP"
+											 align="left">
+										</column>
+									</columns>
+								</grid>  
+							</hlayout>
+						</toolbar>
+						<toolbar align="center" >     
+							 <hlayout>
+									<grid  id = "nursingDataGridTotal" width="1040px">
+											<rows sclass="narrow" >
+												<row id = "">
+													<label id =""   value="Total"/>
+													<label id= "" style="visibility:hidden;">
+												
+													</label>  
+													<label id= "" style="visibility:hidden;">
+														
+													</label>  
+													<textbox  id="totalVol" onClick="totalVol()"/>
+													<label id="" style="visibility:hidden;">
+													
+													</label>   
+													<textbox id="totalIVPerHour" />
+													<textbox id="totalaaPerHour" />
+													<textbox id="totallipidPerHour" />
+													<textbox id="totalIv" >
+												    </textbox> 
+													<textbox id="totalaspireVomit" />
+													<textbox id="totalUrine" />
+													<label id="" style="visibility:hidden;">
+											
+													</label>   
+													<label id="" style="visibility:hidden;"/>
+													<label id="" style="visibility:hidden;"/>
+													<label id="" style="visibility:hidden;"/>
+													<label id="" style="visibility:hidden;"/>
+													<label id="" style="visibility:hidden;">
+													
+													</label>  
+													<label id="" style="visibility:hidden;"/>
+													<label id="" style="visibility:hidden;">
+														
+													</label>
+													<label id="" style="visibility:hidden;"/>           
+												</row>
+											</rows>
+									</grid>  
+							</hlayout>
+					</toolbar>
+                    
+                    <toolbar align="center" >     
+							 <hlayout>
+									<grid width="20%" class="urine">
+											<rows sclass="narrow" >
+												<row id = "">
+													<label value="Urine(/ml/kg)"/>
+													<textbox  id="calculatedUrine" onClick="calculateUrinePerMl()"/>
+												</row>
+											</rows>
+									</grid>  
+							</hlayout>
+					</toolbar>
+					
+                    	<button id="Submit" label="Submit" class="submit">
+							<attribute name="onClick"><![CDATA[
+								submitNursingEnteredData();
+								setFormPatternId("nursing_progress_notes");
+								setDatapatternId("FORTIS");
+								Object rootFormValue = self.getRoot();
+								System.out.println("rootFormValue = " + rootFormValue);
+								formValues = createFormValues(rootFormValue,formValues);
+								//invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","nursing_progress_notes");
+								]]></attribute> 
+						</button>
+						<button label="Cancel" onClick="" class="cancel"/>  
+						<button id="Refresh" label="Refresh" class="submit">
+							<attribute name="onClick"><![CDATA[
+							Date parsedDate = this.self.getFellow("headerDate").getValue();
+							displayDataForDate(parsedDate);
+							]]></attribute>  
+						</button>		 
+					</div>                    
+				</panelchildren>
+			</panel>
+		  </center>
+		  </borderlayout>
+		 </center>
+	   </borderlayout>
+	</div>		
+  </window>
+</zk>
+

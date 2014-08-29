@@ -1,0 +1,266 @@
+<zk id="menu" name="menu">
+<?page id="menu"?>
+<zscript>
+<![CDATA[
+       public void showAdmissionDiv()
+       {
+    	   this.self.getFellow("Admission").setStyle("display:block");
+    	   this.self.getFellow("initialExamination").setStyle("display:block");
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:none");
+    	   this.self.getFellow("growthChart").setStyle("display:none"); 
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:none");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:none");
+    	   this.self.getFellow("basic").setStyle("display:none");
+    	   this.self.getFellow("specialised").setStyle("display:none");
+    	   this.self.getFellow("cranial").setStyle("display:none");
+    	   this.self.getFellow("abdomen").setStyle("display:none");
+       }
+       public void showDoctorProgressNotesDiv()
+       {
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:block");
+    	   this.self.getFellow("growthChart").setStyle("display:block");   
+    	   this.self.getFellow("Admission").setStyle("display:none");
+    	   this.self.getFellow("initialExamination").setStyle("display:none");
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:none");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:none");
+    	   this.self.getFellow("basic").setStyle("display:none");
+    	   this.self.getFellow("specialised").setStyle("display:none");
+    	   this.self.getFellow("cranial").setStyle("display:none");
+    	   this.self.getFellow("abdomen").setStyle("display:none");
+       }
+       public void showMedicationDiv()
+       {
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:block");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:block");
+    	   this.self.getFellow("Admission").setStyle("display:none");
+    	   this.self.getFellow("initialExamination").setStyle("display:none");
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:none");
+    	   this.self.getFellow("growthChart").setStyle("display:none"); 
+    	   this.self.getFellow("basic").setStyle("display:none");
+    	   this.self.getFellow("specialised").setStyle("display:none");
+    	   this.self.getFellow("cranial").setStyle("display:none");
+    	   this.self.getFellow("abdomen").setStyle("display:none");
+       }
+       public void showBloodtestDiv()
+       {
+    	   this.self.getFellow("basic").setStyle("display:block");
+    	   this.self.getFellow("specialised").setStyle("display:block");
+    	   this.self.getFellow("Admission").setStyle("display:none");
+    	   this.self.getFellow("initialExamination").setStyle("display:none");
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:none");
+    	   this.self.getFellow("growthChart").setStyle("display:none"); 
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:none");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:none");
+    	   this.self.getFellow("cranial").setStyle("display:none");
+    	   this.self.getFellow("abdomen").setStyle("display:none");
+       }
+       public void showUltrasoundDiv()
+       {
+    	   this.self.getFellow("cranial").setStyle("display:block");
+    	   this.self.getFellow("abdomen").setStyle("display:block");
+    	   
+    	   this.self.getFellow("Admission").setStyle("display:none");
+    	   this.self.getFellow("initialExamination").setStyle("display:none");
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:none");
+    	   this.self.getFellow("growthChart").setStyle("display:none"); 
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:none");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:none");
+    	   this.self.getFellow("basic").setStyle("display:none");
+    	   this.self.getFellow("specialised").setStyle("display:none");
+    	   
+       }
+       public void showNeonatalDiv()
+       {
+
+    	   this.self.getFellow("DoctorProgressNotes").setStyle("display:block");
+    	   this.self.getFellow("VentilatorSettingChart").setStyle("display:block");
+    	
+    	   this.self.getFellow("cranial").setStyle("display:none");
+    	   this.self.getFellow("abdomen").setStyle("display:none");   
+    	   this.self.getFellow("Admission").setStyle("display:none");
+    	   this.self.getFellow("initialExamination").setStyle("display:none");
+    	   this.self.getFellow("DoctorsProgressNotes").setStyle("display:none");
+    	   this.self.getFellow("growthChart").setStyle("display:none"); 
+    	   this.self.getFellow("DoctorsPrescription").setStyle("display:none");
+    	   this.self.getFellow("nurseAdministration").setStyle("display:none");
+    	   this.self.getFellow("basic").setStyle("display:none");
+    	   this.self.getFellow("specialised").setStyle("display:none");
+    	   
+       }
+]]>
+</zscript>
+    <style>
+         .bgColor .z-label{ font: bold 16px/32px Arial;font-size:12px; color:#191919;}
+        .z-label{ font: bold 16px/32px Arial;font-size:14px; color:white;}
+        .z-row-inner{background:grey!important;  height: 39px; cursor:pointer}
+        .z-row-inner:hover{background: lightgreen!important;}
+        .arrow{background:url('images/arrow.png') right;margin-right:20px; background-repeat:no-repeat; cursor:pointer;}
+        .z-north, .z-south, .z-west, .z-center, .z-east{border:none}
+       .bgColor .z-row-inner{background:lightgrey!important; border-bottom:1px solid #ccc!important; padding-top: 10px!important;}
+       .bgColor .z-row-inner:hover{background:#ccc!important;}
+       tr.z-row td.z-row-inner, tr.z-row .z-cell{border-top:none; border-left:none; border-right: none; border-bottom:1px solid #666; padding:0px 0px 0px 20px;"}
+       .z-a{float:left; width: 376px;}
+    </style>
+    <div style="width: 500px; margin:auto;">
+        <borderlayout height="800px" >
+            <north size="90px" border="0">
+                <div style="text-align:center; padding:10px">
+                    <image 
+                        src="images/fortis.png" />
+                </div>
+            </north>
+             <west width="100px">
+                <image src="images/user.jpg" width="100px"/>
+            </west>
+                      <center>
+                      
+                      
+                                <grid>
+                                    <rows>
+                                        <row Height="50px" onClick= "showAdmissionDiv(); ">
+                                            <div class="arrow">
+                                                <label value="Admission &amp; Examination" />
+                                                
+                                            </div>
+                                        </row>
+                                        
+                                     <row class="bgColor"  id="Admission" style="display:none;" Height="50px">      
+                                    <div>
+									<a href="admission.zul" style="text-decoration:none"><label value="Admission Form" style="text-align:center" /></a>
+									
+									</div>
+									</row>          
+									<row class="bgColor" id="initialExamination" style="display:none;" Height="50px" >
+									<div >
+									<a href="initial_examination.zul" style="text-decoration:none"><label  value="Initial Examination" style="text-align:center" /></a>
+									</div>
+									</row>
+					                                    
+                                        <row Height="50px">
+                                            <div>
+                                                    <a href="nursing_progress_notes.zul" style="text-decoration:none"><label value="Nursing Progress Notes" /></a>
+                                            </div>
+                                        </row>
+                                        <row Height="50px" onClick= "showDoctorProgressNotesDiv(); ">
+                                            <div class="arrow">
+                                               <label value="Doctor's Progress Notes" />
+                                            </div>
+                                            </row>
+                                                 <row  id="DoctorsProgressNotes" style="display:none;" Height="50px" class="bgColor">      
+                                            <div>
+		   							<a href="progress_notes.zul" style="text-decoration:none"><label value="Doctor's Progress Notes"/></a>
+									</div>
+									</row>          
+									<row id="growthChart" style="display:none;" Height="50px" class="bgColor">
+									<div>
+									<a href="growth_chart.zul" style="text-decoration:none"><label  value="Growth Chart"/></a>
+									</div>
+									</row>
+									
+                                            
+                                        
+                                        <row Height="50px" onClick="showMedicationDiv();">
+                                            <div class="arrow">
+                                                    <label value="Medication" />
+                                            </div>
+                                        </row>
+                                        
+                                    <row  id="DoctorsPrescription" style="display:none;" Height="50px" class="bgColor">      
+                                    <div>
+		   							<a href="diamorphine_infusion.zul" style="text-decoration:none"><label value="Doctor's Prescription"/></a>
+									</div>
+									</row>          
+									<row id="nurseAdministration" style="display:none;" Height="50px" class="bgColor">
+									<div>
+									<a href="nurse_administration.zul" style="text-decoration:none"><label  value="Nurse Administration"/></a>
+									</div>
+									</row>
+								
+                                        
+                                        <row Height="50px">
+                                            <div>
+                                                    <a href="blood_gas_test.zul" style="text-decoration:none"><label value="Blood Gas Tests" /></a>
+                                            </div>
+                                        </row>
+                                        <row Height="50px" onClick="showBloodtestDiv();">
+                                            <div class="arrow">   
+                                            <label value="Blood Tests" />
+                                            </div>
+                                        </row>
+                                        
+                                    <row  id="basic" style="display:none;" Height="50px" class="bgColor">      
+                                    <div>
+		   							<a href="basic.zul" style="text-decoration:none"><label value="Basic"/></a>
+									</div>
+									</row>          
+									<row id="specialised" style="display:none;" Height="50px" class="bgColor">
+									<div>
+									<a href="specialised.zul" style="text-decoration:none"><label  value="Specialised"/></a>
+									</div>
+									</row>
+		
+                                        
+                                        <row Height="50px">
+                                            <div>
+                                                 <a href="blood_gas_test.zul" style="text-decoration:none"><label value="Screening Tests" /></a>
+                                            </div>
+                                        </row>
+                                        <row onClick="showUltrasoundDiv();" Height="50px">
+                                            <div class="arrow">
+                                            <label value="Ultrasound" />
+                                            </div>
+                                        </row>
+                                        
+                                                                        
+                                    <row  id="cranial" style="display:none;" Height="50px" class="bgColor">      
+                                    <div>
+		   							<a href="cranial.zul" style="text-decoration:none"><label value="Cranial"/></a>
+									</div>
+									</row>          
+									<row id="abdomen" style="display:none;" Height="50px" class="bgColor">
+									<div>
+									<a href="abdomen.zul" style="text-decoration:none"><label  value="Abdomen"/></a>
+									</div>
+									</row>
+		
+                                        
+                                        <row Height="50px">
+                                            <div>   
+                                            <a href="xray.zul" style="text-decoration:none"><label value="Xray" /></a>
+                                            </div>
+                                        </row>
+                                        
+                                        <row onClick="showNeonatalDiv();" Height="50px">
+                                            <div class="arrow">
+                                            <label value="Neonatal" />
+                                            </div>
+                                        </row>
+                                        
+                                                                        
+                                    <row  id="DoctorProgressNotes" style="display:none;" Height="50px" class="bgColor">      
+                                    <div>
+		   							<a href="doctor_progress_notes.zul" style="text-decoration:none"><label value="Neonatal Unit"/></a>
+									</div>
+									</row>          
+									<row id="VentilatorSettingChart" style="display:none;" Height="50px" class="bgColor">
+									<div>
+									<a href="ventilator_setting_chart.zul" style="text-decoration:none"><label  value="Neonatal ICU"/></a>
+									</div>
+									</row>
+                                        
+                                        <row Height="50px">
+                                            <div>
+                                                    <a href="discharge_summary.zul" style="text-decoration:none"><label value="Discharge Summary" /></a>
+                                            </div>
+                                        </row>
+                                    </rows>
+                                </grid>
+                       
+                    </center>
+                   
+                   
+
+           
+        </borderlayout>
+    </div>
+</zk>

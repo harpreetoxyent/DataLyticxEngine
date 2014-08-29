@@ -1,0 +1,158 @@
+<zk id="optional_vaccines" name="optional_vaccines">
+<!-- 	<zscript src="/library/uilibrary.zs"/> -->
+<?page id="basic_new"?>	
+<style>
+body{background: #f0f0f0;}
+.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: 1;}
+.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+.z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+.z-center,.z-east{border:none;}
+.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+.z-toolbar{background: #f0f0f0!important; border:none!important;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:1; background:none; background-color: none;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:1; background:none; background-color: none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1; background: #f0f0f0;}
+.z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+.z-textbox{width: 100px; border:1; resize:none;}
+.z-textbox:focus{outline:none;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+div.z.tr.z-row td.z-row-inner{border:1px solid #CCC;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #CCC;border-collapse: collapse; }
+table{table-layout:initial!important;}
+div.z-grid-body{background:none;border:1px}
+div.z-grid{background:none;border:1px}
+.z-label{float:left; width: 115px; border:1}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:1px 0; border:1}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+.z-grid-header-bg{background:none;}
+.heading{float:left; width: 300px;}
+.z-a{text-decoration:none; color:#333;}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+.child_menu{margin-left: 20px; display:none}
+.z-north-body{width:585px;}
+.z-north,.z-north-noborder{width:585px;}
+.headerDate .z-datebox-btn{display:none; }
+.class{width: 55px;}
+
+.z-datebox-disd{opacity:1!important;}
+.z-datebox-text-disd {
+background-color: #FFFFFF;
+color: #000000 !important;}
+div.z-grid-header tr.z-columns th:last-child, div.z-grid-header tr.z-auxhead th:last-child{border-right:1px solid #ccc;}
+</style>
+
+<window  style="background: #f0f0f0">
+  
+	  <grid  class="tablegrid" style="border:0;float:left;margin-left:110px;margin-bottom:15px;width:800px">
+										
+						<rows>
+					      <row>
+					            <label id="vaccine" value="Vaccine" style="width:95px;margin-left:75px"></label>
+					            <label id="age" value="Age" style="width:95px;margin-left:75px"></label>
+					            <label id="dueon" value="Due on" style="width:95px;margin-left:75px"></label>
+					            <label id="givenon" value="Given on" style="width:95px;margin-left:75px"></label>
+					     </row>
+					     <row>
+					           	
+	                         <cell rowspan="2" align="center" valign="center">
+							     <label id="RotavirusVaccine" value="Rotavirus Vaccine"></label>											
+							 </cell>
+							      	
+								 <label id="weeks1"	value="6 weeks" style="margin-left:60px"></label>
+								 <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								 <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						 </row>
+												    
+						 <row>
+								 <label id="weeks2" value="10 weeks" style="margin-left:60px"></label>
+								 <datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/> 
+								 <datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/>   
+						 </row>
+									         
+						 <row>
+	                         <cell rowspan="4" align="center" valign="center">
+								 <label id="Pneumococcal" value="Pneumococcal"></label>											
+							 </cell>
+								 <label id="weeks3"	value="14 weeks" style="margin-left:60px"></label>
+								 <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								 <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+												    
+						<row>
+												     
+								<label id="weeks4" value="18 weeks" style="margin-left:60px"></label>
+							    <datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/> 
+								<datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/>   
+						</row>
+												     
+						<row>
+								
+								<label id="weeks5"	value="22 weeks" style="margin-left:60px"></label>
+							    <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+												   
+												    
+						<row>
+								<label id="year1"	value="1 year" style="margin-left:60px"></label>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+												   
+						<row>
+	                        <cell rowspan="2" align="center" valign="center">
+								<label id="hepatitis" value="Hepatitis-A Vaccine"></label>											
+							</cell>
+								<label id="year2"	value="1 year" style="margin-left:60px"></label>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+												    
+						<row>
+												     
+							    <label id="mnths18" value="18 months" style="margin-left:60px"></label>
+								<datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/> 
+								<datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/>   
+						</row>
+												     
+						<row>
+	                        <cell rowspan="2" align="center" valign="center">
+							    <label id="chickenpox" value="Chickenpox Vaccine"></label>											
+							</cell>
+								<label id="mnth15"	value="15 Months" style="margin-left:60px"></label>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+							    <datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+												    
+					    <row>
+												     
+								<label id="year5" value="5 years" style="margin-left:60px"></label>
+								<datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/> 
+								<datebox id="" style="width:106px;margin-right:5px;margin-left:45px"/>   
+						</row>
+												   
+						<row>
+							<cell rowspan="2" align="center" valign="center">
+								<label id="thyphoid" value="Thyphoid Vaccine (Repeat every 3 years)"></label>											
+							</cell>
+								<label id="years2"	value="2 years" style="margin-left:60px"></label>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+								<datebox id=""  style="width:106px;margin-right:5px;margin-left:45px"/>
+						</row>
+						
+					
+			  </rows>
+									
+	</grid>
+					
+							
+
+</window>
+
+</zk>

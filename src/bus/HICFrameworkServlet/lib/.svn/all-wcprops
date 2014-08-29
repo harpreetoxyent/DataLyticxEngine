@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/lib
+END
+dom4j-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/lib/dom4j-1.6.1.jar
+END
+webserviceprovider.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/lib/webserviceprovider.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/lib/servlet-api.jar
+END
+log4j-1.2.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/lib/log4j-1.2.11.jar
+END

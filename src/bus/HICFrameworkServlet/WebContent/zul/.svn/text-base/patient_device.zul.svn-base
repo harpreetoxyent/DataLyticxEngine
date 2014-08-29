@@ -1,0 +1,267 @@
+<zk id="patient_device" name="patient_device">
+<zscript src="/library/uilibrary.zs"/>
+<?page id="patient_device"?>	
+<window>
+  <style>
+    body{background: #f0f0f0;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+    .sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+    .z-textbox{width: 173px;}
+	.z-vlayout{height: auto!important;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+	.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+	div.z-grid-body{background:none;}
+	div.z-grid{background:none;}
+	.z-label{float:left; width: 185px;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0;}
+	.z-a{text-decoration:none; color:#333;}
+	.z-a:visited{text-decoration:none; color:#333;}
+	.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+	div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+	.z-grid-header-bg{background:none;}
+	.inner_label{width: auto!important; padding-left: 5px; }
+	.radio_left{float:left;}
+	.child_menu{margin-left: 20px; display:none}
+	.z-datebox-disd{opacity:1!important; background: #fff!important; color: #000!important;}
+	.z-datebox-text-disd{opacity:1!important; background: #fff!important; color: #000!important;}	
+ </style>
+<zscript>
+<![CDATA[
+	import java.text.DateFormat;
+	import java.text.SimpleDateFormat;
+	import java.util.Date;
+	
+	
+	public void previousDate()
+	 {
+		DateFormat formatter =null;
+		Date convertedDate=null;
+		int MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
+		Date dd=this.self.getFellow("headerDate").getValue();
+		SimpleDateFormat dateformat=new SimpleDateFormat("dd/MM/yyyy");
+		String prevDate=dateformat.format(dd.getTime() - MILLIS_IN_DAY);
+		Date parsedDate=dateformat.parse(prevDate);
+		formatter=new SimpleDateFormat("dd-MM-yyyy");
+		this.self.getFellow("headerDate").setValue(parsedDate);
+		}
+
+	 public void nextDate()
+	 {
+		DateFormat formatter =null;
+		Date convertedDate=null;
+		int MILLIS_IN_DAY=1000*60*60*24;
+		Date dd=this.self.getFellow("headerDate").getValue();
+		SimpleDateFormat dateformat=new SimpleDateFormat("dd-MM-yyyy");
+		String nextDate=dateformat.format(dd.getTime()+ MILLIS_IN_DAY);
+		Date parsedDate=dateformat.parse(nextDate);
+		formatter=new SimpleDateFormat("dd-MM-yyyy");
+		this.self.getFellow("headerDate").setValue(parsedDate);
+	 }  
+]]>
+</zscript>
+ <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="810px">
+            <north size="90px" border="0" style=" background:none;">
+            <a href="menu.zul"><image src="images/fortis.png"/></a>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                            <vbox>                              <a href="list_of_admission.zul"><label value="List Of Admission" class="sub_menu"/></a>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu active"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                                <a href="patient_device.zul"><label value="Patient Device" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                                <a href="ventilator_setting_chart.zul"><label value="Ventilator Setting Chart" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                               <a href="doctor_progress_notes.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                             <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list.zul"><label value="Infusion List" class="sub_menu"/></a>
+	                                <a href="regular_medi.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                <a href="once_only.zul"><label value="Once Only" class="sub_menu" /></a>                                                                
+	                                </div>
+                                <a href="nurse_administration.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Blood Gas Tests" class="sub_menu"/>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Basic " class="sub_menu"/>
+                                 <label value="Specialised " class="sub_menu"/>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Screening Tests" class="sub_menu"/>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Cranial" class="sub_menu"/>
+                                <label value="Abdomen" class="sub_menu"/>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Xray" class="sub_menu"/>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                   
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Discharge Summary" class="sub_menu"/>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+                <borderlayout sclass="inner-border">
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+           			 	<div style="padding: 0; width: 100%; height: 340px; overflow-y: auto; overflow-x: hidden">                    
+                        	<panel id="body"> 
+								<panelchildren>
+									<label value="Patient Information"  style="font-size:17px; color: #fff; background: green; padding: 5px 10px; float:left; font-weight: bold; " />
+									<div style="margin-top:6px; background:green; padding-top:15px; margin-top:-5px; margin-bottom: 10px; height: 30px; text-align:right; padding-right: 10px;">
+										<label value="&lt;&lt;" style="width:20px; float:none; color: #fff; cursor:pointer;" onClick="previousDate()"/>
+										<datebox onCreate="self.value= new Date()" style="width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="true"  id="headerDate"/>
+										<label value="&gt;&gt;" style="width: 20px; float:none; color: #fff; cursor:pointer;" onClick="nextDate()"/>
+									</div> 
+									<grid style="border:0; width: 380px; margin:auto; border: 1px solid #ccc; padding:20px;">
+										<rows>
+											<row>            
+										  			<label value="UID"/>
+													<textbox  id="UID">
+														<attribute name="onCreate"><![CDATA[
+															String uidInfant = session.getAttribute("UID");
+															UID.setValue(uidInfant);
+															]]></attribute>     
+													</textbox>
+										
+										</row> 
+										<row>
+											<label value="Ventilator" />
+											<textbox id="ventilator">
+    	
+												
+									</textbox>
+									</row> 
+									<row>
+									<label value="Monitor IP Address" />
+									<textbox id="monitorIPAddress">
+	
+								   
+									</textbox>
+									</row> 
+									<row>
+									<label value="CPAP" />
+									<textbox id="cpap">
+
+										</textbox>
+										</row>
+									</rows>
+							</grid>
+	 					</panelchildren>
+         			</panel>                     
+                    <panel border="normal" >
+					<panelchildren >
+						<toolbar align="center" >
+							<button label="Start"  id="start" style="padding:2px 15px;">
+								 <attribute name="onClick"><![CDATA[
+									String uidInfant = session.getAttribute("UID");
+    								System.out.println(" Value of uidInfant" +uidInfant+"--IP address --="+monitorIPAddress.getValue());
+									addFormValue("ipAddressOfDevice" , monitorIPAddress.getValue());
+									addFormValue("uid" , uidInfant);
+									invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","patient_device");
+									invokeComponent("nicuComponent","SetupPhilipsMonitorData","com.oxymedical.component.nicu.NICUComponent","patient_device");
+									]]></attribute>
+							</button>		
+							<button label="Stop" onClick="" id="stop" style="padding:2px 15px;">
+								 <attribute name="onClick"><![CDATA[
+									invokeComponent("nicuComponent","StopPhilipsMonitorData","com.oxymedical.component.nicu.NICUComponent","patient_device");
+									]]></attribute>
+							</button>								
+						</toolbar>
+					</panelchildren>
+				</panel>
+       			</div>
+      		</center>
+
+  		</borderlayout>
+	 </center>
+	</borderlayout>
+	</div>
+	</window>
+</zk>

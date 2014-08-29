@@ -373,7 +373,7 @@ table,tr,td{background: none!important; border:none!important; vertical-align:mi
 						<attribute name="onUpload"><![CDATA[
 							String completeness;
 							String accuracy;
-							File dataCSVFile = new File("/DatalyticxEngine/definition/Material_Master.csv");
+							File dataCSVFile = new File("/home/oxyent/DataLyticxEngine_Local/definition/Material_Master.csv");
 							Media media = event.getMedia();
 							Files.copy(dataCSVFile, media.getStreamData());
 							CSVFileName.setValue(dataCSVFile.getAbsolutePath());

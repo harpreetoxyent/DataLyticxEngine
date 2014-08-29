@@ -1,0 +1,168 @@
+<zk id="blood_gas_tests" name="blood_gas_tests">
+	<!-- script src="/library/uilibrary.zs"/>  -->
+<?page id="blood_gas_tests"?>	
+<zscript>
+<![CDATA[
+         import java.text.SimpleDateFormat;
+         import java.util.Calendar;
+         import java.util.Date;
+         import org.apache.commons.lang.time.DateUtils;
+         
+public void previousDate()
+{
+	Calendar cal=Calendar.getInstance();
+	cal.add(Calendar.DAY_OF_MONTH,-1);
+	Date yesterday=cal.getTime();
+	this.self.getFellow("headerDate").setValue(yesterday);
+}
+
+public void nextDate()
+{
+	Calendar cal=Calendar.getInstance();
+	cal.add(Calendar.DAY_OF_MONTH,+1);
+	Date tomorrow=cal.getTime();
+	this.self.getFellow("headerDate").setValue(tomorrow);
+}
+
+public void showChildMenu()
+{
+this.self.getFellow("childMenu").setStyle("display:block;");
+}
+
+]]>
+</zscript>
+<style>
+	body{background: #f0f0f0;}
+	.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+	.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+	.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+	.z-center,.z-east{border:none;}
+	.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+	tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+	tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+	.z-textbox:focus{outline:none;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+	.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+	div.z-grid-body{background:none;}
+	div.z-grid{background:none;}
+	.z-label{float:left; width: 185px;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0; float:left;}
+	.z-textbox{width: 59px;}
+	.z-a{text-decoration:none; color:#333;}
+	.z-a:visited{text-decoration:none; color:#333;}
+	.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+	div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+	.z-grid-header-bg{background:none;}
+	.inner_label{width: auto!important; padding-left: 5px; }
+	.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+	.child_menu{margin-left: 20px; display:none}
+	.z-datebox-inp{width:48px;}
+	.z-timebox-inp{width:48px;}
+	.z-timebox-btn{width: 18px!important;}
+	.z-column{width: 62px; float:left;}
+	.z-column-cnt{font-size: 10px!important; white-space: pre-line; text-align:center;}
+	.rotate .z-column-cnt{transform: rotate(90deg);-ms-transform: rotate(90deg); -webkit-transform: rotate(90deg);  -moz-transform: rotate(90deg); text-align:left; width: 70px;margin-left: -22px;margin-top: 26px;}
+	.comments{width:118px;}
+	.z-row-inner .comments{width:125px;}
+.headerDate .z-datebox-btn{display:none; }
+.class{width: 100px;}
+.z-datebox-disd{opacity:1!important; }
+.z-datebox-text-disd {background-color: #FFFFFF;color: #000000 !important;}
+.heading{float:left; width: 300px;}
+</style>
+
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <a href="menu.zul"><image src="images/fortis.png"/></a>
+            </north>
+
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+
+                <borderlayout sclass="inner-border">
+
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+            <div style="padding: 0; width: 1024px; overflow-y: auto; overflow-x: hidden">
+								<panel> 
+								<panelchildren >
+  <label value="Blood Gas Tests"   class="heading" style="font-size:17px; color: #fff; background: green; padding: 5px 10px; font-weight: bold; width: 67%;" />
+<div style="margin-top:6px; background:green; padding-top:15px; margin-top:-5px; margin-bottom: 10px; height: 30px; text-align:right; margin-right:10px">
+	<label value="&lt;&lt;" style ="width: 20px; float :none; color: #fff; cursor:pointer;" onClick="previousDate()"></label>
+	<datebox onCreate="self.value= new Date()" style="width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="true" id="headerDate"  />
+	<label value="&gt;&gt;" style ="width: 20px; float :none; color: #fff; cursor:pointer;" onClick="nextDate()"></label>
+							
+							
+							
+							</div>
+															
+															<grid>
+									
+														<columns>
+									  <column label="Date" />
+									  <column label="Time"/>
+									
+										<column label="pH" />
+										<column label="PCO2"/>
+										<column label="Po2"/>
+										<column label="Hct"/>
+										<column label="Na"/>
+										<column label="K"/>
+										<column label="Ca++"/>
+										<column label="nCa"/>
+										<column class="rotate" label="Met Hb"/>
+										<column class="rotate" label="Glucose"/>
+										<column class="rotate" label="Lactate"/>
+									<column class="rotate" label="Chloride"/>
+										<column class="comments" label="Changes and Comments"/>
+									</columns>
+								<rows>
+									<row>
+									<datebox id="date"/>
+									<timebox id="time"/>
+										<textbox id="ph"/>
+										<textbox id="pco2"/>
+										<textbox id="po2"/>
+										<textbox id="hct"/>
+										<textbox id="na"/>
+										<textbox id="k"/>
+										<textbox id="ca"/>
+										<textbox id="nca"/>
+										<textbox id="metHB"/>
+										<textbox id="glucose"/>
+										<textbox id="lactate"/>
+										
+										
+										<textbox id="chloride"/>
+										<textbox class="comments" id="comments"/>
+									</row>
+									</rows>
+								</grid>
+							</panelchildren>
+							</panel>
+
+
+</div>
+
+                    </center>
+                   
+
+                </borderlayout>
+
+            </center>
+
+        </borderlayout>
+    </div>
+
+</window>
+
+</zk>

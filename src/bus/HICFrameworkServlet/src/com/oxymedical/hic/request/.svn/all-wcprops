@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request
+END
+DatabaseRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/DatabaseRequest.java
+END
+IRequestConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/IRequestConstants.java
+END
+RuleRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/RuleRequest.java
+END
+WorkflowRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/WorkflowRequest.java
+END
+WebServiceRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/WebServiceRequest.java
+END
+NICURequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/NICURequest.java
+END
+UserRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/UserRequest.java
+END
+RenderRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/15/trunk/dev/src/bus/HICFrameworkServlet/src/com/oxymedical/hic/request/RenderRequest.java
+END

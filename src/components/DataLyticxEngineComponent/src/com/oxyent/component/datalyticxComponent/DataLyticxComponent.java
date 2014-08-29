@@ -14,7 +14,6 @@ import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.db.DBComponent;
 import com.oxymedical.component.importcomponent.ImportComponent;
-//import com.oxymedical.component.render.resource_datalyticx.MaterialMaster;
 import com.oxymedical.component.rulesComponent.IRuleClass;
 import com.oxymedical.component.rulesComponent.RuleComponent;
 import com.oxymedical.core.commonData.HICData;
@@ -70,54 +69,6 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		// TODO Auto-generated method stub
 		
 	}
-	public void checkQuality(){
-		//double completeness = checkForCompleteness(this);
-	}
-	@Override
-	public double checkForCompleteness(DataLyticxEntity entity) {
-		double completeness = 0;
-				
-		return completeness;
-	}
-	@Override
-	public double checkForValidation(DataLyticxEntity entity) {
-		
-		return 0;
-	}
-	
-	@Override
-	public double checkForAccuracy(DataLyticxEntity entity) {
-		
-		return 0;
-	}	
-	
-	/*public void addMaterialMasterInEntity(DataLyticxEntity entity)
-	{
-		
-		//Create Material Master object with default values
-		MaterialMaster materialMasterRecord = new MaterialMaster();
-		materialMasterRecord.setMatnr("NIED");
-		materialMasterRecord.setMaktx("EA");
-		materialMasterRecord.setPrdha("ZA");
-		materialMasterRecord.setMstae("01.01.2012");
-		materialMasterRecord.setMstde("DIEN");
-		materialMasterRecord.setNtgew("EN");
-		materialMasterRecord.setSpras("");
-		materialMasterRecord.setVtweg("ZA - Full Production");
-		materialMasterRecord.setMstav("1");
-		materialMasterRecord.setStawn("0");
-		materialMasterRecord.setEkgrp("ZA");
-		materialMasterRecord.setMmsta("01.01.2012");
-		materialMasterRecord.setMmstd("ZA");
-		materialMasterRecord.setDispo("1");
-		materialMasterRecord.setBstma("1");
-		materialMasterRecord.setDisls("E");
-		materialMasterRecord.setBeskz("2000");
-		materialMasterRecord.setLgpro("0");
-		materialMasterRecord.setFhori("40");
-		//Set MM object into entity
-		entity.setEntityData(materialMasterRecord);	
-	}*/
 
 	@EventSubscriber(topic = "executeRuleAgainstInputCSV")
 	public IHICData executeRuleAgainstInputCSV(IHICData hicData) throws ComponentException
@@ -125,9 +76,13 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		try
 		{
 			IData data = hicData.getData();
-			ruleComponent.buildReteHIC((HICData)hicData);
 			String csvFileNameToImport = (String) data.getFormPattern().
-											getFormValues().get("csvFileNameToImport");
+					getFormValues().get("csvFileNameToImport");
+
+			
+			initializeFieldsForValidation();
+
+			ruleComponent.buildReteHIC((HICData)hicData);
 			
 			intializeRule(csvFileNameToImport, hicData);
 		}
@@ -148,8 +103,9 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 			//Create an entity. This can represent MM, Plant, WC  or BOM
 			DataLyticxEntity entity = new DataLyticxEntity();
 			//For now add MM as dummy data to validate
-			entity.setEntityData(importComponent.importCSVOneRowAndReturnObject(csvFileNameToImport, ",", "MaterialMaster"));
-			//addMaterialMasterInEntity(entity);
+			Object entityData = importComponent.importCSVOneRowAndReturnObject(csvFileNameToImport, ",", "MaterialMaster");
+			System.out.println("----Set Data inside enity from DB----entityData="+entityData);			
+			entity.setEntityData(entityData);
 			Object[] facts = {entity};
 			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
@@ -165,38 +121,8 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 			throw new ComponentException("Exception while inilializing Rules.");
 		}
 	}
-	/*
-	public void intializeRule(String csvFileNameToImport) throws ComponentException
-	{
-		System.out.println("----Inside intializeRules----");
-		try
-		{
-			//Build dummy HIC Data to query incoming fact against definition in
-			//database
-			HICData hicData = new HICData();
-			hicData.setData(new Data());
-			hicData = ruleComponent.buildReteHIC(hicData);
-			//Check an incoming fact against our definitions of data quality
-			//Create an entity. This can represent MM, Plant, WC  or BOM
-			DataLyticxEntity entity = new DataLyticxEntity();
-			//For now add MM as dummy data to validate
-			entity.setEntityData(importComponent.importCSVOneRowAndReturnObject("Material_Master.csv", ",", "MaterialMaster"));
-			//addMaterialMasterInEntity(entity);
-			Object[] facts = {entity};
-			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
-			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
-			//Check if any rule matches for MM
-			ruleClassList = ruleComponent.executeRules(facts);
-			System.out.println("Rules have been executed and consequence invoked");
-			//ruleComponent.executeRuleHICData(hicData);
-		}catch (Exception e) {
-			e.printStackTrace();
-			//throw new ImportComponentException("Exception while inilializing Rules.");
-		}
-	}*/
 	
-	
-	public void initializeImport() throws ComponentException{
+	public void initializeFieldsForValidation() throws ComponentException{
 		System.out.println("----Inside intializeImport----");
         try 
         {
@@ -214,11 +140,11 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 	}
 	
 	@EventSubscriber(topic = "importInputDataDefinitionDatabase")
-	public synchronized void importInputDataDefinitionDatabase(IHICData hicData) throws ComponentException
+	public  void importInputDataDefinitionDatabase(IHICData hicData) throws ComponentException
 	{
 		try
 		{
-			initializeImport();
+			initializeFieldsForValidation();
 		}
 		catch(Exception exp)
 		{

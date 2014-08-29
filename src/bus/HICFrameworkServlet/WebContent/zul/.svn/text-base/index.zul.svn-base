@@ -1,0 +1,139 @@
+<zk>
+<style>
+* {margin: 0;}
+.header{background: rgba(117,168,189,.5); width:100%!important; height: 32px;margin:0px; padding:6px 0;}
+.header div.sign{text-align: right;padding-left: 10px; position: absolute; right: 120px; color: #fff;}
+.sign span.z-label{font-weight: bold;}
+html, body {height: 100%; font-family:arial,sans-serif; padding:0px!important; background: #98bac8;}
+.wrapper {margin:auto; width: 850px;}
+.search{width:600px; border: 1px solid #ccc; margin-top:10px; height: 150px; box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+text-align:center;
+padding:10px;
+}
+.footer {clear: both; width: 100%; margin:auto; height: 70px; background: -webkit-linear-gradient(bottom, rgba(91,155,181,.6) 0%, rgba(91, 155, 181,.9) 100%); border-top: 1px solid #e4e4e4; text-align:center; padding:20px; float:left; margin-top:30px;}
+.search_box{width:500px; height: 25px; border: 1px solid #ccc; float:left; margin-top:20px;}
+.search_box:focus{border: 1px solid #4285f4; outline:none;}
+.search_button{width:60px; height: 30px; border: 1px solid #ccc; background: #f2f2f2; float:right; margin-top:20px;}
+.image{width:100px; height; 60px;}
+.main{width:850px; margin-top:40px; clear:both;}
+.left{width:600px; border: 1px solid #cccccc; float:left; padding:10px; box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 400px;
+}
+.right{float:right; width:220px;}
+.item1{width:220px; border: 1px solid #cccccc; padding: 10px;box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 300px;
+margin-bottom:10px;
+}
+
+.item2{width:220px; border: 1px solid #cccccc; padding: 10px;box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 40px;
+}
+
+img:hover{cursor:pointer;}
+.z-window{border:none!important; border-radius:0px!important; padding:0px!important; background:none; width:100%!important; height: auto!important;}
+.z-window-content{border:none!important; margin:0px!important; padding:0px!important; background: #98bac8;!important; width:100%!important; height: auto!important;}
+.z-window-embedded{border:none!important; border-radius:0px!important; padding:0px!important; background:none; width:100%!important; height: auto!important;}
+.z-window-embedded-cnt{border:none!important; margin:0px!important; padding:0px!important; background: #98bac8;!important; width:100%!important; height: auto!important;}
+img:hover{cursor:pointer;}
+.admin{font-weight:bold; color: #fff; text-decoration:none;}
+</style>
+<zscript src="uilibrary.zs"/>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+	<window title="" border="normal">
+		<div class="header">
+			<div class="sign"><a href="crawler.zul" class="admin">Admin</a> | Sign In</div>
+		</div>
+		<div class="wrapper">
+			<div class="search">
+				<image src="images/pnl_logo.png" class="image"/>
+		    	<textbox id="searchTextBox" value="" constraint="no empty" class="search_box"/>
+		   		<button label="Search" class="search_button">
+		    		<attribute name="onClick"><![CDATA[
+						import com.oxymedical.core.commonData.IHICData;
+						import com.pnl.component.solr.bean.SolrResultBean;
+						setFormPatternId("Search");
+						setDatapatternId("");
+						addFormValue("searchTextBox",searchTextBox.getValue());
+						IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   							
+						//answerSearch.value = searchAnswerHIC.getData().getFormPattern().getFormValues().get("NLPComponent");
+						//answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("TouristURL");
+						SolrResultBean solrResultBean =  searchAnswerHIC.getData().getFormPattern().getFormValues().get("SolrComponent");
+						if (solrResultBean != null)
+						{
+							System.out.println("Wisconsin flag src url = " +solrResultBean.getFlag());
+							//answerSearch.value = solrResultBean.getId();
+							answerSearch.value = " " + solrResultBean.getUrl();
+							answerSearch.value += "\n \n \n \n " + solrResultBean.getContent();
+							//answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("URL");
+							//flagSource.src = solrResultBean.getFlag();
+						}	
+						]]>
+					</attribute>
+				</button>
+			</div>
+			<div class="main">
+				<div class="left">
+					<label multiline="true" id = "answerSearch"/>
+					<image id = "flagSource" src=""></image>
+				</div>
+				<div id="text1" class="text1">
+					
+				</div>
+			</div>
+			<div class="right">
+				<div class="item1">News Feed</div>
+				<div class="item2">News Feed</div>
+			</div>
+		</div>
+	<div class="footer">
+		<span>
+			<image src="images/facebook.png">
+				<attribute name="onClick">
+					<![CDATA[				
+					setFormPatternId("SocialMedia");
+					setDatapatternId("");
+					addFormValue("providerId", "facebook");
+					String redirectURL = invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");   							
+					System.out.println("Redirect URL is" + redirectURL);
+					Executions.sendRedirect(redirectURL);
+			
+					]]>
+				</attribute>
+			</image>
+		</span>
+		<span>
+			<image src="images/twitter.png">
+			<attribute name="onClick">
+					<![CDATA[				
+					setFormPatternId("SocialMedia");
+					setDatapatternId("");
+					addFormValue("providerId", "twitter");
+					String redirectURL = invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "twitter");   							
+					Executions.sendRedirect(redirectURL);
+					]]>
+					</attribute>
+			</image>
+		</span>
+		<span>
+			<image src="images/linked_in.png">
+			</image>
+		</span>
+	</div>
+	</window>	
+</zk>

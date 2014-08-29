@@ -179,7 +179,7 @@ public class ImportComponent
 		if(data!=null && data.getFormPattern()!=null && data.getFormPattern().getFormValues() !=null)
 		{
 			String csvFileNameToImport = (String) data.getFormPattern().getFormValues().get("csvFileNameToImport");
-			importCSV(csvFileNameToImport, ",", "MaterialMasterDefinition");
+			importCSV(csvFileNameToImport, ",", "EntityDefinition");
 		}
 	}
 

@@ -1,0 +1,563 @@
+<zk id="doctors_progress_notes" name="doctors_progress_notes">
+	<zscript src="/library/uilibrary.zs"/> 
+<?page id="doctors_progress_notes"?>	
+<zscript>
+<![CDATA[
+	public void showChildMenu()
+	{
+		this.self.getFellow("childMenu").setStyle("display:block;");
+	}
+	]]>
+	</zscript>
+    <style>
+    body{background: #f0f0f0;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+    .sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp,  .z-spinner-inp, .z-doublespinner-inp{width: 80px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 80px;}
+     .z-textbox{width: 113px;}
+    .z-timebox-inp{width:78px;},
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+div.z-grid-body{background:none; width: 804px;}
+div.z-grid{background:none;}
+.z-label{width: 199px;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0;}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+.z-grid-header-bg{background:none;}
+.inner_label{width: auto!important; padding-left: 5px; }
+.radio_left{float:left;}
+.child_menu{margin-left: 20px; display:none}
+.headerDate .z-datebox-btn{display:none; }
+.class{width: 100px;}
+.z-datebox-disd{opacity:1!important; }
+.z-datebox-text-disd {
+background-color: #FFFFFF;
+color: #000000 !important;}
+div.z-grid{border:none;}
+div.z-column-cnt{style="padding-right:100px"}
+.z-separator-ver, .z-separator-ver-bar{width:43px;}
+</style>
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <a href="menu.zul"><image src="images/fortis.png"/></a>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>                              <a href="list_of_admission.zul"><label value="List Of Admission" class="sub_menu"/></a>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu active"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                                <a href="patient_device.zul"><label value="Patient Device" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                                <a href="ventilator_setting_chart.zul"><label value="Ventilator Setting Chart" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="doctor_progress_notes.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list.zul"><label value="Infusion List" class="sub_menu"/></a>
+	                                <a href="regular_medi.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                <a href="once_only.zul"><label value="Once Only" class="sub_menu" /></a>                                                                
+	                                </div>
+                                <a href="nurse_administration.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="blood_gas_tests.zul"><label value="Blood Gas Tests" class="sub_menu"/></a>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="basic.zul"><label value="Basic " class="sub_menu "/></a>
+                                 <a href="specialised.zul"><label value="Specialised " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="screening_tests.zul"><label value="Screening Tests" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="cranial.zul"><label value="Cranial" class="sub_menu"/></a>
+                                <a href="abdomen.zul"><label value="Abdomen" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="xray.zul"><label value="Xray" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>                 
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="discharge_summary.zul"><label value="Discharge Summary" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+                  <center>
+
+                <borderlayout sclass="inner-border">
+                 <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+           			 <div style="padding: 0; width: 100%; height: 540px; overflow-y: auto; overflow-x: hidden">                    
+                        <panel> 
+                            <panelchildren >
+                             <label value="Doctor Progress Notes"   class="heading" style="font-size:17px; color: #fff; background: green; padding: 20px 5px; font-weight: bold; width: 67%;" />
+									<div style="margin-top:6px; background:green; padding-top:15px; margin-top:-20px; margin-bottom: 10px; height: 30px; text-align:right; margin-right:10px">
+										<label value="&lt;&lt;" style ="width: 20px; float :none; color: #fff; cursor:pointer;" onClick="previousDate()"></label>
+										<datebox onCreate="self.value= new Date()" style="width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="true" id="headerDate"  />
+										<label value="&gt;&gt;" style ="width: 20px; float :none; color: #fff; cursor:pointer;" onClick="nextDate()"></label>
+									</div>
+							       <div style="width:100%;margin-top:-10px;margin-right:-5px">        
+                                     <grid style="border:none; background: none;">
+									   <rows>
+										<row>
+											<cell id = "gridCellDOLBackground" style="width: 150px;border:none">				
+												<label value="Day of Life" style="padding-left:15px;"/>
+												<textbox style="width: 80px;" id="dayOfLife" onClick="DayOfLife()"/>
+											</cell>
+										<cell id = "gridCellGestBackground" style="width: 150px;border:none">				
+											<label value="Gestation at Birth"/>
+											<textbox style="width: 80px;" value="31+5"  id="gestaionatBirth"/>
+										</cell>
+										<cell  id = "gridCellCorrBackground" style="width: 150px;border:none">				
+											<label value="Corrected Gestation" style="padding-right:10px;"/>
+											<textbox style="width: 80px;" id="correctedGestation" onClick="CorrectGestation()"/>
+										</cell>	
+									</row>
+								</rows>
+							</grid>            
+						</div>
+						<grid style="border:0;">
+						
+						<rows>
+						<row>	
+						<label value="Background" />
+						<textbox  rows = "2" id="obstetrician" style="width: 98%"/>  	
+						</row>
+						</rows>
+					</grid>
+					
+					
+					<grid style="border:0;">
+					
+						<rows>
+						<row>	
+						<label value="Current Problems" />
+						<textbox  rows = "2" id="currentProblems" style="width: 98%"/>  	
+						</row>
+						</rows>
+					</grid>    
+					
+					<grid style="border:0;">
+					
+						<rows>
+						<row>	
+						<label value="Summary of Progress Over the Past 24 Hours" />
+						<textbox  rows = "2" id="summary" style="width: 98%"/>  	
+						</row>
+						</rows>
+						</grid>    	
+					
+					<grid style="border:0;">
+					
+						<rows>
+						<row>	
+						<label value="Respiratory" />
+						<textbox  rows = "2" id="respiratory" style="width: 98%"/>  	
+						</row>
+						</rows>
+					</grid>    		
+					
+					<grid style="border:0;">
+					
+						<rows>
+						<row>	
+						<label value="Cardiovascular" />
+						<textbox  rows = "2" id="cardiovascular" style="width: 98%"/>  	
+						</row>
+						</rows>
+					</grid>    		
+					
+					
+					
+					
+					<grid style="border:0;">
+						<rows>
+						<row>	
+						<label value="Significant Electrolyte Trends" />
+						<textbox  rows = "2" id="significantElectrolyteTrends" style="width: 98%"/>  	
+						</row>
+						<row>	
+						<label value="Jaundice" />
+						<textbox  rows = "2" id="jaundice" style="width: 98%"/>  	
+						</row>						
+						</rows>
+					</grid>			
+					
+					
+					
+					<grid style="border:0;">
+						<rows>
+						<row>	
+						<label value="Sepsis and Haematology" />
+						<textbox  rows = "2" id="sepsis" style="width: 98%"/>  	
+						</row>									
+						<row>	
+						<label value="Transfusion Requirement" />
+						<textbox  rows = "2" id="transfusionRequirement" style="width: 98%"/>  	
+						</row>															
+						</rows>
+					</grid>    			
+					
+					
+					<grid style="border:0;">
+						<rows>
+						<row>	
+						<label value="Neurology" />
+						<textbox  rows = "2" id="neurology" style="width: 98%"/>  	
+						</row>									
+						<row>	
+						<label value="Drugs, Supplements and Infusions" />
+						<textbox  rows = "2" id="drugsSupplementsandInfusions" style="width: 98%"/>  	
+						</row>												
+						<row>	
+						<label value="Special Investigations" />
+						<textbox  rows = "2" id="specialInvestigations" style="width: 98%"/>  	
+						</row>															
+						<row>	
+						<label value="Outstanding Results / Investigations" />
+						<textbox  rows = "2" id="outstandingResultsInvestigations" style="width: 98%"/>  	
+						</row>																		
+						</rows>
+					</grid>  
+					
+					
+					
+					
+					<grid style="border:0; ">
+						<columns>
+						<column align="center">Type</column>
+						<column></column>
+						<column align="center">Site/Position</column>
+						<column align="center">Date Inserted</column>
+						<column align="center">Date Removed</column>
+							
+						</columns>
+						
+								
+					</grid>
+						<grid style="border:0;">
+						<columns>
+						<column align="center">UAC</column>
+						<column>
+						        <button label="+">
+						        <attribute name="onClick"><![CDATA[
+							Div div1 = new Div();
+							Textbox text1=new Textbox();
+							Datebox date1=new Datebox();
+							Datebox date2=new Datebox();
+							Space space1=new Space();
+							Space space2=new Space();
+							Space space3=new Space();
+							Space space4=new Space();
+							Space space5=new Space();
+							Space space6=new Space();
+							Space space7=new Space();
+							Space space8=new Space();
+							Space space9=new Space();
+							
+							this.self.getFellow("c1").appendChild(space3);
+							this.self.getFellow("c1").appendChild(space4);
+							this.self.getFellow("c1").appendChild(space5);
+							this.self.getFellow("c1").appendChild(space6);
+							this.self.getFellow("c1").appendChild(space7);
+							this.self.getFellow("c1").appendChild(space8);
+							this.self.getFellow("c1").appendChild(space9);
+							this.self.getFellow("c1").appendChild(text1);
+							this.self.getFellow("c1").appendChild(space1);
+							this.self.getFellow("c1").appendChild(date1);
+							this.self.getFellow("c1").appendChild(space2);
+							this.self.getFellow("c1").appendChild(date2);
+							this.self.getFellow("c1").appendChild(div1);
+							]]></attribute>
+							</button>
+						
+                                <button label="-" style="margin-left:-8px"/>
+                                
+                        </column>  
+						<column align="center"><textbox id="uacSite"/></column>
+						<column align="center"><datebox id="uacDateInserted"/></column>
+						<column align="center"><datebox id="uacDateRemoved"/></column>
+						
+							</columns>
+					</grid>  	  
+				   	 <grid width="800px" style="padding-right:100px">
+                      <columns>
+                       <column id="c1" class="c1" label=" " align="center" style="padding-right:50px">
+                       </column>
+                       </columns>
+                       </grid>			
+  	  				
+						<grid style="border:0;">
+						<columns>
+						<column align="center">UVC</column>
+						<column>
+						        <button label="+">
+						        <attribute name="onClick"><![CDATA[
+								Div div1 = new Div();
+								Textbox text1=new Textbox();
+								Datebox date1=new Datebox();
+								Datebox date2=new Datebox();
+								Space space1=new Space();
+								Space space2=new Space();
+								Space space3=new Space();
+								Space space4=new Space();
+								Space space5=new Space();
+								Space space6=new Space();
+								Space space7=new Space();
+								Space space8=new Space();
+								Space space9=new Space();
+								
+								this.self.getFellow("c2").appendChild(space3);
+								this.self.getFellow("c2").appendChild(space4);
+								this.self.getFellow("c2").appendChild(space5);
+								this.self.getFellow("c2").appendChild(space6);
+								this.self.getFellow("c2").appendChild(space7);
+								this.self.getFellow("c2").appendChild(space8);
+								this.self.getFellow("c2").appendChild(space9);
+								this.self.getFellow("c2").appendChild(text1);
+								this.self.getFellow("c2").appendChild(space1);
+								this.self.getFellow("c2").appendChild(date1);
+								this.self.getFellow("c2").appendChild(space2);
+								this.self.getFellow("c2").appendChild(date2);
+								this.self.getFellow("c2").appendChild(div1);
+							]]></attribute>
+						</button>
+                                <button label="-" style="margin-left:-8px"/>
+                                 
+                        </column>  
+						
+						<column align="center"><textbox id="uvcSite"/></column>
+						<column align="center"><datebox id="uvcDateInserted"/></column>
+						<column align="center"><datebox id="uvcDateRemoved"/></column>
+						
+									
+						</columns>
+					</grid>
+					  <grid width="800px" style="padding-right:100px">
+                      <columns>
+                       <column id="c2" class="c2" label=" " align="center" style="padding-right:50px">
+                       </column>
+                       </columns>
+                       </grid>			
+  	  			  	  
+						<grid style="border:0;">
+						<columns>
+						<column align="center">Central Line</column>
+						<column>
+						        <button label="+">
+                                <attribute name="onClick"><![CDATA[
+								Div div1 = new Div();
+								Textbox text1=new Textbox();
+								Datebox date1=new Datebox();
+								Datebox date2=new Datebox();
+								Space space1=new Space();
+								Space space2=new Space();
+								Space space3=new Space();
+								Space space4=new Space();
+								Space space5=new Space();
+								Space space6=new Space();
+								Space space7=new Space();
+								Space space8=new Space();
+								Space space9=new Space();
+								
+								this.self.getFellow("c3").appendChild(space3);
+								this.self.getFellow("c3").appendChild(space4);
+								this.self.getFellow("c3").appendChild(space5);
+								this.self.getFellow("c3").appendChild(space6);
+								this.self.getFellow("c3").appendChild(space7);
+								this.self.getFellow("c3").appendChild(space8);
+								this.self.getFellow("c3").appendChild(space9);
+								this.self.getFellow("c3").appendChild(text1);
+								this.self.getFellow("c3").appendChild(space1);
+								this.self.getFellow("c3").appendChild(date1);
+								this.self.getFellow("c3").appendChild(space2);
+								this.self.getFellow("c3").appendChild(date2);
+								this.self.getFellow("c3").appendChild(div1);
+							]]></attribute>
+							</button>
+						
+                                <button label="-" style="margin-left:-8px"/>
+                                
+                        </column>  
+						<column align="center"><textbox id="percutaneousSite"/></column>
+						<column align="center"><datebox id="percutaneousDateInserted"/></column>
+						<column align="center"><datebox id="percutaneousDateRemoved"/></column>
+								
+						</columns>
+					</grid>
+					  
+					<grid width="800px" style="padding-right:100px">
+                      <columns>
+                       <column id="c3" class="c3" label=" " align="center" style="padding-right:50px">
+                       </column>
+                       </columns>
+                       </grid>
+                       	  
+						<grid style="border:0;">
+						<columns>
+					    <column align="center">Arternal Line</column>
+                        <column>
+						        <button label="+">
+						        <attribute name="onClick"><![CDATA[
+								Div div1 = new Div();
+							    
+								Textbox text1=new Textbox();
+								Datebox date1=new Datebox();
+								Datebox date2=new Datebox();
+							
+								Space space1=new Space();
+								Space space2=new Space();
+								Space space3=new Space();
+								Space space4=new Space();
+								Space space5=new Space();
+								Space space6=new Space();
+								Space space7=new Space();
+								Space space8=new Space();
+								Space space9=new Space();
+								
+								this.self.getFellow("c4").appendChild(space3);
+								this.self.getFellow("c4").appendChild(space4);
+								this.self.getFellow("c4").appendChild(space5);
+								this.self.getFellow("c4").appendChild(space6);
+								this.self.getFellow("c4").appendChild(space7);
+								this.self.getFellow("c4").appendChild(space8);
+								this.self.getFellow("c4").appendChild(space9);
+								this.self.getFellow("c4").appendChild(text1);
+								this.self.getFellow("c4").appendChild(space1);
+								this.self.getFellow("c4").appendChild(date1);
+								this.self.getFellow("c4").appendChild(space2);
+								this.self.getFellow("c4").appendChild(date2);
+								this.self.getFellow("c4").appendChild(div1);
+							]]></attribute>
+						</button>
+                               
+                                <button label="-" style="margin-left:-8px"/>
+                                   </column>  
+						<column align="center"><textbox id="othersSite"/></column>
+						<column align="center"><datebox id="othersDateInserted"/></column>
+						<column align="center"><datebox id="othersDateRemoved"/></column>
+							
+									
+						</columns>
+					</grid>  	  
+					
+				    <grid width="800px" style="padding-right:100px">
+                      <columns>
+                       <column id="c4" class="c4" label=" " align="center" style="padding-right:50px">
+                       </column>
+                       </columns>
+                       </grid>    
+
+                  </panelchildren>
+                        </panel>                     
+                    </div>
+                    
+                    </center>
+                   
+
+                   
+                    <south border="1" size="100px" height="35%" margins="0,0,3,3" style="background: none repeat scroll 0 0 " >
+                        <panel border="normal" >
+                            <panelchildren >
+                          
+                          <toolbar align="center" >
+                               <button label="Submit" onClick="" id="submit"/>
+                                <button label="Cancel" onClick="" id="cancel"/>
+                           </toolbar>
+                            </panelchildren>
+                        </panel>
+                    </south>
+                </borderlayout>
+            </center>
+
+        </borderlayout>
+    </div>
+    </window>
+
+</zk>

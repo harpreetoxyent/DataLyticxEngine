@@ -1,0 +1,233 @@
+<zk id="immunization_schedule" name="immunization_schedule">
+<!-- 	<zscript src="/library/uilibrary.zs"/> -->
+<?page id="basic_new"?>	
+
+<style>
+body{background: #f0f0f0;}
+.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: 1;}
+.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+.z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+.z-center,.z-east{border:none;}
+.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+.z-toolbar{background: #f0f0f0!important; border:none!important;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:1; background:none; background-color: none;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:1; background:none; background-color: none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1; background: #f0f0f0;}
+.z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+.z-textbox{width: 100px; border:1; resize:none;}
+.z-textbox:focus{outline:none;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+div.z.tr.z-row td.z-row-inner{border:1px solid #CCC;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #CCC;border-collapse: collapse; }
+table{table-layout:initial!important;}
+div.z-grid-body{background:none;border:1px}
+div.z-grid{background:none;border:1px}
+.z-label{float:left; width: 185px; border:1}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:1px 0; border:1}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+.z-grid-header-bg{background:none;}
+.heading{float:left; width: 300px;}
+.z-a{text-decoration:none; color:#333;}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+.child_menu{margin-left: 20px; display:none}
+.z-north-body{width:585px;}
+.z-north,.z-north-noborder{width:585px;}
+.headerDate .z-datebox-btn{display:none; }
+.class{width: 55px;}
+div.z-grid-header tr.z-columns th:last-child, div.z-grid-header tr.z-auxhead th:last-child{border-right:1px solid #ccc;}
+.z-datebox-disd{opacity:1!important;}
+.z-datebox-text-disd {
+background-color: #FFFFFF;
+color: #000000 !important;}
+</style>
+
+<window  style="background: #f0f0f0">
+  	<grid  class="tablegrid" style="border:0;float:left;margin-left:110px;margin-bottom:15px">
+										
+										<columns>
+										<column>Age</column>
+										<column>Vaccine</column>
+										<column>Due On</column>
+										<column>Given On</column>
+										</columns>
+										
+										<rows>
+											<row>
+												
+													<label id="birth" value="Birth" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="BCG"	value="BCG"></label>
+												    <label id="opv" value="OPV(Oral Polio Vaccines)"></label>
+												    <label id="hep" value="Hep B(Hepatitis B Vaccines)"></label> 
+												   </div>
+												   <div>
+													<datebox id=""  style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									         </row>
+											
+											<row>
+											        <label id="weeks" value="6 Weeks" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="dpt"	value="DPT(Diptheria/Pertusis/Tetanus)"></label>
+												    <label id="hib" value="HIB(Haemophilus Influenza B)"></label>
+												    <label id="opv9" value="OPV"></label> 
+												    <label id="hep9" value="Hep B"></label> 
+												   </div>
+												   <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>  
+												    </div>
+									         </row>
+												
+												<row>
+												  <label id="weeks1" value="10 Weeks" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="dpt1"	value="DPT"></label>
+												    <label id="hib1" value="HIB"></label>
+												    <label id="opv1" value="OPV/IPV"></label> 
+												</div>
+												<div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+										      </row>
+										      
+										      <row>
+										      <label id="weeks2" value="14 Weeks" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="dpt2"	value="DPT(Diptheria/Pertusis/Tetanus)"></label>
+												    <label id="hib2" value="HIB(Haemophilus Influenza B)"></label>
+												    <label id="opv2" value="OPV"></label> 
+												</div>
+												<div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+										      </row>
+
+                                              <row>
+                                              <label id="weeks3" value="18 Weeks" style="width:116px"></label>
+                                              <label id="ipv" value="IPV" style="width:116px"></label>
+                                              
+                                              <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+                                              </row>	
+                                              
+                                              <row>
+                                              <label id="mnth" value="6 Months" style="width:116px"></label>
+                                              <label id="hep3" value="Hep B" style="width:116px"></label>
+                                              <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+                                              </row>		
+                                              
+                                              <row>
+                                              <label id="mnth3" value="9 Months" style="width:116px"></label>
+                                              <label id="mes" value="Measles" style="width:116px"></label>
+                                              <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+                                              </row>		
+                                              
+                                              <row>
+                                              <label id="mnth4" value="15 Months" style="width:116px"></label>
+                                              <label id="mmr" value="MMR(Measles/Mumps/Rubella)" style="width:116px"></label>
+                                              <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+                                              </row>
+                                              
+                                              <row>
+										      <label id="mnths5" value="18 Months" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="dpt5"	value="DPT"></label>
+												    <label id="opv5" value="OPV"></label>
+												    <label id="hib4" value="HIB"></label> 
+												</div>
+												<div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+										      </row>
+										      
+										      
+										      <row>
+										      <label id="yrs" value="5 Years" style="width:116px"></label>
+												
+												<div style="width:116px">													
+												    <label id="dpt6"	value="DPT/MMR"></label>
+												    <label id="opv6" value="OPV"></label>
+												     
+												</div>
+												<div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+										      </row>
+									          
+									          <row>
+                                              <label id="yrs1" value="10-12 Years" style="width:116px"></label>
+                                              <label id="dt" value="DT/DPT" style="width:116px"></label>
+                                              <div>
+													<datebox id="" style="width:116px"/>
+													</div>
+													<div>
+														<datebox id="" style="width:116px"/>   
+												    </div>
+									
+                                              </row>		
+                                              												
+									  </rows>
+									
+									</grid>
+					
+								
+
+</window>
+
+</zk>

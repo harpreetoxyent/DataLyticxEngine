@@ -1,0 +1,1058 @@
+<zk id="infusion_list" name="infusion_list">
+<zscript src="/library/uilibrary.zs"/> 
+<?page id="infusion_list"?>	
+<zscript>
+<![CDATA[
+public void showChildMenu()
+{
+	this.self.getFellow("childMenu").setStyle("display:block;");
+}
+public void showMedicineDetails()
+{
+	IHICData requestData = null;
+	String uidInfant = session.getAttribute("UID");
+
+	System.out.println(" Value of uidInfant" +uidInfant );
+	if (uidInfant != null)
+	{
+		invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.BirthWeight from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+	}
+	if(returnHicData ==null)
+	{
+		return;
+	}
+	else
+	{
+		hicData = returnHicData;
+	}
+	IData data = hicData.getData();	
+	List listValue = data.getQueryData().getListData();
+	String[][] allValues = data.getQueryData().iterateListData(listValue);
+	Double weight =new Double( allValues[0][0]);
+	int medicine = this.self.getFellow("medicineName").getSelectedIndex();
+	String medicineName= this.self.getFellow("medicineName").getValue();
+	String dose = this.self.getFellow("dose" + medicine).getValue();
+	String flowRate = this.self.getFellow("flowRate" + medicine).getValue();
+	String volume = this.self.getFellow("volume" + medicine).getValue();
+	for(int i=0; i<=20; i++)
+	{
+		this.self.getFellow("weight" + i).setValue(String.valueOf(weight));
+		
+	}
+	if (medicine == 0)
+	{
+		float resultVolume = (float)weight*Integer.parseInt(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate)/1000; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = resultVolume*1;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));		
+	}
+	else if (medicine == 1)
+	{
+		float resultVolume = ((float)weight*Integer.parseInt(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate)/1000)/100; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = resultVolume*100;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));				
+	}
+	else if (medicine == 2)
+	{
+		float resultVolume = ((float)weight*Integer.parseInt(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate)/1000)/12.5; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = (resultVolume*250)/20;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));				
+		}		
+		else if (medicine == 3)
+		{
+		float resultVolume = ((float)weight*Integer.parseInt(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate)/1000)/40; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = (resultVolume*200)/5;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));		
+		}
+		else if (medicine == 4)
+		{
+		float resultVolume = ((float)weight*Integer.parseInt(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate)/1000)/20; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = (resultVolume*100)/5;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));						
+		}
+		else if (medicine == 5)
+		{
+			String amountofCa = this.self.getFellow("dose" + medicine).getValue();
+			//alert (amountofCa);
+			String amountofK = this.self.getFellow("flowRate" + medicine).getValue();
+			//alert (amountofK);
+			String amountofNa = this.self.getFellow("amountofNa").getValue();
+			//alert (amountofNa);
+			String totalVolume = this.self.getFellow("totalVolume").getValue();
+			//alert (totalVolume);
+			
+		float volumeofCa = ((weight*1)*(10/150)) /0.228;
+		//alert ("volume of Ca" + volumeofCa);
+		float volumeofK = (float)weight*Integer.parseInt(amountofK)*(Integer.parseInt(volume)/Integer.parseInt(totalVolume))/2;
+		float volumeofNa = (float)weight*Integer.parseInt(amountofNa)*(Integer.parseInt(volume)/Integer.parseInt(totalVolume));
+		float volumeofDiluent = Integer.parseInt(volume)-(volumeofCa + volumeofK + volumeofNa);
+		float rateofInfusion = Integer.parseInt(totalVolume)/24*weight;
+		this.self.getFellow("volumeofCa").setValue(String.valueOf(volumeofCa));
+		this.self.getFellow("volumeofK").setValue(String.valueOf(volumeofK));
+		this.self.getFellow("volumeofNa").setValue(String.valueOf(volumeofNa));				
+		this.self.getFellow("volumeofDiluent").setValue(String.valueOf(volumeofDiluent));				
+		this.self.getFellow("rateofInfusion").setValue(String.valueOf(rateofInfusion));						
+		}
+		else if (medicine == 6)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = resultVolume;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));								
+		}		
+		else if (medicine == 7)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000/10; 
+		float volumeML = Integer.parseInt(volume)-resultVolume;
+		float amount = resultVolume * 10;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));								
+		}
+		else if (medicine == 8)
+		{
+		float resultVolume = (float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate); 
+		float amount = resultVolume/50;
+		float volumeML = Integer.parseInt(volume)-amount;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(amount));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(volumeML));								
+		}
+		else if (medicine == 9)
+		{
+		float resultVolume = (((50-((float)weight*Integer.parseInt(dose)*60*24*0.001)/(weight*Float.parseFloat(flowRate))*100)/45)*(weight*Float.parseFloat(flowRate))/24); 
+		float amount = ((weight*Float.parseFloat(flowRate))-((50-(weight*Integer.parseInt(dose)*60*24*0.001)/(weight*Float.parseFloat(flowRate))*100)/45)*(weight*Float.parseFloat(flowRate)))/24;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(amount));
+		}
+		else if (medicine == 10)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *1000;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 11)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/10; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *10;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 12)
+		{
+		float resultVolume = (((float)weight*Float.parseFloat(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000)/0.1; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *100;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 13)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/200; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *200;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 14)
+		{
+		float resultVolume = (((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000)/2; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = (resultVolume *10)/5;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 15)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 16)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate))/500; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *500;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 17)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*60*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}		
+		else if (medicine == 18)
+		{
+		float resultVolume = (((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000)/25; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = (resultVolume *50)/2;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 19)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/50000; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *50000;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 20)
+		{
+		float resultVolume = (((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000)/25; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *25;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}
+		else if (medicine == 21)
+		{
+		float resultVolume = ((float)weight*Float.parseFloat(dose)*Integer.parseInt(volume)/Float.parseFloat(flowRate))/1000; 
+		float amount = Integer.parseInt(volume)-resultVolume;
+		float volumeML = resultVolume *1000;
+		this.self.getFellow("amount" + medicine).setValue(String.valueOf(volumeML));
+		this.self.getFellow("resultVolume" + medicine).setValue(String.valueOf(resultVolume));
+		this.self.getFellow("volumeML" + medicine).setValue(String.valueOf(amount));										
+		}		
+			for(int i=0; i<=20; i++)
+	{
+	this.self.getFellow("show"+ i).setStyle("display:none");
+	}
+	this.self.getFellow("show" + medicine).setStyle("display:block");
+
+}
+
+]]>
+</zscript>
+<style>
+body{background: #f0f0f0;}
+.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+.z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+.z-center,.z-east{border:none;}
+.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+.z-toolbar{background: #f0f0f0!important; border:none!important;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+.z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+.z-textbox{width: 120px; border:none; resize:none;}
+.z-textbox:focus{outline:none;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+div.z-grid-body{background:none;}
+div.z-grid{background:none;}
+.z-label{display:block;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0;}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+.z-grid-header-bg{background:none;}
+.inner_label{width: auto!important; padding-left: 5px; }
+.radio_left{float:left;}
+.child_menu{margin-left:20px;}
+.z-combobox-inp{width: 100px;}
+.show:nth-child(-n+23){display:none;}
+.showInner{border: 1px solid #000; width: 500px; margin:auto; padding:10px;}
+.z-row-inner{float:left; width: 125px;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding: 5px 0; width:778px;}
+.medicineName{float: left;width: 120px;text-align: left;padding-left: 5px; resize: none;}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+.medecine{display:inline; width: 400px; float:left;}
+.borderResult{border: 1px solid #191919; padding:10px; width: 550px; margin:auto;}
+.headerDate .z-datebox-btn{display:none; }
+.class{width: 100px;}
+.z-datebox-disd{opacity:1!important; }
+.z-datebox-text-disd {background-color: #FFFFFF;color: #000000 !important;}
+.heading{float:left; width: 300px;}
+.textBox{width: 60px;}
+</style>
+
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <a href="menu.zul"><image src="images/fortis.png"/></a>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>                              <a href="list_of_admission.zul"><label value="List Of Admission" class="sub_menu"/></a>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu active"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                                <a href="patient_device.zul"><label value="Patient Device" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                                <a href="ventilator_setting_chart.zul"><label value="Ventilator Setting Chart" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="doctor_progress_notes.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list.zul"><label value="Infusion List" class="sub_menu active"/></a>
+	                                <a href="regular_medi.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                <a href="once_only.zul"><label value="Once Only" class="sub_menu" /></a>                                                                
+	                                </div>
+                                <a href="nurse_administration.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="blood_gas_tests.zul"><label value="Blood Gas Tests" class="sub_menu"/></a>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="basic.zul"><label value="Basic " class="sub_menu"/></a>
+                                 <a href="specialised.zul"><label value="Specialised " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="screening_tests.zul"><label value="Screening Tests" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="cranial.zul"><label value="Cranial" class="sub_menu"/></a>
+                                <a href="abdomen.zul"><label value="Abdomen" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="xray.zul"><label value="Xray" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>                 
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="discharge_summary.zul"><label value="Discharge Summary" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+
+            <center>
+
+                <borderlayout sclass="inner-border">
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+            <div style="padding: 0; width: 780px; overflow-y: auto; overflow-x: hidden">
+				<panel> 
+					<panelchildren >
+                        <label value="Infusion List"   class="heading" style="font-size:17px; color: #fff; background: green; padding: 5px 10px; font-weight: bold; width: 67%;" />
+							<div style="margin-top:6px; background:green; padding-top:15px; margin-top:-5px; margin-bottom: 10px; height: 30px; text-align:right;"><datebox onCreate="self.value= new Date()" style="width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="true"  /></div>
+
+            		<div style="width:350px; margin:10px auto 30px auto;">
+            		<label value="Select Infusion" style="float:left; padding-right: 20px;"/>
+            		<div>
+            		<combobox onChange="showMedicineDetails()" id="medicineName">
+					<comboitem label="Diamorphine" id="diamorphine"/>
+					<comboitem label="Dinoprostone" id="dinoprostone"/>
+					<comboitem label="Dobutamine" id="dobutamine"/>
+					<comboitem label="Dopamine" id="dopamine"/>
+					<comboitem label="Doxapram" id="doxapram"/>
+					<comboitem label="Electrolytes" id="electrolytes"/>
+					<comboitem label="Epinephrine" id="epinephrine"/>
+					<comboitem label="Epoprostenol" id="epoprostenol"/>															
+					<comboitem label="Fentanyl" id="fentanyl"/>
+					<comboitem label="Glucose" id="glucose"/>
+					<comboitem label="Heparin" id="heparin"/>
+					<comboitem label="Insulin" id="insulin"/>
+					<comboitem label="Isoprenaline" id="isoprenaline"/>
+					
+					<comboitem label="Lidocaine" id="lidocaine"/>
+					<comboitem label="Midazolam" id="midazolam"/>
+					<comboitem label="Morphine" id="morphine"/>															
+					<comboitem label="Nitroprusside" id="nitroprusside"/>
+					<comboitem label="Norepinephrine" id="norepinephrine"/>
+					<comboitem label="Ranitidine" id="ranitidine"/>
+					<comboitem label="Streptokinase" id="streptokinase"/>
+					<comboitem label="Tolazoline" id="tolazoline"/>
+					
+				</combobox>
+				<button label="Update Result" id="updateResult" onClick="showMedicineDetails()"/>				
+				</div>
+
+                         </div>       
+
+	<grid style="max-height:500px; overflow-y:auto; border:none;">
+
+		<rows>
+			<row class="show" id="show0">
+					<div class="showInner">					
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight0" style="text-align:center;" />					
+					<separator/>
+					<label value="Dose (usually  15 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="15" id="dose0" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate0" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume0" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of diamorphine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount0" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of diamorphine injection (1mg/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume0" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML0" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show1">			
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight1" style="text-align:center;" />
+					<label value="Dose (range 5-20 nanograms/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="5" id="dose1" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate1" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume1" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of dinoprostone to add to diluent (micrograms)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount1" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of dinoprostone injection (100 micrograms/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume1" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML1" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show2">
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight2" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 10-20 microgram/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="10" id="dose2" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="1" id="flowRate2" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume2" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of dobutamine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount2" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of dobutamine injection (250mg/20ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume2" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML2" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show3">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight3" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 2-20 micrograms/kg/minute)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="10" id="dose3" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate3" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume3" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of dopamine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount3" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of dopamine injection (200mg/5 ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume3" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML3" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show4">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight4" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (initially  250 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="250" id="dose4" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate4" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume4" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of doxapram to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount4" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of doxapram injection (100mg/5ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume4" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML4" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show5">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight5" style="text-align:center;" />
+					<separator/>
+					<label value="Amount of Ca required (normally 1mmol/kg/24hrs)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="1" id="dose5" style="text-align:center;" />
+					<separator/>
+					<label value="Amount of K required (normally 2mmol/kg/24hrs)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="2" id="flowRate5" style="text-align:center;" />
+					<separator/>					
+					<label value="Amount of Na required (normally 4mmol/kg/24hrs)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="4" id="amountofNa" style="text-align:center;" />			
+					<separator/>					
+					<label value="Total volume of fluid to be infused (ml/kg/24hrs)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="150" id="totalVolume" style="text-align:center;" />			
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume5" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Volume of Calcium gluconate 10% injection to add to diluent (ml)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="volumeofCa" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of Potassium chloride 15% injection to add to diluent (ml)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="volumeofK" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of Sodium chloride 6% injection to add to diluent (ml)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="volumeofNa" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of diluent (ml)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="volumeofDiluent" style="text-align:center;" />										
+					<separator/>					
+					<label value="Rate of infusion (ml/hr)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="rateofInfusion" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show6">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight6" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 0.1-1.0 microgram/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="0.1" id="dose6" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate6" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume6" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of epinephrine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount6" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of epinephrine injection (1:1000 i.e. 1mg/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume6" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML6" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show7">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight7" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 1-20 nanograms/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="1" id="dose7" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate7" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume7" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of epoprostenol to add to diluent (micrograms)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount7" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of epoprostenol injection (10micrograms/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume7" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML7" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show8">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight8" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (usually  1-5 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="1" id="dose8" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate8" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume8" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of fentanyl to add to diluent (micrograms)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount8" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of fentanyl injection (50microgram/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume8" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML8" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show9">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight9" style="text-align:center;" />
+					<separator/>
+					<label value="Amount of Glucose (mg/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="10" id="dose9" style="text-align:center;" />
+					<separator/>
+					<label value="Concentration of glucose infusion (%)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="150" id="flowRate9" style="text-align:center;" />
+					<textbox class="textBox" readonly = "false" value="10" id="volume9" style="text-align:center; display:none;" />	    
+					</div>
+					
+					<div class="borderResult">
+					<label value="Volume of glucose infusion (ml/kg/24 hr)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount9" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate per hour (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume9" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show10">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight10" style="text-align:center;" />
+					<separator/>
+					<label value="Dose for vascular occlusion (range 15-25 units/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="15" id="dose10" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate10" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume10" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of heparin to add to diluent (units)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount10" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of heparin injection (1000 units/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume10" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML10" style="text-align:center;" />
+					</div>
+			</row>
+			
+			
+			
+			<row class="show" id="show11">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight11" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 0.1-1.0 unit/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="0.1" id="dose11" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate11" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume11" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of insulin to add to diluent (units)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount11" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of insulin neutral injection (10 units/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume11" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML11" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show12">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight12" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 0.02-0.5 microgram/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="0.02" id="dose12" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate12" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume12" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of isoprenaline to add to diluent (micrograms)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount12" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of Isoprenaline injection (100 micrograms/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume12" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML12" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show13">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight13" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 2-6 milligram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="4" id="dose13" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.5" id="flowRate13" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume13" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of lidocaine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount13" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of lidocaine injection (200mg/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume13" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML13" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show14">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight14" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 30-60 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="30" id="dose14" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate14" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume14" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of midazolam to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount14" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of midazolam injection (10mg/5ml)to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume14" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML14" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show15">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight15" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 10-40 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="10" id="dose15" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate15" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume15" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of morphine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount15" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of morphine injection (1mg/1ml)to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume15" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML15" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show" id="show16">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight16" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 0.5-8 micrograms/kg/minute)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="0.5" id="dose16" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="1" id="flowRate16" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume16" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of nitroprusside to add to diluent (micrograms)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount16" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of nitroprusside solution (500 micrograms/ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume16" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML16" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show"  id="show17">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight17" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 0.1-1 microgram/kg/min)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="0.2" id="dose17" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="1" id="flowRate17" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume17" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of norepinephrine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount17" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of norepinephrine injection (base= 1mg/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume17" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML17" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show"  id="show18">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight18" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 30-60 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="30" id="dose18" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate18" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume18" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of ranitidine to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount18" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of ranitidine injection (50mg/2ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume18" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML18" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show"  id="show19">					
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight19" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (range 1000-6000 units/kg/hour)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="1000" id="dose19" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="1" id="flowRate19" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume19" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of streptokinase to add to diluent (units)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount19" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of streptokinase injection (50,000 units/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume19" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML19" style="text-align:center;" />
+					</div>
+			</row>
+			<row class="show"  id="show20">
+					<div class="showInner">
+					<label value="Weight of Infant" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" id="weight20" style="text-align:center;" />
+					<separator/>
+					<label value="Dose (usually 200 microgram/kg/hr)" class="medecine"/>
+					<textbox class ="textBox" readonly ="true" value="200" id="dose20" style="text-align:center;" />
+					<separator/>
+					<label value="Flow rate (ml/hr)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="0.1" id="flowRate20" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of infusion to be made up (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "false" value="10" id="volume20" style="text-align:center;" />			
+					</div>
+					
+					<div class="borderResult">
+					<label value="Amount of tolazoline to add to diluent (mg)" class="medecine"/>
+					<textbox class="textBox" readonly = "true" value="" id="amount20" style="text-align:center;" />
+					<separator/>
+					<label value="Volume of tolazoline injection (25mg/1ml) to add to diluent (ml)" class="medecine"/>					
+					<textbox class="textBox" readonly = "true" value="" id="resultVolume20" style="text-align:center;" />
+					<separator/>					
+					<label value="Volume of diluent (ml)" class="medecine"/>										
+					<textbox class="textBox" readonly = "true" value="" id="volumeML20" style="text-align:center;" />
+					</div>
+			</row>
+
+	
+		</rows>
+	</grid>
+				<div style="width: 200px; margin:50px auto;">
+                               <button label="Prescribe" onClick="" id="submit" class="submit"/>
+                                <button label="Stop" onClick="" id="cancel" class="cancel"/>
+                                </div>
+
+
+							
+							</panelchildren>
+							</panel>
+
+</div>
+
+                    </center>
+                   
+
+                </borderlayout>
+
+            </center>
+</borderlayout>
+
+</div>
+</window>
+
+</zk>

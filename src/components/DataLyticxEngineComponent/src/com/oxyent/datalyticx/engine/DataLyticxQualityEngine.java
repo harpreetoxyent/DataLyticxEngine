@@ -1,6 +1,5 @@
 package com.oxyent.datalyticx.engine;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -27,7 +26,6 @@ import com.oxymedical.core.querydata.QueryData;
 public class DataLyticxQualityEngine 
 {
 	private DBComponent dbComponentDE;
-	final static String MaterialMasterClass = "com.oxymedical.component.importcomponent.resource_import.MaterialMaster";
 	public static double completeness = 0;
 	public static double accuracy = 0;
 
@@ -42,8 +40,8 @@ public class DataLyticxQualityEngine
 	public static String[][] MaterialMasterMandatoryFields = null;
 	static DBComponent DBComponentStatic = null;
 	public String[][]  getAllMandatoryFieldsForMM() throws DBComponentException {
-		String listQuery = "get Material_Master_Definition.FieldName, Material_Master_Definition.LegitimateValue, Material_Master_Definition.Mandatory " +
-				"from datalyticx.Material_Master_Definition";
+		String listQuery = "get Entity_Definition.Entity, Entity_Definition.FieldName, Entity_Definition.LegitimateValue, Entity_Definition.Mandatory " +
+				"from datalyticx.Entity_Definition";
 		HICData requestData = new HICData();
 		Hashtable<String, Object> formValues = new Hashtable<String, Object>();
 		IData data = new Data();
@@ -85,7 +83,6 @@ public class DataLyticxQualityEngine
 		app.setApplicationName("datalyticx");
 		requestData.setApplication(app);
 		IHICData outputData = dbComponentDE.getListData(requestData);
-		QueryData queryData1 = outputData.getData().getQueryData();
 		List listValue = outputData.getData().getQueryData().getListData();
 		String[][] allValues = data.getQueryData().iterateListData(listValue);
 		return allValues;
@@ -96,9 +93,9 @@ public class DataLyticxQualityEngine
 		HashMap<String, String> reqFieldsMap = new HashMap<String, String>();
 		int length = MaterialMasterMandatoryFields.length;
 		for(int i=0;i<length;i++){
-			String fieldName = MaterialMasterMandatoryFields[i][0];
-			String legitimateValue= MaterialMasterMandatoryFields[i][1];
-			String mandatoryFlag= MaterialMasterMandatoryFields[i][2];
+			String fieldName = MaterialMasterMandatoryFields[i][1];
+			String legitimateValue= MaterialMasterMandatoryFields[i][2];
+			String mandatoryFlag= MaterialMasterMandatoryFields[i][3];
 			boolean required = checkRequiredField(mandatoryFlag);
 			if(required){
 				reqFieldsMap.put(fieldName,legitimateValue);// FieldName[i] will come from MMMFields list for now its hard coded
@@ -147,12 +144,21 @@ public class DataLyticxQualityEngine
 	
 	private static String getActualValue(DataLyticxEntity entity,
 			String fieldName) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		String fieldToGetter = fieldName.replace("_", "");//Complete the code, apply other cases for capitalize next letter
-		fieldToGetter = fieldToGetter.toLowerCase();
-		fieldToGetter = "get" + fieldToGetter.substring(0, 1).toUpperCase() + fieldToGetter.substring(1);//Complete this 
-		Object materialMasterObject = entity.getEntityData();
-		Method method = materialMasterObject.getClass().getMethod(fieldToGetter);
-		String returnObject = (String)method.invoke(materialMasterObject);
+		System.out.println("Inside getActualValue entity="+entity+"MM="+entity.getEntityData()+"fieldName="+fieldName);
+		String returnObject = null;
+		try
+		{
+			String fieldToGetter = fieldName.replace("_", "");//Complete the code, apply other cases for capitalize next letter
+			fieldToGetter = fieldToGetter.toLowerCase();
+			fieldToGetter = "get" + fieldToGetter.substring(0, 1).toUpperCase() + fieldToGetter.substring(1);//Complete this 
+			Object materialMasterObject = entity.getEntityData();
+			Method method = materialMasterObject.getClass().getMethod(fieldToGetter);
+			returnObject = (String)method.invoke(materialMasterObject);
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+		}
 		return returnObject;
 	}
 	private static boolean checkRequiredField(String fieldValue) {

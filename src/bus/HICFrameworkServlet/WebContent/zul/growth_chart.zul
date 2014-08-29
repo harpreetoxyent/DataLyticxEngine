@@ -1,0 +1,394 @@
+<zk id="fentonGraph" name="fentonGraph" xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:n= "native">
+<zscript src="/library/uilibrary.zs"/> 
+<?page id="growth_chart"?>	
+ <style>
+    body{background: #f0f0f0;}
+    *:focus{outline:none;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu .z-toolbarbutton-cnt{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important;}
+    .sub_menu .z-toolbarbutton-cnt:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+	.z-vlayout{height: auto!important;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse; width: 48px!important; white-space:initial;}
+	.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+	.z-label{text-align:center;}
+	.z-column-sort-img{text-align:center;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:1px;}
+	.z-combobox-inp{width: 20px;}
+	.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+	.z-textbox{width: 70px;}
+	div.z-column-cnt, div.z-row-cnt{font-weight: normal; padding:8px 4px 7px 0;}
+	div.z-column-cnt{8px 4px 5px 0px}
+	.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+        .child_menu{margin-left: 20px; display:none}
+        .z-window-embedded-tl,.z-window-embedded-hl,.z-window-embedded-hr,.z-window-embedded-hm{background:none;}
+	.z-window-embedded-cl,.z-window-embedded-cr{background:none;}
+	.z-window-embedded-cm, .z-window-overlapped-cm{border:none;}
+	.z-window-embedded-cnt{background: #f7f7f7;}
+	.z-window-embedded-tl, .z-window-embedded-tr, .z-window-embedded-bl, .z-window-embedded-br{background:none;}
+	.headerDate .z-datebox-btn{display:none; }
+	.class{width: 100px;}
+	.z-datebox-disd{opacity:1!important; }
+	.z-datebox-text-disd {
+	background-color: #FFFFFF;	
+	color: #000000 !important;}
+
+</style>
+
+<zscript><![CDATA[
+    String selectedPosition = "At Pointer";
+    
+    public void invokeButton()
+    {
+    	System.out.println ("hello");
+    	this.self.getFellow("PlotData").fire();
+    }
+]]></zscript>
+<window  style="background: #F7F7F7">
+ <div  style="margin:auto; width:1300px">
+        <borderlayout sclass="complex-layout" height="30px">
+           <north size="90px" border="0" style=" background:#F7F7F7;">
+           	<a href = "admission.zul">
+            	<image src="images/fortis.png"/>
+            </a>	
+         </north>
+       </borderlayout>
+  </div>
+
+<div align="center" style="margin:90px;">
+	<borderlayout height="800px" width="1300px">
+    	<center>
+        	<borderlayout>
+			   <center border="0" margins="0,3,3,3" style=" overflow:auto; background:#F7F7F7">
+				  <panel> 
+					<panelchildren >
+					
+						<label value="Growth Chart"  style="background: green; font-size: 17px; background: green; margin-left: -0px; margin-top: -5px; height: 20px; padding: 10px 10px; float:left; color: #fff;" />
+						<div style="margin-top:6px; background:green; padding-top:15px; margin-top:-5px; margin-bottom: 10px; height: 30px; text-align:right;"><datebox onCreate="self.value= new Date()" style="width: 80px;  opacity=1" class="headerDate" readonly="readonly" disabled="true"  />
+						</div>       
+						<hbox>
+							<button id="PlotData" label="Plot Data">
+								<attribute name="onClick"><![CDATA[
+									String uidInfant = session.getAttribute("UID");
+    								System.out.println(" Value of uidInfant" +uidInfant );
+									String gender =session.getAttribute("gender");
+									addFormValue("gender" , gender);
+									addFormValue("uid" , uidInfant);
+									invokeComponent("nicuComponent","GetFentonData","com.oxymedical.component.nicu.NICUComponent","growth_chart");
+									if(returnHicData ==null)
+									{
+											return;
+									}
+									else
+									{
+											hicData = returnHicData;
+									}
+									IData dataUnit = hicData.getData();
+									Hashtable formValues = dataUnit.getFormPattern().getFormValues();
+									String percentileWeight = formValues.get("percentileWeight");
+									String percentileCircum = formValues.get("percentileCircum");
+									String gestationWeek  = formValues.get("gestationWeek");	
+									String birthWeight  = formValues.get("birthWeight");
+									String headCircumference  = formValues.get("headCircumference");
+
+									System.out.println("percentileWeight = " + percentileWeight);
+									System.out.println("percentileCircum = " + percentileCircum);
+									System.out.println("headCircumference = " + headCircumference);
+									
+									
+									weightPercentileChart.getModel().setValue(percentileWeight, gestationWeek, new Double(birthWeight));
+									circumPercentileChart.getModel().setValue(percentileCircum, gestationWeek, new Double(headCircumference));
+									]]>
+								</attribute>
+							</button>
+						</hbox>
+						  <hbox xmlns:n="native">
+							<chart id="weightPercentileChart"  width="640" height="550"
+								type="line" threeD="false" fgAlpha="128" YAxis="Weight(kilograms)" XAxis="Gestation Age(weeks)" onClick="weightChartPopup.open(self,selectedPosition)">
+								<zscript><![CDATA[
+									String uidInfant = session.getAttribute("UID");
+    								System.out.println(" Value of uidInfant" +uidInfant );
+    								setFormPatternId("growth_chart");
+									setDatapatternId("FORTIS");
+									if (uidInfant != null)
+									{
+										invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Sex from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+									}
+									if(returnHicData ==null)
+									{
+										return;
+									}
+									else
+									{
+										hicData = returnHicData;
+									}
+									IData data = hicData.getData();	
+									List listValue = data.getQueryData().getListData();
+									String[][] allValues = data.getQueryData().iterateListData(listValue);
+									String gender =new String(allValues[0][0]);
+									addFormValue("gender" , gender);
+									session.setAttribute("gender",gender);
+									weightPercentileChart.setEngine(new XYPlotEngine());
+									if(gender == 'M')
+									{
+										
+										weightPercentileChart.setTitle("Fenton preterm weight growth chart boys");
+										weightPercentileChart.setModel(populateDataFromFentonExcel("fenton_boy_weight.csv",1,0,2,"Fenton preterm growth chart boys"));
+									}
+									else
+									{
+									    
+									    weightPercentileChart.setTitle("Fenton preterm weight growth chart girls");
+										weightPercentileChart.setModel(populateDataFromFentonExcel("fenton_girl_weight.csv",1,0,2,"Fenton preterm growth chart girls"));
+									}
+									]]>
+								</zscript>
+							</chart>
+		
+								<chart id="circumPercentileChart"  width="640" height="550"
+										type="line" threeD="false" fgAlpha="128" YAxis="Centimeters" XAxis="Gestation Age(weeks)" onClick="circumChartPopup.open(self,selectedPosition)" >
+									<zscript><![CDATA[
+										String uidInfant = session.getAttribute("UID");
+										System.out.println(" Value of uidInfant" +uidInfant );
+										setFormPatternId("growth_chart");
+										setDatapatternId("FORTIS");
+										if (uidInfant != null)
+										{
+											invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Sex from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+										}
+										if(returnHicData ==null)
+										{
+											return;
+										}
+										else
+										{
+											hicData = returnHicData;
+										}
+										IData data = hicData.getData();	
+										List listValue = data.getQueryData().getListData();
+										String[][] allValues = data.getQueryData().iterateListData(listValue);
+										String gender =new String(allValues[0][0]);
+										circumPercentileChart.setEngine(new XYPlotEngine());
+										addFormValue("gender" , gender);
+										if(gender == 'M')
+										{
+											circumPercentileChart.setTitle("Fenton preterm circumference growth chart boys");
+											circumPercentileChart.setModel(populateDataFromFentonExcel("fenton_boy_cir.csv",1,0,2,"Fenton preterm growth chart boys"));
+										}
+										else
+										{
+											circumPercentileChart.setTitle("Fenton preterm circumference growth chart girls");
+											circumPercentileChart.setModel(populateDataFromFentonExcel("fenton_girl_cir.csv",1,0,2,"Fenton preterm growth chart girls"));
+										}	
+									]]></zscript>
+								</chart>
+								 <popup id="circumChartPopup" width="1500px" height="600px">
+									 <button id="PopupCircumPlotData" label="Plot Data">
+										<attribute name="onClick"><![CDATA[
+										String uidInfant = session.getAttribute("UID");
+										System.out.println(" Value of uidInfant" +uidInfant );
+										String gender =session.getAttribute("gender");
+										addFormValue("gender" , gender);
+										addFormValue("uid" , uidInfant);
+										invokeComponent("nicuComponent","GetFentonData","com.oxymedical.component.nicu.NICUComponent","growth_chart");
+										if(returnHicData ==null)
+										{
+												return;
+										}
+										else
+										{
+												hicData = returnHicData;
+										}
+										IData dataUnit = hicData.getData();
+										Hashtable formValues = dataUnit.getFormPattern().getFormValues();
+										String percentileWeight = formValues.get("percentileWeight");
+										String percentileCircum = formValues.get("percentileCircum");
+										String gestationWeek  = formValues.get("gestationWeek");	
+										String birthWeight  = formValues.get("birthWeight");
+										String headCircumference  = formValues.get("headCircumference");
+	
+										System.out.println("percentileWeight in popup = " + percentileWeight);
+										System.out.println("percentileCircum  in popup = " + percentileCircum);
+										System.out.println("headCircumference  in popup = " + headCircumference);
+										
+										circumPopupChart.getModel().setValue(percentileCircum, gestationWeek, new Double(headCircumference));
+										]]>
+									</attribute>
+									</button>
+								 	<chart id = "circumPopupChart" title="Fenton circumference vs week growth chart" width="1500" height="600"
+										type="line" threeD="false" fgAlpha="128" YAxis="Centimeters" XAxis="Gestation Age(weeks)" >
+										<zscript><![CDATA[
+										String uidInfant = session.getAttribute("UID");
+										System.out.println(" Value of uidInfant" +uidInfant );
+										setFormPatternId("growth_chart");
+										setDatapatternId("FORTIS");
+										if (uidInfant != null)
+										{
+											invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Sex from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+										}
+										if(returnHicData ==null)
+										{
+											return;
+										}
+										else
+										{
+											hicData = returnHicData;
+										}
+										IData data = hicData.getData();	
+										List listValue = data.getQueryData().getListData();
+										String[][] allValues = data.getQueryData().iterateListData(listValue);
+										String gender =new String(allValues[0][0]);
+										circumPopupChart.setEngine(new XYPlotEngine());
+										addFormValue("gender" , gender);
+										if(gender == 'M')
+										{
+											circumPopupChart.setTitle("Fenton preterm circumference growth chart boys");
+											circumPopupChart.setModel(populateDataFromFentonExcel("fenton_boy_cir.csv",1,0,2,"Fenton preterm growth chart boys"));
+										}
+										else
+										{
+											circumPopupChart.setTitle("Fenton preterm circumference growth chart girls");
+											circumPopupChart.setModel(populateDataFromFentonExcel("fenton_girl_cir.csv",1,0,2,"Fenton preterm growth chart girls"));
+										}
+										
+									]]></zscript>
+									</chart>
+								</popup>	
+								<popup id="weightChartPopup" width="1500px" height="600px">
+									 <button id="PopupWeightPlotData" label="Plot Data">
+										<attribute name="onClick"><![CDATA[
+										String uidInfant = session.getAttribute("UID");
+										System.out.println(" Value of uidInfant" +uidInfant );
+										String gender =session.getAttribute("gender");
+										addFormValue("gender" , gender);
+										addFormValue("uid" , uidInfant);
+										invokeComponent("nicuComponent","GetFentonData","com.oxymedical.component.nicu.NICUComponent","growth_chart");
+										if(returnHicData ==null)
+										{
+												return;
+										}
+										else
+										{
+												hicData = returnHicData;
+										}
+										IData dataUnit = hicData.getData();
+										Hashtable formValues = dataUnit.getFormPattern().getFormValues();
+										String percentileWeight = formValues.get("percentileWeight");
+										String percentileCircum = formValues.get("percentileCircum");
+										String gestationWeek  = formValues.get("gestationWeek");	
+										String birthWeight  = formValues.get("birthWeight");
+										String headCircumference  = formValues.get("headCircumference");
+	
+										System.out.println("percentileWeight in popup = " + percentileWeight);
+										System.out.println("percentileCircum  in popup = " + percentileCircum);
+										System.out.println("headCircumference  in popup = " + headCircumference);
+										weightPopupChart.getModel().setValue(percentileWeight, gestationWeek, new Double(birthWeight));
+										]]>
+									</attribute>
+									</button>
+								 	<chart id = "weightPopupChart" title="Fenton circumference vs week growth chart" width="1500" height="600"
+										type="line" threeD="false" fgAlpha="128" YAxis="Centimeters" XAxis="Gestation Age(weeks)" >
+										<zscript><![CDATA[
+										String uidInfant = session.getAttribute("UID");
+										System.out.println(" Value of uidInfant" +uidInfant );
+										setFormPatternId("growth_chart");
+										setDatapatternId("FORTIS");
+										if (uidInfant != null)
+										{
+											invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get AdmissionForm.Sex from FORTIS.AdmissionForm conditions AdmissionForm.UID:="+uidInfant);
+										}
+										if(returnHicData ==null)
+										{
+											return;
+										}
+										else
+										{
+											hicData = returnHicData;
+										}
+										IData data = hicData.getData();	
+										List listValue = data.getQueryData().getListData();
+										String[][] allValues = data.getQueryData().iterateListData(listValue);
+										String gender =new String(allValues[0][0]);
+										weightPopupChart.setEngine(new XYPlotEngine());
+										addFormValue("gender" , gender);
+										if(gender == 'M')
+										{
+											weightPopupChart.setTitle("Fenton preterm weight growth chart boys");
+											weightPopupChart.setModel(populateDataFromFentonExcel("fenton_boy_weight.csv",1,0,2,"Fenton preterm growth chart boys"));
+										}
+										else
+										{
+											weightPopupChart.setTitle("Fenton preterm weight growth chart girls");
+											weightPopupChart.setModel(populateDataFromFentonExcel("fenton_girl_weight.csv",1,0,2,"Fenton preterm growth chart girls"));
+										}
+										
+									]]></zscript>
+									</chart>
+								</popup>
+						</hbox>	
+						 
+						  <combobox id="weeks">
+							   <comboitem id="w1" label="Weeks"/>
+							   <comboitem id="w22" label="22"/>
+							   <comboitem id="w23" label="23"/>
+							   <comboitem id="w24" label="24"/>
+							   <comboitem id="w25" label="25"/>
+							   <comboitem id="w26" label="26"/>
+							   <comboitem id="w27" label="27"/>
+							   <comboitem id="w28" label="28"/>
+							   <comboitem id="w29" label="29"/>
+							   <comboitem id="w30" label="30"/>
+							   <comboitem id="w31" label="31"/>
+							   <comboitem id="w32" label="32"/>
+							   <comboitem id="w33" label="33"/>
+							   <comboitem id="w34" label="34"/>
+							   <comboitem id="w35" label="35"/>
+							   <comboitem id="w36" label="36"/>
+							   <comboitem id="w37" label="37"/>
+							   <comboitem id="w38" label="38"/>
+							   <comboitem id="w39" label="39"/>
+							   <comboitem id="w40" label="40"/>
+							   <comboitem id="w41" label="41"/>
+							   <comboitem id="w42" label="42"/>
+							   <comboitem id="w43" label="43"/>
+							   <comboitem id="w44" label="44"/>
+							   <comboitem id="w45" label="45"/>
+							   <comboitem id="w46" label="46"/>
+							   <comboitem id="w47" label="47"/>
+							   <comboitem id="w48" label="48"/>
+							   <comboitem id="w49" label="49"/>
+							   <comboitem id="w50" label="50"/>
+						   </combobox>
+						   <combobox id="days">
+							   <comboitem id="w11" label="Days"/>
+							   <comboitem id="d0" label="0"/>
+							   <comboitem id="d1" label="1"/>
+							   <comboitem id="d2" label="2"/>
+							   <comboitem id="d3" label="3"/>
+							   <comboitem id="d4" label="4"/>
+							   <comboitem id="d5" label="5"/>
+							   <comboitem id="w6" label="6"/>
+						   </combobox>
+						  <textbox id="weight"/>
+						  <textbox id="length" style="display:none"/>
+						  <textbox id="head" style="display:none"/>
+						  <textbox id="weightlength" style="display:none"/>
+						  <label id="percentile_weight" value=""/>
+						  <label id="sds_weight" value=""/>
+					</panelchildren>
+				</panel>
+		   </center>
+ 		 </borderlayout>
+ 		</center>
+	</borderlayout>
+	</div>
+</window>
+</zk>
