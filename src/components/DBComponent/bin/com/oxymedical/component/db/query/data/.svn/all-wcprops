@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data
+END
+DBQueryStructure.PNG
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/DBQueryStructure.PNG
+END
+Select.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/Select.java
+END
+WhereQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/WhereQuery.java
+END
+BaseQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/BaseQuery.java
+END
+From.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/From.java
+END
+FieldType.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/FieldType.java
+END
+WhereInner.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/WhereInner.java
+END
+Where.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/Where.java
+END
+DBQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/DBQuery.java
+END
+ConditionComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/data/ConditionComparator.java
+END

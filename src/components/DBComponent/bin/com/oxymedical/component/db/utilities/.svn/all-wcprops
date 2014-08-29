@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/27/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities
+END
+DBOperationUtilities.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/DBOperationUtilities.java
+END
+DBDateTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/DBDateTime.java
+END
+MappingEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/MappingEditor.java
+END
+DBStructureUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/DBStructureUtil.java
+END
+DBServerURLGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/DBServerURLGenerator.java
+END
+ConvertDataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/27/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/ConvertDataType.java
+END
+HibernateConfigMover.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/HibernateConfigMover.java
+END
+DBUtilities.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/26/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/DBUtilities.java
+END

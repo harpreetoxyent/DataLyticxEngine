@@ -1,0 +1,1001 @@
+2014-08-26 13:10:00,509 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:34:14,125 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:34:14,125 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:34:14,125 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:34:14,125 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:34:14,125 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:34:14,128 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:34:14,136 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:34:14,137 - Do unicode file recognition:  false
+2014-08-26 13:34:14,137 - FileResourceLoader : adding path '.'
+2014-08-26 13:34:14,149 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:34:14,151 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:34:14,153 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:34:14,155 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:34:14,158 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:34:14,159 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:34:14,194 - Created '20' parsers.
+2014-08-26 13:34:14,207 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:34:14,207 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:34:14,208 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:34:14,209 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:34:14,221 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:34:14,221 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:34:14,221 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:34:14,221 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:34:14,221 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:34:40,706 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:34:40,707 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:34:40,707 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:34:40,707 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:34:40,707 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:34:40,710 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:34:40,718 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:34:40,720 - Do unicode file recognition:  false
+2014-08-26 13:34:40,720 - FileResourceLoader : adding path '.'
+2014-08-26 13:34:40,733 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:34:40,735 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:34:40,737 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:34:40,740 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:34:40,742 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:34:40,744 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:34:40,778 - Created '20' parsers.
+2014-08-26 13:34:40,798 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:34:40,800 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:34:40,801 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:34:40,802 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:34:40,808 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:34:40,808 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:34:40,808 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:34:40,808 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:34:40,808 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:35:11,838 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:35:11,838 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:35:11,838 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:35:11,838 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:35:11,838 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:35:11,853 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:35:11,892 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:35:11,903 - Do unicode file recognition:  false
+2014-08-26 13:35:11,903 - FileResourceLoader : adding path '.'
+2014-08-26 13:35:11,957 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:35:11,971 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:35:11,985 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:35:11,998 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:35:12,012 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:35:12,021 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:35:12,151 - Created '20' parsers.
+2014-08-26 13:35:12,260 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:35:12,261 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:35:12,264 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:35:12,270 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:35:12,294 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:35:12,295 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:35:12,295 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:35:12,295 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:35:12,295 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:35:45,521 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:35:45,521 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:35:45,521 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:35:45,521 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:35:45,521 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:35:45,524 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:35:45,532 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:35:45,534 - Do unicode file recognition:  false
+2014-08-26 13:35:45,534 - FileResourceLoader : adding path '.'
+2014-08-26 13:35:45,547 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:35:45,549 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:35:45,551 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:35:45,553 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:35:45,556 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:35:45,557 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:35:45,590 - Created '20' parsers.
+2014-08-26 13:35:45,603 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:35:45,603 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:35:45,603 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:35:45,605 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:35:45,609 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:35:45,609 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:35:45,609 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:35:45,609 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:35:45,609 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:36:06,710 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:36:06,711 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:36:06,711 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:36:06,711 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:36:06,711 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:36:06,726 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:36:06,763 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:36:06,773 - Do unicode file recognition:  false
+2014-08-26 13:36:06,773 - FileResourceLoader : adding path '.'
+2014-08-26 13:36:06,823 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:36:06,836 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:36:06,850 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:36:06,863 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:36:06,876 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:36:06,885 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:36:07,005 - Created '20' parsers.
+2014-08-26 13:36:07,099 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:36:07,099 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:36:07,102 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:36:07,108 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:36:07,131 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:36:07,132 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:36:07,132 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:36:07,132 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:36:07,132 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:38:39,618 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:38:39,618 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:38:39,618 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:38:39,618 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:38:39,618 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:38:39,621 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:38:39,629 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:38:39,631 - Do unicode file recognition:  false
+2014-08-26 13:38:39,631 - FileResourceLoader : adding path '.'
+2014-08-26 13:38:39,642 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:38:39,644 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:38:39,646 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:38:39,649 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:38:39,651 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:38:39,652 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:38:39,687 - Created '20' parsers.
+2014-08-26 13:38:39,700 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:38:39,700 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:38:39,701 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:38:39,702 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:38:39,715 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:38:39,715 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:38:39,715 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:38:39,715 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:38:39,715 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:44:55,937 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:44:55,937 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:44:55,937 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:44:55,937 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:44:55,937 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:44:55,940 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:44:55,949 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:44:55,951 - Do unicode file recognition:  false
+2014-08-26 13:44:55,951 - FileResourceLoader : adding path '.'
+2014-08-26 13:44:55,963 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:44:55,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:44:55,968 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:44:55,970 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:44:55,973 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:44:55,974 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:44:56,008 - Created '20' parsers.
+2014-08-26 13:44:56,028 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:44:56,031 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:44:56,032 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:44:56,034 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:44:56,043 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:44:56,043 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:44:56,043 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:44:56,043 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:44:56,043 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:46:23,659 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:46:23,659 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:46:23,659 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:46:23,659 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:46:23,659 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:46:23,662 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:46:23,671 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:46:23,673 - Do unicode file recognition:  false
+2014-08-26 13:46:23,673 - FileResourceLoader : adding path '.'
+2014-08-26 13:46:23,685 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:46:23,688 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:46:23,690 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:46:23,693 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:46:23,697 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:46:23,699 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:46:23,739 - Created '20' parsers.
+2014-08-26 13:46:23,761 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:46:23,762 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:46:23,762 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:46:23,764 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:46:23,770 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:46:23,770 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:46:23,770 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:46:23,770 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:46:23,770 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:49:32,620 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:49:32,620 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:49:32,620 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:49:32,620 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:49:32,620 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:49:32,624 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:49:32,632 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:49:32,634 - Do unicode file recognition:  false
+2014-08-26 13:49:32,634 - FileResourceLoader : adding path '.'
+2014-08-26 13:49:32,646 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:49:32,648 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:49:32,651 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:49:32,654 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:49:32,656 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:49:32,658 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:49:32,692 - Created '20' parsers.
+2014-08-26 13:49:32,714 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:49:32,714 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:49:32,715 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:49:32,717 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:49:32,723 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:49:32,723 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:49:32,723 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:49:32,723 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:49:32,723 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:50:13,641 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:50:13,642 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:50:13,642 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:50:13,642 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:50:13,642 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:50:13,645 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:50:13,654 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:50:13,656 - Do unicode file recognition:  false
+2014-08-26 13:50:13,656 - FileResourceLoader : adding path '.'
+2014-08-26 13:50:13,668 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:50:13,671 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:50:13,673 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:50:13,676 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:50:13,678 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:50:13,680 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:50:13,718 - Created '20' parsers.
+2014-08-26 13:50:13,740 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:50:13,740 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:50:13,741 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:50:13,742 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:50:13,748 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:50:13,748 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:50:13,749 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:50:13,749 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:50:13,749 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:53:45,237 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:53:45,238 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:53:45,238 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:53:45,238 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:53:45,238 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:53:45,241 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:53:45,250 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:53:45,252 - Do unicode file recognition:  false
+2014-08-26 13:53:45,252 - FileResourceLoader : adding path '.'
+2014-08-26 13:53:45,264 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:53:45,267 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:53:45,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:53:45,271 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:53:45,274 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:53:45,275 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:53:45,310 - Created '20' parsers.
+2014-08-26 13:53:45,332 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:53:45,333 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:53:45,334 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:53:45,337 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:53:45,342 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:53:45,342 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:53:45,343 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:53:45,343 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:53:45,343 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:54:58,537 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:54:58,538 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:54:58,538 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:54:58,538 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:54:58,538 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:54:58,541 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:54:58,549 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:54:58,552 - Do unicode file recognition:  false
+2014-08-26 13:54:58,552 - FileResourceLoader : adding path '.'
+2014-08-26 13:54:58,564 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:54:58,567 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:54:58,569 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:54:58,572 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:54:58,574 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:54:58,576 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:54:58,610 - Created '20' parsers.
+2014-08-26 13:54:58,632 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:54:58,633 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:54:58,634 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:54:58,635 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:54:58,640 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:54:58,640 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:54:58,640 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:54:58,641 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:54:58,641 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 13:58:41,355 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 13:58:41,356 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 13:58:41,356 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 13:58:41,356 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:58:41,356 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 13:58:41,359 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 13:58:41,368 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 13:58:41,370 - Do unicode file recognition:  false
+2014-08-26 13:58:41,370 - FileResourceLoader : adding path '.'
+2014-08-26 13:58:41,382 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 13:58:41,384 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 13:58:41,387 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 13:58:41,389 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 13:58:41,391 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 13:58:41,393 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 13:58:41,426 - Created '20' parsers.
+2014-08-26 13:58:41,448 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 13:58:41,448 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:58:41,449 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 13:58:41,450 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 13:58:41,456 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 13:58:41,456 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 13:58:41,456 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 13:58:41,456 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 13:58:41,456 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 15:08:23,121 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 15:08:23,122 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 15:08:23,122 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 15:08:23,122 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:08:23,122 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:08:23,125 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 15:08:23,132 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 15:08:23,134 - Do unicode file recognition:  false
+2014-08-26 15:08:23,134 - FileResourceLoader : adding path '.'
+2014-08-26 15:08:23,146 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 15:08:23,148 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 15:08:23,150 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 15:08:23,152 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 15:08:23,154 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 15:08:23,156 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 15:08:23,187 - Created '20' parsers.
+2014-08-26 15:08:23,200 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 15:08:23,200 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:08:23,201 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 15:08:23,202 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:08:23,215 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 15:08:23,215 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 15:08:23,215 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 15:08:23,215 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 15:08:23,215 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 15:10:01,490 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 15:10:01,490 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 15:10:01,491 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 15:10:01,491 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:10:01,491 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:10:01,494 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 15:10:01,502 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 15:10:01,504 - Do unicode file recognition:  false
+2014-08-26 15:10:01,504 - FileResourceLoader : adding path '.'
+2014-08-26 15:10:01,516 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 15:10:01,519 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 15:10:01,521 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 15:10:01,524 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 15:10:01,526 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 15:10:01,527 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 15:10:01,562 - Created '20' parsers.
+2014-08-26 15:10:01,583 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 15:10:01,584 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:10:01,585 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 15:10:01,587 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:10:01,592 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 15:10:01,592 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 15:10:01,592 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 15:10:01,592 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 15:10:01,592 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 15:24:43,921 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 15:24:43,922 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 15:24:43,922 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 15:24:43,922 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:24:43,922 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:24:43,925 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 15:24:43,933 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 15:24:43,935 - Do unicode file recognition:  false
+2014-08-26 15:24:43,935 - FileResourceLoader : adding path '.'
+2014-08-26 15:24:43,948 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 15:24:43,950 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 15:24:43,952 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 15:24:43,955 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 15:24:43,957 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 15:24:43,959 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 15:24:43,992 - Created '20' parsers.
+2014-08-26 15:24:44,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 15:24:44,014 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:24:44,015 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 15:24:44,017 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:24:44,023 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 15:24:44,023 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 15:24:44,023 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 15:24:44,023 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 15:24:44,023 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 15:59:19,990 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 15:59:19,990 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 15:59:19,990 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 15:59:19,990 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:59:19,990 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 15:59:19,993 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 15:59:20,001 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 15:59:20,002 - Do unicode file recognition:  false
+2014-08-26 15:59:20,002 - FileResourceLoader : adding path '.'
+2014-08-26 15:59:20,014 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 15:59:20,016 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 15:59:20,018 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 15:59:20,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 15:59:20,023 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 15:59:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 15:59:20,059 - Created '20' parsers.
+2014-08-26 15:59:20,072 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 15:59:20,072 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:59:20,073 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 15:59:20,074 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 15:59:20,085 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 15:59:20,085 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 15:59:20,085 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 15:59:20,085 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 15:59:20,085 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:25:48,735 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:25:48,735 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:25:48,735 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:25:48,735 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:48,735 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:48,738 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:25:48,746 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:25:48,747 - Do unicode file recognition:  false
+2014-08-26 16:25:48,747 - FileResourceLoader : adding path '.'
+2014-08-26 16:25:48,759 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:25:48,761 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:25:48,763 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:25:48,766 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:25:48,768 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:25:48,769 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:25:48,804 - Created '20' parsers.
+2014-08-26 16:25:48,823 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:25:48,824 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:48,824 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:25:48,825 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:48,830 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:25:48,830 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:25:48,830 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:25:48,830 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:25:48,830 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:25:51,720 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:25:51,720 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:25:51,720 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:25:51,720 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:25:51,720 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:25:51,720 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:25:51,720 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:51,720 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:51,720 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:51,720 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:25:51,722 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:25:51,722 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:25:51,728 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:25:51,728 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:25:51,729 - Do unicode file recognition:  false
+2014-08-26 16:25:51,729 - Do unicode file recognition:  false
+2014-08-26 16:25:51,729 - FileResourceLoader : adding path '.'
+2014-08-26 16:25:51,729 - FileResourceLoader : adding path '.'
+2014-08-26 16:25:51,730 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:25:51,730 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:25:51,732 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:25:51,732 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:25:51,734 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:25:51,734 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:25:51,736 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:25:51,736 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:25:51,737 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:25:51,737 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:25:51,739 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:25:51,739 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:25:51,764 - Created '20' parsers.
+2014-08-26 16:25:51,764 - Created '20' parsers.
+2014-08-26 16:25:51,773 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:25:51,773 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:25:51,773 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:51,773 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:51,774 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:25:51,774 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:25:51,775 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:51,775 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:25:51,778 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:25:51,778 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:25:51,778 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:25:51,778 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:25:51,778 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:25:51,778 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:25:51,778 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:25:51,778 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:25:51,778 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:25:51,778 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:26:57,738 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:26:57,738 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:26:57,738 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:26:57,738 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:26:57,739 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:26:57,741 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:26:57,749 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:26:57,751 - Do unicode file recognition:  false
+2014-08-26 16:26:57,751 - FileResourceLoader : adding path '.'
+2014-08-26 16:26:57,763 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:26:57,765 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:26:57,767 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:26:57,769 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:26:57,771 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:26:57,773 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:26:57,807 - Created '20' parsers.
+2014-08-26 16:26:57,832 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:26:57,833 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:26:57,833 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:26:57,834 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:26:57,839 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:26:57,839 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:26:57,839 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:26:57,839 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:26:57,839 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:27:39,830 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:27:39,831 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:27:39,831 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:27:39,831 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:27:39,831 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:27:39,834 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:27:39,842 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:27:39,843 - Do unicode file recognition:  false
+2014-08-26 16:27:39,843 - FileResourceLoader : adding path '.'
+2014-08-26 16:27:39,855 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:27:39,857 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:27:39,859 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:27:39,861 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:27:39,864 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:27:39,865 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:27:39,897 - Created '20' parsers.
+2014-08-26 16:27:39,920 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:27:39,921 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:27:39,921 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:27:39,922 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:27:39,927 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:27:39,927 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:27:39,927 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:27:39,927 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:27:39,927 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:27:42,884 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:27:42,884 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:27:42,885 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:27:42,885 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:27:42,885 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:27:42,888 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:27:42,895 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:27:42,897 - Do unicode file recognition:  false
+2014-08-26 16:27:42,897 - FileResourceLoader : adding path '.'
+2014-08-26 16:27:42,909 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:27:42,911 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:27:42,913 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:27:42,915 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:27:42,917 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:27:42,919 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:27:42,950 - Created '20' parsers.
+2014-08-26 16:27:42,971 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:27:42,971 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:27:42,972 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:27:42,973 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:27:42,978 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:27:42,978 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:27:42,978 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:27:42,978 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:27:42,978 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:29:36,022 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:29:36,023 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:29:36,023 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:29:36,023 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:29:36,023 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:29:36,026 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:29:36,033 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:29:36,035 - Do unicode file recognition:  false
+2014-08-26 16:29:36,035 - FileResourceLoader : adding path '.'
+2014-08-26 16:29:36,046 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:29:36,048 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:29:36,051 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:29:36,053 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:29:36,055 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:29:36,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:29:36,088 - Created '20' parsers.
+2014-08-26 16:29:36,108 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:29:36,109 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:29:36,109 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:29:36,110 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:29:36,115 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:29:36,115 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:29:36,115 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:29:36,115 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:29:36,115 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:31:25,811 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:31:25,812 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:31:25,812 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:31:25,812 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:31:25,812 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:31:25,816 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:31:25,823 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:31:25,825 - Do unicode file recognition:  false
+2014-08-26 16:31:25,825 - FileResourceLoader : adding path '.'
+2014-08-26 16:31:25,837 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:31:25,839 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:31:25,841 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:31:25,843 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:31:25,845 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:31:25,847 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:31:25,878 - Created '20' parsers.
+2014-08-26 16:31:25,897 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:31:25,898 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:31:25,898 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:31:25,899 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:31:25,904 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:31:25,904 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:31:25,904 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:31:25,904 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:31:25,904 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:33:22,833 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:33:22,833 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:33:22,833 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:33:22,833 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:22,833 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:22,837 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:33:22,844 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:33:22,846 - Do unicode file recognition:  false
+2014-08-26 16:33:22,846 - FileResourceLoader : adding path '.'
+2014-08-26 16:33:22,858 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:33:22,860 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:33:22,862 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:33:22,864 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:33:22,867 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:33:22,868 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:33:22,901 - Created '20' parsers.
+2014-08-26 16:33:22,919 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:33:22,919 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:22,920 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:33:22,921 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:22,926 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:33:22,926 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:33:22,926 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:33:22,926 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:33:22,926 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:33:25,895 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:33:25,895 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:33:25,896 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:33:25,896 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:33:25,896 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:33:25,896 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:33:25,896 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:25,896 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:25,896 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:25,896 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:33:25,898 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:33:25,898 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:33:25,903 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:33:25,903 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:33:25,904 - Do unicode file recognition:  false
+2014-08-26 16:33:25,904 - Do unicode file recognition:  false
+2014-08-26 16:33:25,904 - FileResourceLoader : adding path '.'
+2014-08-26 16:33:25,904 - FileResourceLoader : adding path '.'
+2014-08-26 16:33:25,905 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:33:25,905 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:33:25,906 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:33:25,906 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:33:25,908 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:33:25,908 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:33:25,910 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:33:25,910 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:33:25,912 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:33:25,912 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:33:25,913 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:33:25,913 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:33:25,939 - Created '20' parsers.
+2014-08-26 16:33:25,939 - Created '20' parsers.
+2014-08-26 16:33:25,947 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:33:25,947 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:33:25,948 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:25,948 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:25,948 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:33:25,948 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:33:25,949 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:25,949 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:33:25,952 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:33:25,952 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:33:25,953 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:33:25,953 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:33:25,953 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:33:25,953 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:33:25,953 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:33:25,953 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:33:25,953 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:33:25,953 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:34:36,721 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:34:36,722 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:34:36,722 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:34:36,722 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:36,722 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:36,726 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:34:36,736 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:34:36,738 - Do unicode file recognition:  false
+2014-08-26 16:34:36,738 - FileResourceLoader : adding path '.'
+2014-08-26 16:34:36,750 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:34:36,752 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:34:36,754 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:34:36,757 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:34:36,759 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:34:36,760 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:34:36,792 - Created '20' parsers.
+2014-08-26 16:34:36,814 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:34:36,814 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:36,815 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:34:36,816 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:36,821 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:34:36,821 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:34:36,821 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:34:36,821 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:34:36,821 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:34:39,760 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:34:39,760 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:34:39,760 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:34:39,760 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:34:39,760 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:34:39,760 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:34:39,760 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:39,760 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:39,760 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:39,760 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:34:39,762 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:34:39,762 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:34:39,767 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:34:39,767 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:34:39,769 - Do unicode file recognition:  false
+2014-08-26 16:34:39,769 - Do unicode file recognition:  false
+2014-08-26 16:34:39,769 - FileResourceLoader : adding path '.'
+2014-08-26 16:34:39,769 - FileResourceLoader : adding path '.'
+2014-08-26 16:34:39,769 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:34:39,769 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:34:39,771 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:34:39,771 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:34:39,773 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:34:39,773 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:34:39,775 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:34:39,775 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:34:39,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:34:39,777 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:34:39,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:34:39,778 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:34:39,803 - Created '20' parsers.
+2014-08-26 16:34:39,803 - Created '20' parsers.
+2014-08-26 16:34:39,812 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:34:39,812 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:34:39,812 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:39,812 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:39,813 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:34:39,813 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:34:39,813 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:39,813 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:34:39,817 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:34:39,817 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:34:39,817 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:34:39,817 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:34:39,817 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:34:39,817 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:34:39,817 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:34:39,817 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:34:39,817 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:34:39,817 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:35:14,012 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:35:14,012 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:35:14,012 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:35:14,012 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:14,012 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:14,015 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:35:14,023 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:35:14,025 - Do unicode file recognition:  false
+2014-08-26 16:35:14,025 - FileResourceLoader : adding path '.'
+2014-08-26 16:35:14,037 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:35:14,039 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:35:14,041 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:35:14,043 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:35:14,046 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:35:14,047 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:35:14,079 - Created '20' parsers.
+2014-08-26 16:35:14,101 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:35:14,101 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:14,102 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:35:14,103 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:14,108 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:35:14,108 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:35:14,108 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:35:14,108 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:35:14,108 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:35:43,849 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:35:43,850 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:35:43,850 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:35:43,850 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:43,850 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:43,853 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:35:43,861 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:35:43,862 - Do unicode file recognition:  false
+2014-08-26 16:35:43,862 - FileResourceLoader : adding path '.'
+2014-08-26 16:35:43,874 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:35:43,876 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:35:43,878 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:35:43,881 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:35:43,883 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:35:43,884 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:35:43,916 - Created '20' parsers.
+2014-08-26 16:35:43,938 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:35:43,938 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:43,939 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:35:43,940 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:43,944 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:35:43,945 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:35:43,945 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:35:43,945 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:35:43,945 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:35:46,981 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:35:46,981 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:35:46,981 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:35:46,981 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:35:46,981 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:35:46,981 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:35:46,981 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:46,981 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:46,981 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:46,981 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:35:46,983 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:35:46,983 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:35:46,988 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:35:46,988 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:35:46,990 - Do unicode file recognition:  false
+2014-08-26 16:35:46,990 - Do unicode file recognition:  false
+2014-08-26 16:35:46,990 - FileResourceLoader : adding path '.'
+2014-08-26 16:35:46,990 - FileResourceLoader : adding path '.'
+2014-08-26 16:35:46,990 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:35:46,990 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:35:46,992 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:35:46,992 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:35:46,993 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:35:46,993 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:35:46,995 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:35:46,995 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:35:46,997 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:35:46,997 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:35:46,998 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:35:46,998 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:35:47,023 - Created '20' parsers.
+2014-08-26 16:35:47,023 - Created '20' parsers.
+2014-08-26 16:35:47,032 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:35:47,032 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:35:47,032 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:47,032 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:47,033 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:35:47,033 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:35:47,034 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:47,034 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:35:47,037 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:35:47,037 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:35:47,037 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:35:47,037 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:35:47,037 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:35:47,037 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:35:47,038 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:35:47,038 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:35:47,038 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:35:47,038 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-26 16:37:15,104 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-26 16:37:15,104 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-26 16:37:15,104 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-26 16:37:15,104 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:37:15,104 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-26 16:37:15,107 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-26 16:37:15,115 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-26 16:37:15,116 - Do unicode file recognition:  false
+2014-08-26 16:37:15,116 - FileResourceLoader : adding path '.'
+2014-08-26 16:37:15,128 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-26 16:37:15,130 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-26 16:37:15,132 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-26 16:37:15,134 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-26 16:37:15,137 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-26 16:37:15,138 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-26 16:37:15,170 - Created '20' parsers.
+2014-08-26 16:37:15,192 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-26 16:37:15,192 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:37:15,192 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-26 16:37:15,194 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-26 16:37:15,198 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-26 16:37:15,198 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-26 16:37:15,198 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-26 16:37:15,199 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-26 16:37:15,199 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-28 16:33:07,737 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-28 16:33:07,737 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-28 16:33:07,737 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-28 16:33:07,737 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 16:33:07,737 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 16:33:07,740 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-28 16:33:07,748 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-28 16:33:07,749 - Do unicode file recognition:  false
+2014-08-28 16:33:07,749 - FileResourceLoader : adding path '.'
+2014-08-28 16:33:07,761 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-28 16:33:07,763 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-28 16:33:07,765 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-28 16:33:07,767 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-28 16:33:07,769 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-28 16:33:07,771 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-28 16:33:07,808 - Created '20' parsers.
+2014-08-28 16:33:07,823 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-28 16:33:07,823 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 16:33:07,823 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-28 16:33:07,825 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 16:33:07,831 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-28 16:33:07,831 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-28 16:33:07,831 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-28 16:33:07,831 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-28 16:33:07,831 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-28 16:42:36,849 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-28 16:42:36,849 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-28 16:42:36,849 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-28 16:42:36,849 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 16:42:36,849 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 16:42:36,852 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-28 16:42:36,861 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-28 16:42:36,863 - Do unicode file recognition:  false
+2014-08-28 16:42:36,863 - FileResourceLoader : adding path '.'
+2014-08-28 16:42:36,875 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-28 16:42:36,877 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-28 16:42:36,880 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-28 16:42:36,882 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-28 16:42:36,885 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-28 16:42:36,886 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-28 16:42:36,931 - Created '20' parsers.
+2014-08-28 16:42:36,948 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-28 16:42:36,948 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 16:42:36,949 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-28 16:42:36,950 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 16:42:36,955 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-28 16:42:36,955 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-28 16:42:36,955 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-28 16:42:36,955 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-28 16:42:36,955 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-28 17:13:21,265 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-28 17:13:21,266 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-28 17:13:21,266 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-28 17:13:21,266 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 17:13:21,266 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 17:13:21,269 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-28 17:13:21,276 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-28 17:13:21,278 - Do unicode file recognition:  false
+2014-08-28 17:13:21,278 - FileResourceLoader : adding path '.'
+2014-08-28 17:13:21,290 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-28 17:13:21,292 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-28 17:13:21,294 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-28 17:13:21,296 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-28 17:13:21,298 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-28 17:13:21,300 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-28 17:13:21,338 - Created '20' parsers.
+2014-08-28 17:13:21,358 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-28 17:13:21,358 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 17:13:21,359 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-28 17:13:21,361 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 17:13:21,368 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-28 17:13:21,368 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-28 17:13:21,368 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-28 17:13:21,368 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-28 17:13:21,368 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2014-08-28 17:20:19,167 - Log4JLogChute initialized using file 'velocity.log'
+2014-08-28 17:20:19,167 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-08-28 17:20:19,167 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-08-28 17:20:19,167 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 17:20:19,167 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-08-28 17:20:19,170 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-08-28 17:20:19,178 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-08-28 17:20:19,180 - Do unicode file recognition:  false
+2014-08-28 17:20:19,180 - FileResourceLoader : adding path '.'
+2014-08-28 17:20:19,191 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-08-28 17:20:19,193 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-08-28 17:20:19,196 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-08-28 17:20:19,198 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-08-28 17:20:19,200 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-08-28 17:20:19,201 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-08-28 17:20:19,245 - Created '20' parsers.
+2014-08-28 17:20:19,260 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-08-28 17:20:19,260 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 17:20:19,261 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-08-28 17:20:19,262 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-08-28 17:20:19,267 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-08-28 17:20:19,267 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-08-28 17:20:19,267 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-08-28 17:20:19,267 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-08-28 17:20:19,267 - Velocimacro : autoload off : VM system will not automatically reload global library macros

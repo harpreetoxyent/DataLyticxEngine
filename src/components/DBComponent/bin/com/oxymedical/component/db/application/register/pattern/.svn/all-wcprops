@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/register/pattern
+END
+DataPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/register/pattern/DataPattern.java
+END
+FormPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/register/pattern/FormPattern.java
+END
+SearchPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/register/pattern/SearchPattern.java
+END

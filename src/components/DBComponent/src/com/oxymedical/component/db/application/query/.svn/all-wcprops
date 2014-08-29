@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query
+END
+Join.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/Join.java
+END
+Field.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/Field.java
+END
+ParserQueryParameters.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/ParserQueryParameters.java
+END
+OrderBy.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/OrderBy.java
+END
+QueryParameter.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/QueryParameter.java
+END
+Condition.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/application/query/Condition.java
+END

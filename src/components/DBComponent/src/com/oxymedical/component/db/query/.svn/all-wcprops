@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query
+END
+FieldConvertedQueryCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/FieldConvertedQueryCreator.java
+END
+TableLinkedQueryCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/TableLinkedQueryCreator.java
+END
+QueryCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/QueryCreator.java
+END
+QueryHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/QueryHelper.java
+END
+TestDecoration.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/TestDecoration.java
+END
+DBDecorator.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/DBDecorator.java
+END
+IQueryCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/IQueryCreator.java
+END
+DecoratedQueryCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/query/DecoratedQueryCreator.java
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/exception
+END
+DBComponentException.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/exception/DBComponentException.java
+END
+DBExceptionConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/exception/DBExceptionConstants.java
+END

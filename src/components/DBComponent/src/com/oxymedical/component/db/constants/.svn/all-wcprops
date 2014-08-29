@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants
+END
+TreeConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/TreeConstants.java
+END
+BuildConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/BuildConstants.java
+END
+RegisterConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/RegisterConstants.java
+END
+DBConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/DBConstants.java
+END
+QueryConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/QueryConstants.java
+END
+DataTypeConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/constants/DataTypeConstants.java
+END

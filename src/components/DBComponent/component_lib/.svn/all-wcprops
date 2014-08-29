@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib
+END
+ant-launcher.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ant-launcher.jar
+END
+jta.licence.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/jta.licence.txt
+END
+ant.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ant.jar
+END
+freemarker.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/freemarker.jar
+END
+hibernate3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/hibernate3.jar
+END
+commons-collections.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/commons-collections.jar
+END
+mysql-connector-java-5.0.8-bin.jar
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/mysql-connector-java-5.0.8-bin.jar
+END
+commons-lang.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/commons-lang.jar
+END
+hibernate-annotations.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/hibernate-annotations.jar
+END
+ant-trax.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ant-trax.jar
+END
+antlr-2.7.6rc1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/antlr-2.7.6rc1.jar
+END
+hibernate-tools.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/hibernate-tools.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/commons-logging.jar
+END
+tools.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/tools.jar
+END
+jtidy-r8-21122004.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/jtidy-r8-21122004.jar
+END
+hibernate-commons-annotations.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/hibernate-commons-annotations.jar
+END
+ejb3-persistence.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ejb3-persistence.jar
+END
+ant-nodeps.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ant-nodeps.jar
+END
+asm-attrs.jar
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/asm-attrs.jar
+END
+dom4j-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/dom4j-1.6.1.jar
+END
+jta.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/jta.jar
+END
+cglib-2.1.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/cglib-2.1.3.jar
+END
+log4j.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/log4j.jar
+END
+ehcache.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/ehcache.jar
+END
+asm.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/component_lib/asm.jar
+END

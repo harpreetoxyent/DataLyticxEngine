@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/27/trunk/dev/src/components/DBComponent
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/.project
+END
+hibernate.properties
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/hibernate.properties
+END
+velocity.log
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/velocity.log
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/19/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer
+END
+RendererComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/14/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/RendererComponent.java
+END
+IUIBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/IUIBuilder.java
+END
+IRendererComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/IRendererComponent.java
+END
+Application.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/Application.java
+END

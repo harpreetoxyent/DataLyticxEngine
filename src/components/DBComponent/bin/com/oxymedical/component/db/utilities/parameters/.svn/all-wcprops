@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/parameters
+END
+NameQueryParameter.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/parameters/NameQueryParameter.java
+END
+UserInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/parameters/UserInfo.java
+END
+IndexQueryParameter.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/utilities/parameters/IndexQueryParameter.java
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/27/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/25/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/build.xml
+END
+MappingTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/MappingTable.java
+END
+DBMapGenBuildListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/DBMapGenBuildListener.java
+END
+DataPatternParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/DataPatternParser.java
+END
+buildstandalone.xml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/buildstandalone.xml
+END
+BuildXMLEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/!svn/ver/5/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/BuildXMLEditor.java
+END
+DBMappingGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/27/trunk/dev/src/components/DBComponent/src/com/oxymedical/component/db/mappingGenerator/DBMappingGenerator.java
+END
