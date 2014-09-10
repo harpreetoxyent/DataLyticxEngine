@@ -7,7 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/RuleComponent"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HICFrameworkServlet"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/RenderingComponent"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/basecomponent.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>

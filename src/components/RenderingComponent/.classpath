@@ -2,13 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/ZK6.0/calendar.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zcommon.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zhtml.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zk.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zkex.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zkplus.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zul.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/zweb.jar"/>
 	<classpathentry kind="lib" path="lib/ant-contrib.jar"/>
 	<classpathentry kind="lib" path="lib/ant-ext.jar"/>
 	<classpathentry kind="lib" path="lib/ant-hibernate-config-0.1.1.jar"/>
@@ -45,5 +38,17 @@
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/jaap.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/logging.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zcommon.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zel.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zhtml.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zk.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkbind.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkplus.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zul.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zweb.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zcommons-el.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkex.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,44 @@
+Insert into Business_Unit values("","Logistics");
+Insert into Business_Unit values("","Sales");
+Insert into Business_Unit values("","Purchasing");
+Insert into Business_Unit values("","Storage");
+Insert into Business_Unit values("","Scheduling");
+Insert into Business_Unit values("","Manufacturing");
+
+Insert into Entities values("","Material Master");
+Insert into Entities values("","Working Center");
+Insert into Entities values("","Plant");
+Insert into Entities values("","FI");
+Insert into Entities values("","BOM");
+
+Insert into BU_Entity values("","Logistics","Material Master");
+Insert into BU_Entity values("","Logistics","Working Center");
+Insert into BU_Entity values("","Logistics","Plant");
+Insert into BU_Entity values("","Logistics","FI");
+Insert into BU_Entity values("","Logistics","BOM");
+Insert into BU_Entity values("","Sales","Material Master");
+Insert into BU_Entity values("","Sales","Working Center");
+Insert into BU_Entity values("","Sales","Plant");
+Insert into BU_Entity values("","Sales","FI");
+Insert into BU_Entity values("","Sales","BOM");
+Insert into BU_Entity values("","Purchasing","Material Master");
+Insert into BU_Entity values("","Purchasing","Working Center");
+Insert into BU_Entity values("","Purchasing","Plant");
+Insert into BU_Entity values("","Purchasing","FI");
+Insert into BU_Entity values("","Purchasing","BOM");
+Insert into BU_Entity values("","Storage","Material Master");
+Insert into BU_Entity values("","Storage","Working Center");
+Insert into BU_Entity values("","Storage","Plant");
+Insert into BU_Entity values("","Storage","FI");
+Insert into BU_Entity values("","Storage","BOM");
+Insert into BU_Entity values("","Scheduling","Material Master");
+Insert into BU_Entity values("","Scheduling","Working Center");
+Insert into BU_Entity values("","Scheduling","Plant");
+Insert into BU_Entity values("","Scheduling","FI");
+Insert into BU_Entity values("","Scheduling","BOM");
+Insert into BU_Entity values("","Manufacturing","Material Master");
+Insert into BU_Entity values("","Manufacturing","Working Center");
+Insert into BU_Entity values("","Manufacturing","Plant");
+Insert into BU_Entity values("","Manufacturing","FI");
+Insert into BU_Entity values("","Manufacturing","BOM");
+

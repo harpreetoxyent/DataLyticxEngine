@@ -18,7 +18,10 @@ import com.oxymedical.component.importcomponent.parser.ConfigData;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.oxymedical.framework.objectbroker.annotations.InjectNew;
+
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 // Referenced classes of package com.oxymedical.component.importcomponent:
 //            IImportComponent, IDatabaseConnect, IImportProcess, IMappingManager
@@ -64,8 +67,12 @@ public class ImportComponent
     		exp.printStackTrace();
     	}
     }
-
     public void importCSV(String csvFileName, String sep, String tableName)
+    throws ImportComponentException
+    {
+    	importCSV(csvFileName, sep, tableName,null);
+    }
+    public void importCSV(String csvFileName, String sep, String tableName, List<String[]> containerList)
         throws ImportComponentException
     {
         if(csvFileName == null || csvFileName == "" || sep == null || sep == "" || tableName == null || tableName == "")
@@ -79,7 +86,7 @@ public class ImportComponent
             this.tableName = tableName;
             readConfigurations(tableName);
             char seperator = this.sep.charAt(0);
-            importProcess = new ImportProcess(classToLoad, dbComponent, csvFileName, seperator);
+            importProcess = new ImportProcess(classToLoad, dbComponent, csvFileName, seperator, containerList);
             return;
         }
     }
@@ -100,6 +107,25 @@ public class ImportComponent
         char seperator = this.sep.charAt(0);
         importProcess = new ImportProcess();
         Object obj = importProcess.importOneObjectFromCSV(classToLoad, dbComponent, csvFileName, seperator,true);
+        return obj;
+    }
+}
+    public Object[] importCSVAllRowAndReturnObject(String csvFileName, String sep, String tableName)
+    throws ImportComponentException
+{
+    if(csvFileName == null || csvFileName == "" || sep == null || sep == "" || tableName == null || tableName == "")
+    {
+        return null;
+    } else
+    {
+        //tableName = convertTableNameUtil(tableName);
+        this.csvFileName = csvFileName;
+        this.sep = sep;
+        this.tableName = tableName;
+        readConfigurations(tableName);
+        char seperator = this.sep.charAt(0);
+        importProcess = new ImportProcess();
+        Object[] obj = importProcess.importAllObjectFromCSV(classToLoad, dbComponent, csvFileName, seperator,true);
         return obj;
     }
 }
@@ -179,7 +205,34 @@ public class ImportComponent
 		if(data!=null && data.getFormPattern()!=null && data.getFormPattern().getFormValues() !=null)
 		{
 			String csvFileNameToImport = (String) data.getFormPattern().getFormValues().get("csvFileNameToImport");
-			importCSV(csvFileNameToImport, ",", "EntityDefinition");
+			String tableName = (String) data.getFormPattern().getFormValues().get("tableName");
+			importCSV(csvFileNameToImport, ",", tableName);
+		}
+	}
+	
+	@EventSubscriber(topic = "importCSVAllRowsAndContainerSave")
+	public synchronized void importCSVAllRowsAndContainerSave(IHICData hicData) throws ComponentException
+	{
+		if (hicData == null)
+		{
+			throw new DBComponentException("input hicData is null in import component");
+		}	
+		if(databaseConnect == null)
+			databaseConnect = new DatabaseConnect();
+        importStart("root", "root", "jdbc:mysql://localhost:3306/datalyticx");
+		com.oxymedical.core.commonData.IData data = hicData.getData();
+		if(data!=null && data.getFormPattern()!=null && data.getFormPattern().getFormValues() !=null)
+		{
+			String csvFileNameToImport = (String) data.getFormPattern().getFormValues().get("csvFileNameToImport");
+			String tableName = (String) data.getFormPattern().getFormValues().get("tableName");
+			String header[] = new String[1];
+			String value[] = new String[1];
+			header[0] = (String) data.getFormPattern().getFormValues().get("containerHeader");
+			value[0] = (String) data.getFormPattern().getFormValues().get("containerID");
+			List<String[]> containerList = new ArrayList<String[]>();
+			containerList.add(0, header);
+			containerList.add(1, value);
+			importCSV(csvFileNameToImport, ",", tableName, containerList);
 		}
 	}
 

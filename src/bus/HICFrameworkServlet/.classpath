@@ -8,10 +8,9 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.11.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/webserviceprovider.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/RuleComponent"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/basecomponent.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar" sourcepath="/JAAP"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/jaap.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/logging.jar"/>
 	<classpathentry kind="output" path="build/classes"/>

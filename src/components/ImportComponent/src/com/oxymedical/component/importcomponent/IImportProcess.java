@@ -16,4 +16,7 @@ public interface IImportProcess
 	public Object importOneObjectFromCSV(String classtoload, DBComponent dbObj,
 			String csvFileName, char seperator, boolean isOneRow) 
 		throws ImportComponentException;
+	public Object[] importAllObjectFromCSV(String classtoload, DBComponent dbObj,
+			String csvFileName, char seperator, boolean isOneRow) 
+		throws ImportComponentException;
 }

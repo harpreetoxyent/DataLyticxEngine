@@ -14,6 +14,7 @@ import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.db.DBComponent;
 import com.oxymedical.component.importcomponent.ImportComponent;
+import com.oxymedical.component.render.resource_datalyticx.ActualData;
 import com.oxymedical.component.rulesComponent.IRuleClass;
 import com.oxymedical.component.rulesComponent.RuleComponent;
 import com.oxymedical.core.commonData.HICData;
@@ -94,6 +95,34 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		return hicData;
 	}
 
+	public void intializeRuleBackUp(String csvFileNameToImport, IHICData hicData) throws ComponentException
+	{
+		System.out.println("----Inside intializeRules----");
+		try
+		{
+			//Check an incoming fact against our definitions of data quality
+			//Create an entity. This can represent MM, Plant, WC  or BOM
+			DataLyticxEntity entity = new DataLyticxEntity();
+			//For now add MM as dummy data to validate
+			Object entityData = importComponent.importCSVOneRowAndReturnObject(csvFileNameToImport, ",", "ActualData");
+			System.out.println("----Set Data inside enity from DB----entityData="+entityData);			
+			entity.setEntityData(entityData);
+			Object[] facts = {entity};
+			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
+			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
+			//Check if any rule matches for MM
+			ruleClassList = ruleComponent.executeRules(facts);
+			hicData.getData().getFormPattern().getFormValues().put("completeness", ""+DataLyticxQualityEngine.completeness);
+			hicData.getData().getFormPattern().getFormValues().put("accuracy", ""+DataLyticxQualityEngine.accuracy);
+			System.out.println("Rules have been executed and consequence invoked");
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			throw new ComponentException("Exception while inilializing Rules.");
+		}
+	}
+	
 	public void intializeRule(String csvFileNameToImport, IHICData hicData) throws ComponentException
 	{
 		System.out.println("----Inside intializeRules----");
@@ -103,9 +132,9 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 			//Create an entity. This can represent MM, Plant, WC  or BOM
 			DataLyticxEntity entity = new DataLyticxEntity();
 			//For now add MM as dummy data to validate
-			Object entityData = importComponent.importCSVOneRowAndReturnObject(csvFileNameToImport, ",", "MaterialMaster");
-			System.out.println("----Set Data inside enity from DB----entityData="+entityData);			
-			entity.setEntityData(entityData);
+			Object[] entityArrayData = importComponent.importCSVAllRowAndReturnObject(csvFileNameToImport, ",", "ActualData");
+			System.out.println("----Set Data inside enity from DB----entityArrayData="+entityArrayData);			
+			entity.setEntityArrayData(entityArrayData);
 			Object[] facts = {entity};
 			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
@@ -130,7 +159,7 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
         	{
         		dataLyticxEngine = new DataLyticxQualityEngine(dbComponent);
         	}
-			DataLyticxQualityEngine.MaterialMasterMandatoryFields = dataLyticxEngine.getAllMandatoryFieldsForMM();
+			DataLyticxQualityEngine.DefinitionData = dataLyticxEngine.getDefinitionData();
 		} 
         catch (Exception e) 
         {
@@ -165,9 +194,9 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		DataLyticxComponent dl = new DataLyticxComponent();	
 		//First Import the CSV file containing the defininition of mandatory and legitimate values
 //		dl.importComponent = new ImportComponent();
-//		dl.initializeImport("Material_Master_Definition.csv","MaterialMasterDefinition");
+//		dl.initializeImport("Entity_Definition.csv","EntityDefinition");
 		//Now the definition is built, load one sample record to check data quality
-        dl.ruleComponent = new RuleComponent();
-        dl.intializeRule("Material_Master.csv",null);
+        //dl.ruleComponent = new RuleComponent();
+        //dl.intializeRule("Material_Master.csv",null);
 	}
 }

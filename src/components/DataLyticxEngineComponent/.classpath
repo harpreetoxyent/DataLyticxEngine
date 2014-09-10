@@ -10,11 +10,33 @@
 	<classpathentry kind="lib" path="/ImportComponent/lib/hibernate3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="lib/resource_datalyticx.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/basecomponent.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar" sourcepath="/HICFrameworkServlet"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/jaap.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/logging.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UniquIdGenerator"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/bsh.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-codec.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-io.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/slf4j-api.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/slf4j-jdk14.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/theme/sapphire.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/theme/silvertail.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/calendar.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zcommon.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zel.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zhtml.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zk.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkbind.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkcharts-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkplus.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zul.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zweb.jar"/>
+	<classpathentry kind="lib" path="lib/resource_datalyticx.jar"/>
+	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/rendering.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

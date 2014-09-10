@@ -562,9 +562,9 @@ public class HICQueryParser
 	    				{
 		    				String fieldTable = getTableColumn(field,DBConstants.DB_CONDITION_CLAUSE);
 		    				String fieldTableArray[] = fieldTable.split(DBConstants.DB_HASH);
-		    				System.out.println("fieldTableArray"+fieldTableArray);
-		    				System.out.println("fieldTableArray[0]"+fieldTableArray[0]);
-		    				System.out.println("fieldTableArray[1]"+fieldTableArray[1]);
+//		    				System.out.println("fieldTableArray"+fieldTableArray);
+//		    				System.out.println("fieldTableArray[0]"+fieldTableArray[0]);
+//		    				System.out.println("fieldTableArray[1]"+fieldTableArray[1]);
 		    				
 		    				if(null == fieldTableArray || null == fieldTableArray[0] || null == fieldTableArray[1])
 		    				{
