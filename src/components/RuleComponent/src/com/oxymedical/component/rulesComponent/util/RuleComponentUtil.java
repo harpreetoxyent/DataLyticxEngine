@@ -2,8 +2,10 @@ package com.oxymedical.component.rulesComponent.util;
 
 import java.util.Hashtable;
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 import com.oxymedical.component.rulesComponent.RuleComponent;
+import com.oxymedical.component.rulesComponent.constants.ConditionConstants;
 
 public class RuleComponentUtil {
 	
@@ -91,7 +93,11 @@ public class RuleComponentUtil {
 	 */
 	public static String replaceStringForObjectName(String str, String replaceStr)
 	{
-		return str.replaceFirst(str.substring(0,str.indexOf(".")), replaceStr);
+		if(str.indexOf(".") > 0){
+			return str.replaceFirst(str.substring(0,str.indexOf(".")), replaceStr);			
+		}else{
+			return str;
+		}
 	}
 
 	/**
@@ -100,7 +106,7 @@ public class RuleComponentUtil {
 	 * @param expression
 	 * @return
 	 */
-	public static Hashtable<String, String> evaluateExpression(String expression) {
+	public static Hashtable<String, String> evaluateExpressionOld(String expression) {
 		Hashtable<String, String> expHash = new Hashtable<String, String>();
 		Stack s = new Stack();
 		char ch[] = expression.toCharArray();
@@ -139,6 +145,46 @@ public class RuleComponentUtil {
 			{
 				s.push(ch[i]);				
 			}
+		}
+		return expHash;
+	}
+
+	/**
+	 * Checks if the hashtable contains the condition string
+	 * This is done to ensure the expression string is not added as part of condition list
+	 * 
+	 * @param condStr
+	 * @param expHash
+	 * @return
+	 */
+	private static boolean checkContains(String condStr, Hashtable expHash) {
+		boolean isPresent = false;
+		if (null != expHash.get(condStr.trim()))
+			isPresent = true;
+		return isPresent;
+	}
+	
+	public static Hashtable<String, String> evaluateExpression(String expression) {
+		Hashtable<String, String> expHash = new Hashtable<String, String>();
+		//String regx = "[||\\&&]";
+		String regx = "[||,\\&+]";
+		String ar[] = Pattern.compile(regx).split(expression);
+		int j=0;
+		String temp = "";
+		int expressionCounter = 1;
+		while( j < ar.length)
+		{				 
+			temp = ar[j];
+			if (temp.length() > 0 && !temp.equals(ConditionConstants.ANDCONDITION) && !checkContains(temp, expHash)) {
+				
+				expHash.put("e"+expressionCounter, temp.trim());// To Do List :  Anjali Remove (( ) incompatible braces 
+				expression = expression.replace(temp, "e"+expressionCounter);
+				expressionCounter++;
+			}
+			j++;
+		}
+		if(expressionCounter > 1){
+			expHash.put("e"+expressionCounter, expression);
 		}
 		return expHash;
 	}

@@ -6,8 +6,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.dom4j.*;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
@@ -39,7 +37,6 @@ import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.oxymedical.core.router.IRouter;
 import com.oxymedical.core.xmlutil.XmlReader;
 import com.oxymedical.framework.objectbroker.annotations.InjectNew;
-import com.oxymedical.framework.objectbroker.annotations.InjectNewType;
 
 
 /**

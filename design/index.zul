@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk>
+<window>
+<?page title="Dashboard - Data Lyticx"?>
+<!-- Load Bootstrap  -->
+<!--<?link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>-->
+
+<!-- Load fonts from local -->
+<?link href="css/fonts.css" rel="stylesheet" type="text/css"?>
+<?link href="less/index.css.dsp" rel="stylesheet" type="text/css"?>
+<zscript src="/library/datalyticx.zs"/> 
+	<include src="navbar.zul"/>             
+	<hlayout id="main" spacing="0">
+		<include src="sidebar.zul"/>    
+		<vlayout spacing="0" hflex="1">
+			<include src="breadcrumbs.zul"/>
+			<include id="inclResults" src="dashboard.zul"/>
+		</vlayout>
+	</hlayout>
+</window>
+</zk>

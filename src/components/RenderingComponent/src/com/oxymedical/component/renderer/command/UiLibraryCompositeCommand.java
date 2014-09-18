@@ -58,8 +58,14 @@ public class UiLibraryCompositeCommand implements IUiLibraryCompositeCommand {
 		return rootFormValue;
 	}
 
-	public void setRootFormValue(Window rootFormValue) {
-		this.rootFormValue = rootFormValue;
+	public void setRootFormValue(org.zkoss.zul.Window input)
+	{
+		this.rootFormValue = input;
+	}
+	
+	public void setRootFormValue( Object input)
+	{
+		this.rootFormValue = (org.zkoss.zul.Window )input;
 	}
 
 	public String getMethodName() {

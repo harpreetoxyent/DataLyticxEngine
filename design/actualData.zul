@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk class="pieDrillDown" name="pieDrillDown">
+<zscript src="/library/datalyticx.zs" />
+<window>
+	<div sclass="page-header">
+	    <label value="SAP Data"/>
+	    <a label="Upload Data" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
+	</div>
+	<div style="width: 800px; margin:10px auto 50px auto;">
+		<label value="Choose a master data file" />
+		<textbox id="CSVFileName" />
+		<button label="Upload File" upload="true,native,maxsize=300" style="border: none; background:#a4a4a4; padding: 5px 20px; text-transform:uppercase; cursor:pointer;">
+			<attribute name="onUpload"><![CDATA[
+		String completeness;
+		String accuracy;
+		File dataCSVFile = new File("/home/oxyent/DataLyticxEngine_git/DataLyticxEngine/data/definition/Actual_Data.csv");
+		Media media = event.getMedia();
+		Files.copy(dataCSVFile, media.getStreamData());
+		CSVFileName.setValue(dataCSVFile.getAbsolutePath());
+		setFormPatternId("pie-drilldown");
+		setDatapatternId("datalyticx");
+		addFormValue("csvFileNameToImport" , dataCSVFile.getAbsolutePath());
+		addFormValue("tableName" , "ActualData");
+		invokeComponent("dataLyticxComponent","executeRuleAgainstInputCSV","com.oxyent.component.datalyticxComponent.DataLyticxComponent","pie-drilldown");
+		if(returnHicData ==null)
+		{
+			return;
+		}
+		else
+		{
+			hicData = returnHicData;
+		}
+		IData dataUnit = hicData.getData();
+		Hashtable formValues = dataUnit.getFormPattern().getFormValues();
+]]></attribute>
+	</button>
+	</div>
+</window>
+</zk>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk id="definition" name="definition">
+<timer id="timerKeepAliveSession" repeats="true" delay="600000" onTimer=""/>
+<zscript src="/library/datalyticx.zs"/> 
+	<div sclass="page-header">
+	    <label value="Setup Definition"/>
+	    <a label="Indentify Discrepencies" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
+	</div>
+    <div style="float:none; width: 630px; margin:auto">
+	<grid>
+	<rows>
+		<row>
+		<label value="Select a business unit"/>
+			<combobox id="businessUnit" name="businessUnit">
+			<attribute name="onCreate"><![CDATA[
+				setFormPatternId("definition");
+				setDatapatternId("datalyticx");
+		invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Business_Unit.Department from datalyticx.Business_Unit");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					showComboData(hicData,businessUnit);	
+				]]></attribute>
+			<attribute name="onSelect"><![CDATA[
+			String businessUnit = getComboBoxValue("businessUnit");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get BU_Entity.BU, BU_Entity.Entity, BU_Entity_Def.FieldName , BU_Entity_Def.LegitimateValue, BU_Entity_Def.Mandatory from datalyticx.BU_Entity_Def,datalyticx.BU_Entity conditions BU_Entity.BU_EntityId:=BU_Entity_Def.BU_EntityId and BU_Entity.BU:=["+businessUnit+"]");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					showListData(hicData,entityDefinitionData);		
+			]]></attribute>
+			</combobox>
+<label value=""/>
+		</row>		
+		<row>
+		<label value="Select an entity"/>
+			<combobox id  = "entity">
+			<attribute name="onCreate"><![CDATA[
+				setFormPatternId("definition");
+				setDatapatternId("datalyticx");
+		invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Entities.Entity from datalyticx.Entities");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					showComboData(hicData,entity);
+				]]></attribute>
+			<attribute name="onSelect"><![CDATA[
+			String businessUnit = getComboBoxValue("businessUnit");
+			String entity = getComboBoxValue("entity");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get BU_Entity.BU, BU_Entity.Entity, BU_Entity_Def.FieldName , BU_Entity_Def.LegitimateValue, BU_Entity_Def.Mandatory from datalyticx.BU_Entity_Def,datalyticx.BU_Entity conditions BU_Entity.BU_EntityId:=BU_Entity_Def.BU_EntityId and BU_Entity.BU:=["+businessUnit+"] and BU_Entity.Entity:=["+entity+"]");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					showListData(hicData,entityDefinitionData);		
+			]]></attribute>
+			</combobox>
+<label value=""/>
+		</row>
+		<row>
+		<label value="Choose a master CSV file"/>
+		<textbox id= "CSVFileName"/>
+		<button label="Upload File" upload="true,native,maxsize=300">
+				<attribute name="onUpload"><![CDATA[
+					String entityName;
+					String entityFieldName;
+					String entitylegitimateValue;
+					String entityMandatory;
+					String businessUnit = getComboBoxValue("businessUnit");
+					String entity = getComboBoxValue("entity");
+					invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get BU_Entity.BU_EntityId from datalyticx.BU_Entity conditions BU_Entity.BU:=["+businessUnit+"] and BU_Entity.Entity:=["+entity+"]");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					List listValue = hicData.getData().getQueryData().getListData();
+					String buEntityID = Long.toString(listValue.get(0));
+
+					File csvFile = new File("/home/oxyent/DataLyticxEngine_git/DataLyticxEngine/data/definition/Entity_Definition.csv");
+					Media media = event.getMedia();
+					Files.copy(csvFile, media.getStreamData());
+					CSVFileName.setValue(csvFile.getAbsolutePath());
+					setFormPatternId("defintion");
+					setDatapatternId("datalyticx");
+					addFormValue("csvFileNameToImport" , csvFile.getAbsolutePath());
+					addFormValue("containerHeader","BU_EntityId");
+					addFormValue("containerID" , buEntityID);
+					addFormValue("tableName" , "BuEntityDef");
+					invokeComponent("importComponent","importCSVAllRowsAndContainerSave","com.oxymedical.component.importcomponent.ImportComponent","defintion");
+
+
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get BU_Entity.BU, BU_Entity.Entity, BU_Entity_Def.FieldName , BU_Entity_Def.LegitimateValue, BU_Entity_Def.Mandatory from datalyticx.BU_Entity_Def,datalyticx.BU_Entity conditions BU_Entity.BU_EntityId:=BU_Entity_Def.BU_EntityId and BU_Entity.BU:=["+businessUnit+"] and BU_Entity.Entity:=["+entity+"]");
+					if(returnHicData ==null)
+					{
+						return;
+					}
+					else
+					{
+					hicData = returnHicData;
+					}
+					showListData(hicData,entityDefinitionData);
+			]]></attribute>
+			</button>
+		</row>		
+		</rows>
+	</grid> 	
+	<separator bar="true"/>
+	<listbox id="entityDefinitionData" class= "entityDefinition" width="650px" mold="paging" pageSize="10" pagingPosition="bottom">
+		<listhead>
+			<listheader label="Business Unit"></listheader>
+			<listheader label="Entity"></listheader>
+			<listheader label="Field Name"></listheader>
+			<listheader label="Legitimate"></listheader>
+			<listheader label="Required Field"></listheader>
+		</listhead>
+		<attribute name="onCreate"><![CDATA[
+	setFormPatternId("definition");
+	setDatapatternId("datalyticx");
+	invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get BU_Entity.BU, BU_Entity.Entity, BU_Entity_Def.FieldName , BU_Entity_Def.LegitimateValue, BU_Entity_Def.Mandatory from datalyticx.BU_Entity_Def,datalyticx.BU_Entity conditions BU_Entity.BU_EntityId:=BU_Entity_Def.BU_EntityId");
+							if(returnHicData ==null)
+							{
+								return;
+							}
+							else
+							{
+							hicData = returnHicData;
+							}
+							showListData(hicData,entityDefinitionData);		
+					]]></attribute>
+	</listbox>
+	<div class="button">
+		<button label="Execute Rules">
+			<attribute name="onClick"><![CDATA[
+			invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","definition.zul");
+		]]></attribute>
+		</button>
+	</div>	
+</div>
+</zk>

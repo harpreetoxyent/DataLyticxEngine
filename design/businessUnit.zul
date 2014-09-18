@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk>
+<zscript src="/library/datalyticx.zs" />
+	<div sclass="page-header">
+		<!--<attribute name="onCreate"><![CDATA[
+			addNewField.setVisible(false);
+		]]></attribute>-->
+		<label value="Data Lyticx"/>
+		<a label="Business Unit" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
+	</div>
+        <div style="float:none; width: 800px; margin:auto">
+		<listbox id="businessUnit" width="650px">
+			<listhead>
+				<listheader label="Serial No"></listheader>
+				<listheader label="Business Unit"></listheader>
+			</listhead>
+				<attribute name="onCreate"><![CDATA[
+	invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Business_Unit.BU_Id, Business_Unit.Department from datalyticx.Business_Unit");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+						hicData = returnHicData;
+						}
+						showListData(hicData,businessUnit);		
+				]]></attribute>
+		</listbox>
+		<!--<grid id="addNewField">
+			<rows>
+				<row>
+					<label value="Name" />
+					<textbox id="buName" />		
+					<button label="Save" >
+				<attribute name="onCreate"><![CDATA[
+com.oxymedical.component.render.resource_datalyticx.BusinessUnit bu = new com.oxymedical.component.render.resource_datalyticx.BusinessUnit();
+		bu.setDepartment(buName.value);
+		invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","social_media_analysis");		
+		Messagebox.show("Changes Saved.", "Information", Messagebox.OK, Messagebox.INFORMATION);
+				]]></attribute>
+					</button>
+				</row>
+			</rows>
+		</grid>
+		<button label="Add New Business Unit" >
+		<attribute name="onClick"><![CDATA[
+			addNewField.setVisible(true);
+		]]></attribute>
+		</button>-->
+	</div>
+</zk>

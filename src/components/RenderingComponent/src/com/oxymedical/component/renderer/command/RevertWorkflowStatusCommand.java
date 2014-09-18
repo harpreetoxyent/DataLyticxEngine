@@ -55,7 +55,7 @@ IUiLibraryCompositeCommand {
 						try
 						{
 							Messagebox.show("Invalid arguments");
-						} catch (InterruptedException e)
+						} catch (Exception e)
 						{
 							e.printStackTrace();
 						}

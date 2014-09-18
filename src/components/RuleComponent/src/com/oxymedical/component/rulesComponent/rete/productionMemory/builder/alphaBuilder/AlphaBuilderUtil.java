@@ -42,7 +42,8 @@ public class AlphaBuilderUtil {
 	 */
 	public List<String> getConditionList(Hashtable expHash) {
 		//Regex regx = new Regex("shells");
-		String regx = "[||, &&, \\S]";
+		//String regx = "[||,&&,\\S]";
+		String regx = "[||,\\&+]";
 		List<String> conditionList = null;
 		String temp = "";
 		if (null != expHash) {
@@ -125,20 +126,39 @@ public class AlphaBuilderUtil {
 									// method 
 								//	 RuleComponent.logger.log(0,"method name = " +attribute[i]);
 									constraintType = ConditionConstants.METHOD;
-									attribute[i] = attribute[i].replace("(", "");
-									attribute[i] = attribute[i].replace(")", "");
+									int indexOfLeftBracket = attribute[i].indexOf("(");
+									int indexOfRightBracket = attribute[i].indexOf(")");
+									Object argumentOfMethod  = null;
+									if(indexOfRightBracket-indexOfLeftBracket == 1)
+									{
+										attribute[i] = attribute[i].replace("(", "");
+										attribute[i] = attribute[i].replace(")", "");										
+									}
+									else
+									{
+										//Get the argument - after ( and before )
+										argumentOfMethod = attribute[i].substring(indexOfLeftBracket+1, indexOfRightBracket);
+										//To do - to handle all the objects - right now this will only work on string 
+										//Get the method name
+										attribute[i] = attribute[i].substring(0,indexOfLeftBracket);
+									}
 			
 									// TODO remove assumption that if it is nested methods, then last method would return String
 									if (attribute.length > 2) dataType = Class.forName("java.lang.String");
+									else if(argumentOfMethod != null)
+									{
+										Method method = clazz.getMethod(attribute[i].trim(), new Class[]{String.class});
+										dataType = method.getReturnType();										
+									}
 									else
 									{
 										Method method = clazz.getMethod(attribute[i].trim(), null);
 										dataType = method.getReturnType();
+										attribute[i] = attribute[i].substring(3);
+										char startChar = attribute[i].charAt(0);
+										char[] lowerStartChar = (startChar+"").toLowerCase().toCharArray();
+										attribute[i] = attribute[i].replace(startChar, lowerStartChar[0]);									
 									}
-									attribute[i] = attribute[i].substring(3);
-									char startChar = attribute[i].charAt(0);
-									char[] lowerStartChar = (startChar+"").toLowerCase().toCharArray();
-									attribute[i] = attribute[i].replace(startChar, lowerStartChar[0]);									
 								}
 								else 
 								{

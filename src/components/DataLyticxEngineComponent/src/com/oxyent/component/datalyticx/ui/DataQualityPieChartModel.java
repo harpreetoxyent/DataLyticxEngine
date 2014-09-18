@@ -11,6 +11,7 @@ import org.zkoss.chart.model.DefaultPieModel;
 import org.zkoss.chart.model.PieModel;
 
 import com.oxyent.component.datalyticxComponent.DataLyticxComponent;
+import com.oxyent.component.datalyticxComponent.constants.DLQCommonMethods;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngine;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngineException;
 import com.oxymedical.component.db.exception.DBComponentException;
@@ -23,40 +24,6 @@ public class DataQualityPieChartModel {
 	private static List<DataQuality> dataQualityList;
 	private static List<DataQuality> dataQualityPerEntityList;
 
-	public List executeQueryReturnList(String queryStr) throws DataLyticxQualityEngineException{
-		IHICData requestData = null;
-		IHICData outputHICData = null;
-		List listValue = null;
-		try {
-			requestData = DataLyticxQualityEngine.buildDataLyticxHICData("indexDL.zul", queryStr);
-			outputHICData = DataLyticxComponent.dbComponent.getListData(requestData);
-			if (outputHICData != null && outputHICData.getData() != null)
-			{
-				listValue = outputHICData.getData().getQueryData().getListData();
-			}
-		} catch (DBComponentException e) {
-			throw new DataLyticxQualityEngineException("DBComponentException in DataQualityPieChartModel : "+e.getMessage());
-		}
-		return listValue;
-	}
-	public String[][] executeQueryReturnArray(String queryStr) throws DataLyticxQualityEngineException{
-		IHICData requestData = null;
-		IHICData outputHICData = null;
-		List listValue = null;
-		String[][] allValues;
-		try {
-			requestData = DataLyticxQualityEngine.buildDataLyticxHICData("indexDL.zul", queryStr);
-			outputHICData = DataLyticxComponent.dbComponent.getListData(requestData);
-			if (outputHICData != null && outputHICData.getData() != null)
-			{
-				listValue = outputHICData.getData().getQueryData().getListData();
-			}
-			allValues = outputHICData.getData().getQueryData().iterateListData(listValue);
-		} catch (DBComponentException e) {
-			throw new DataLyticxQualityEngineException("DBComponentException in DataQualityPieChartModel : "+e.getMessage());
-		}
-		return allValues;
-	}
 	public DataQualityPieChartModel() throws DataLyticxQualityEngineException
 	{
 		model = new DefaultPieModel();
@@ -64,7 +31,7 @@ public class DataQualityPieChartModel {
 		dataQualityList = new LinkedList<DataQuality>();
 		dataQualityPerEntityList = new LinkedList<DataQuality>();
 		try {
-			List listValue = executeQueryReturnList("get Business_Unit.Department from datalyticx.Business_Unit");
+			List listValue = DLQCommonMethods.executeQueryReturnList("get Business_Unit.Department from datalyticx.Business_Unit","indexDl.zul");
 
 			for(int i=0;i<listValue.size();i++){ 
 
@@ -75,7 +42,7 @@ public class DataQualityPieChartModel {
 				"from datalyticx.Business_Unit, datalyticx.Entities, datalyticx.BU_Entity, datalyticx.Quality " +
 				"conditions Business_Unit.Department:=["+buDept+"] and Business_Unit.Department:=BU_Entity.BU" +
 				"  and BU_Entity.Entity:=Entities.Entity and BU_Entity.BU_EntityId:=Quality.BU_EntityId";
-				String[][] allValues = executeQueryReturnArray(qualityQuery);
+				String[][] allValues = DLQCommonMethods.executeQueryReturnArray(qualityQuery,"indexDl.zul");
 
 				if(allValues!= null && allValues.length > 0)
 				{
@@ -113,7 +80,7 @@ public class DataQualityPieChartModel {
 					}
 					buPercentageMap.put(buDept, quality/allValues.length);//Override
 				}else{
-					buPercentageMap.put(buDept, 0.0);//Override
+					buPercentageMap.put(buDept, 100.0);//Override
 				}
 			}
 		} catch (DataLyticxQualityEngineException e) {

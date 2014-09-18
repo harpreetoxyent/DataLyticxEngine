@@ -50,7 +50,8 @@ public class BetaBuilder {
 	 * @param ruleClass
 	 */
 	private void populateConditionList(Hashtable<String, String> expressionHash, Hashtable<String, ConditionConstraints> condHash, IRuleClass ruleClass) {
-		String regx = "[||, && ,\\S]";
+		//String regx = "[||,&&,\\S]";
+		String regx = "[||,\\&+]";
 		// RuleComponent.logger.log(0,"Expression hash size = " + expressionHash.size());
 		JoinNode joinNode = null;
 		INode node = null;

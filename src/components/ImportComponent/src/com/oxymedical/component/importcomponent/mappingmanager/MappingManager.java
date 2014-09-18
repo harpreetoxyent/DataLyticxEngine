@@ -145,7 +145,8 @@ public class MappingManager
                 Method SetMethod = (Method)settersList.get(j);
                 String headerName = header[i].trim();
                 //check if header contains _ as hibernate will remove it and make it caps
-                if(null != headerName && headerName.indexOf("_")>0)
+                //if(null != headerName && headerName.indexOf("_")>0)
+                while(null != headerName && headerName.indexOf("_")>0)//to replace all _ and caps next letter
                 {
                 	//replace _ and make letter after _ caps
                 	headerName=headerName.replaceFirst("_", "");

@@ -81,7 +81,7 @@ public class ReteBuilder
 			
 			// evaluates a condition and gets the expression w.r.t precedence 
 			String conditionString = ruleClass.getCondition().getConditionString();
-			Hashtable<String, String> expressionHash = RuleComponentUtil.evaluateExpression("(" + conditionString + ")");
+			Hashtable<String, String> expressionHash = RuleComponentUtil.evaluateExpression(conditionString);
 			
 			// build alpha nodes
 			Hashtable<String, ConditionConstraints> condHash = alphaNodeBuilder.buildAlphaNodes(expressionHash, reteNode);

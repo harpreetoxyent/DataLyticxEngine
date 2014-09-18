@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.oxyent.component.datalyticxComponent.DataLyticxComponent;
+import com.oxyent.component.datalyticxComponent.constants.DLQCommonMethods;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngine;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngineException;
 import com.oxymedical.component.db.exception.DBComponentException;
@@ -12,15 +13,15 @@ import com.oxymedical.core.commonData.IHICData;
 public class DataLyticxQueries {
 
     public List getBusinessUnitList() throws DataLyticxQualityEngineException {
-    	List buNames = executeQueryReturnList("get Business_Unit.Department from datalyticx.Business_Unit");
+    	List buNames = DLQCommonMethods.executeQueryReturnList("get Business_Unit.Department from datalyticx.Business_Unit","indexDl.zul");
         return buNames;
     }
     public List getEntityList() throws DataLyticxQualityEngineException {
-    	return executeQueryReturnList("get Entities.Entity from datalyticx.Entities");
+    	return DLQCommonMethods.executeQueryReturnList("get Entities.Entity from datalyticx.Entities","indexDl.zul");
     }
     
     public List getBuEntityId() throws DataLyticxQualityEngineException {
-    	return executeQueryReturnList("get BU_Entity.BU_EntityId from datalyticx.BU_Entity");
+    	return DLQCommonMethods.executeQueryReturnList("get BU_Entity.BU_EntityId from datalyticx.BU_Entity","indexDl.zul");
     }
     
     public List getQualityList() throws DataLyticxQualityEngineException {
@@ -55,22 +56,4 @@ public class DataLyticxQueries {
     	}
     	return hasData;
     }
-    
-    public List executeQueryReturnList(String queryStr) throws DataLyticxQualityEngineException{
-		IHICData requestData = null;
-		IHICData outputHICData = null;
-		List listValue = null;
-		try {
-			requestData = DataLyticxQualityEngine.buildDataLyticxHICData("indexDL.zul", queryStr);
-			outputHICData = DataLyticxComponent.dbComponent.getListData(requestData);
-			if (outputHICData != null && outputHICData.getData() != null)
-			{
-				listValue = outputHICData.getData().getQueryData().getListData();
-			}
-		} catch (DBComponentException e) {
-			throw new DataLyticxQualityEngineException("DBComponentException in DataQualityPieChartModel : "+e.getMessage());
-		}
-		return listValue;
-	}
-    
 }

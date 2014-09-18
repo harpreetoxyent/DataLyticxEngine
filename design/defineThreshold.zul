@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk id="definition" name="definition">
+
+<zscript src="/library/datalyticx.zs"/> 
+
+</zk>

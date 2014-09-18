@@ -8,19 +8,16 @@
 	<rule name="TestRule1">
 		<salience> 0 </salience>
 		<if>
-			<condition-list>
-				<condition name="cond1">
-					(entity.getField() == "BSTMI")
-				</condition>
-				<condition name="cond1">
-					(entity.getField() == "BSTMI")
-				</condition>
-			</condition-list>
+		   <condition-list>
+		      <condition name="cond1">
+			 ((entity.getBusinessUnit() == "Sales") && (entity.getEntity() == "Material Master") && (entity.satisfyDefinition("BSTMI",multipleOf,["25"]))
+		      </condition>
+		   </condition-list>
 		</if>
 		<then>
 			<consequence-list>
 				<consequence name="c1">
-					entity.checkQuality()
+					entity.accuracy(true);
 				</consequence>
 			</consequence-list>
 			</then>

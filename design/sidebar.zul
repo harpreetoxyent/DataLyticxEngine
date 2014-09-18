@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<div id="sidebar" sclass="sidebar" apply="applications2.SidebarComposer">
+	<!-- Shortcuts Button Removed-->
+	<!-- Navigation List -->
+	<navbar id="navbar" sclass="nav-list" orient="vertical">
+		<navitem label="Dashboard" id="dashboard" iconSclass="z-icon-dashboard" selected="true" onClick="updateSubPage(self.id)"/>
+		<nav label="Rule Setup" iconSclass="z-icon-edit">
+			<navitem label="Definition" id="definition" iconSclass="z-icon-angle-double-right" onClick="updateSubPage(self.id)"/>
+			<navitem label="Rules" id="rule" iconSclass="z-icon-angle-double-right" onClick="updateSubPage(self.id)"/>
+		</nav>
+		<navitem label="Acutal Data" id="actualData" iconSclass="z-icon-edit" onClick="updateSubPage(self.id)"/>
+		<navitem label="Administration" iconSclass="z-icon-text-width"/>
+		<nav label="Data Lyticx" iconSclass="z-icon-desktop">
+		   <navitem label="Business Unit" id="businessUnit" iconSclass="z-icon-angle-double-right" onClick="updateSubPage(self.id)"/>
+			<navitem label="Entity" id="entity" iconSclass="z-icon-angle-double-right" onClick="updateSubPage(self.id)"/>
+			<nav label="Quality" iconSclass="z-icon-angle-double-right" sclass="grey">
+				<navitem label="Accuracy" iconSclass="z-icon-plus"/>
+				<navitem label="Completeness" iconSclass="z-icon-plus"/>
+				<navitem label="Integrity" iconSclass="z-icon-plus"/>
+				<navitem label="Relevence" iconSclass="z-icon-plus"/>
+				<navitem label="Validity" iconSclass="z-icon-plus"/>
+			</nav>
+		</nav>
+		<nav label="Tables" iconSclass="z-icon-list">
+			<navitem label="Incorrect Data" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Actual Data" iconSclass="z-icon-angle-double-right"/>
+			<navitem label="Quality" iconSclass="z-icon-angle-double-right"/>
+		</nav>
+	</navbar>
+	<zscript><![CDATA[
+        void updateSubPage(String sub) {
+            inclResults.setSrc(sub+".zul");
+        }
+     ]]></zscript>
+	<!-- Toggler -->
+	<div sclass="sidebar-collapse">
+		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+	</div>
+</div>

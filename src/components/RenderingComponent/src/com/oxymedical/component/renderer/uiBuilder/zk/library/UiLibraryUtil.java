@@ -20,7 +20,6 @@ import org.zkoss.image.AImage;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Session;
-import org.zkoss.zkex.zul.Jasperreport;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Combobox;
@@ -489,6 +488,7 @@ public class UiLibraryUtil {
 
 	public void showJasperReport(String controlObject, String jasperFile,
 			Window rootFormValue, IData dataUnit) {
+		/*
 		List listValue = dataUnit.getQueryData().getListData();
 		Object displayObject = rootFormValue.getFellowIfAny(controlObject, true);
 		Jasperreport jasperReport = (Jasperreport) displayObject;
@@ -514,28 +514,29 @@ public class UiLibraryUtil {
 		jasperReport.setSrc(jasperFile);
 		jasperReport.setParameters(parameters);
 		jasperReport.setDatasource(ds);
+		*/
 	}
 
 
 	public void showExcelReport(String controlObject, String jasperFile,
 			Window rootFormValue, List listValue ) {
 
-		Object displayObject = rootFormValue.getFellowIfAny(controlObject, true);
-		Jasperreport jasperReport = (Jasperreport) displayObject;
-		String idValue = null;
-		String[] fields = null;
-		fields = UILibraryConstant.FIELDS.trim().split(",");
-		StringBuffer idField = new StringBuffer();
-		int colKey = 0;
-
-		Map parameters = new HashMap();
-		parameters.put("Title", "Report");
-		HibernateQueryResultDataSource ds = new HibernateQueryResultDataSource(
-				listValue, fields);
-		jasperReport.setType("csv");
-		jasperReport.setSrc(jasperFile);
-		jasperReport.setParameters(parameters);
-		jasperReport.setDatasource(ds);
+//		Object displayObject = rootFormValue.getFellowIfAny(controlObject, true);
+//		Jasperreport jasperReport = (Jasperreport) displayObject;
+//		String idValue = null;
+//		String[] fields = null;
+//		fields = UILibraryConstant.FIELDS.trim().split(",");
+//		StringBuffer idField = new StringBuffer();
+//		int colKey = 0;
+//
+//		Map parameters = new HashMap();
+//		parameters.put("Title", "Report");
+//		HibernateQueryResultDataSource ds = new HibernateQueryResultDataSource(
+//				listValue, fields);
+//		jasperReport.setType("csv");
+//		jasperReport.setSrc(jasperFile);
+//		jasperReport.setParameters(parameters);
+//		jasperReport.setDatasource(ds);
 	}
 
 
@@ -552,7 +553,7 @@ public class UiLibraryUtil {
 			// alert(datepickerObj1.name +"can not be empty");
 			try {
 				Messagebox.show(datepickerObj1.getName() + "field can not be empty.",title,Messagebox.OK, Messagebox.ERROR);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
@@ -577,7 +578,7 @@ public class UiLibraryUtil {
 			try {
 				Messagebox
 				.show("Invalid Date Please select current/advance date.",title,Messagebox.OK, Messagebox.ERROR);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			formValues.remove(datepicker1);
@@ -599,7 +600,7 @@ public class UiLibraryUtil {
 		if (date2 == null || date2 == "") {
 			try {
 				Messagebox.show("Please select " + datepickerObj2.getName()+".",title,Messagebox.OK, Messagebox.ERROR);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			formValues.remove(datepicker1);
@@ -624,7 +625,7 @@ public class UiLibraryUtil {
 			try {
 				Messagebox
 				.show("Invalid Date Please select current/advance date.",title,Messagebox.OK, Messagebox.ERROR);
-			} catch (InterruptedException e) {			
+			} catch (Exception e) {			
 				e.printStackTrace();
 			}
 			// alert("Invalid Date Please select current/advance date");
@@ -639,7 +640,7 @@ public class UiLibraryUtil {
 		} else {
 			try {
 				Messagebox.show("End Date should be greater than Start Date.",title,Messagebox.OK, Messagebox.ERROR);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			formValues.remove(datepicker1);
@@ -649,7 +650,7 @@ public class UiLibraryUtil {
 		return isDateValid;
 	}
 
-	/*public void showComboData(IData dataUnit, Combobox comboObj,
+	public void showComboData(IData dataUnit, Combobox comboObj,
 			Hashtable comboTable) {
 		if (null != dataUnit.getQueryData().getRowValues()) {
 			System.out.println("dataUnit.getQueryData().getRowValues()"
@@ -679,7 +680,7 @@ public class UiLibraryUtil {
 				}
 			}
 		}
-	}*/
+	}
 
 
 	/**

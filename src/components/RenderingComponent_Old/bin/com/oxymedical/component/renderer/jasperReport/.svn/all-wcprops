@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport
+END
+Patient.jasper
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/Patient.jasper
+END
+Query.jasper
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/Query.jasper
+END
+jasperDesign.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/jasperDesign.jrxml
+END
+PatientDesign.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/PatientDesign.jrxml
+END
+Physician.jasper
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/Physician.jasper
+END
+JasperCompiler.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/JasperCompiler.java
+END
+DoctorDesign.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/DoctorDesign.jrxml
+END
+PatientInfoDesign.jrxml
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/!svn/ver/5/trunk/dev/src/components/RenderingComponent/src/com/oxymedical/component/renderer/jasperReport/PatientInfoDesign.jrxml
+END

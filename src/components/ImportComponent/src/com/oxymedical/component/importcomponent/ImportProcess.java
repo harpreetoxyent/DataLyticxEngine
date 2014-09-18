@@ -39,15 +39,20 @@ public class ImportProcess implements IImportProcess {
 			totalRecords = recordsList.size();
 			Method containerSetMethod = null;
 			String containerFieldType = null;
-			String containerRecord[] = (String[]) (String[])containerList.get(0); 
-			Object containerObj[] = { containerRecord[0].trim() };
-			if(containerMethodList !=null){
-				for(int i=0; i < containerMethodList.size();i++){					
-					containerSetMethod = (Method) (Method) containerMethodList.get(i);
-					Class parameterTypes[] = containerSetMethod.getParameterTypes();
-					Class _tmp1 = parameterTypes[0];
-					containerFieldType = parameterTypes[0].getName();
-					
+			String containerRecord[] = null;
+			Object containerObjGlobal[] = null;
+			if(containerList != null){
+				containerRecord = (String[]) (String[])containerList.get(0); 
+				Object containerObj[] = { containerRecord[0].trim() };
+				containerObjGlobal = containerObj;
+				if(containerMethodList !=null){
+					for(int i=0; i < containerMethodList.size();i++){					
+						containerSetMethod = (Method) (Method) containerMethodList.get(i);
+						Class parameterTypes[] = containerSetMethod.getParameterTypes();
+						Class _tmp1 = parameterTypes[0];
+						containerFieldType = parameterTypes[0].getName();
+						
+					}
 				}
 			}
 			for (row = 0; row < totalRecords; row++) {
@@ -65,7 +70,7 @@ public class ImportProcess implements IImportProcess {
 					setMethod.invoke(obj, new Object[] { fieldValue });
 					
 					if(containerMethodList !=null && containerFieldType != null){
-						Object containerFieldValue = cnvtDataType.setObjectValue(containerObj[0], containerFieldType);
+						Object containerFieldValue = cnvtDataType.setObjectValue(containerObjGlobal[0], containerFieldType);
 						containerSetMethod.invoke(obj, new Object[] { containerFieldValue });
 					}
 				}

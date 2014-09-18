@@ -260,9 +260,10 @@ public class ReteWorkingMemory implements IWorkingMemory {
 				String condition = constraints.getConditionString();
 				condition = splitStringOnTokens(condition)[0];
 				condition = condition.replaceAll(clazz.getName(), "");
-
 				String[] condArr = splitStringByDot(condition);
 				nameOfCondition = condArr[condArr.length - 1];
+				int indexOfLeftBracket = nameOfCondition.indexOf("(");
+				//int indexOfRightBracket = nameOfCondition.indexOf(")");
 				if (nameOfCondition.indexOf(RulesConstants.GET) == 0) {
 					nameOfCondition = nameOfCondition
 							.substring(RulesConstants.GET.length());
@@ -273,6 +274,8 @@ public class ReteWorkingMemory implements IWorkingMemory {
 						nameOfCondition = nameOfCondition.replace(")", "");
 					}
 					// RuleComponent.logger.log(0,"[nameOfCondition]".concat(nameOfCondition));
+				}else if(indexOfLeftBracket != 0){
+					nameOfCondition = nameOfCondition.substring(0,indexOfLeftBracket);
 				}
 
 				condArr[0] = "";
@@ -330,7 +333,7 @@ public class ReteWorkingMemory implements IWorkingMemory {
 		}
 	}
 
-	private Object evaluateMethod(String[] methods, Class clazz, Object ob)
+	private Object evaluateMethodBackup(String[] methods, Class clazz, Object ob)
 			throws IllegalArgumentException, SecurityException,
 			IllegalAccessException, InvocationTargetException,
 			NoSuchMethodException {
@@ -357,6 +360,51 @@ public class ReteWorkingMemory implements IWorkingMemory {
 			return null;
 		}
 	}
+
+	private Object evaluateMethod(String[] methods, Class clazz, Object ob)
+	throws IllegalArgumentException, SecurityException,
+	IllegalAccessException, InvocationTargetException,
+	NoSuchMethodException {
+		try {
+			Object value = ob;
+			for (int i = 0; i < methods.length; i++) {
+				if (!methods[i].equals("")) {
+					String methodName = methods[i];
+					int indexOfLeftBracket = methodName.indexOf("(");
+					int indexOfRightBracket = methodName.indexOf(")");
+					Object argumentOfMethod  = null;
+					methods[i] = "";
+					if(indexOfRightBracket-indexOfLeftBracket > 1 && indexOfLeftBracket > 0){
+						//Get the argument - after ( and before )
+						//argumentOfMethod = methodName.substring(indexOfLeftBracket+1, indexOfRightBracket);
+						argumentOfMethod = methodName.substring(indexOfLeftBracket+2, indexOfRightBracket-1); // Argument without '' quotes
+						//To do - to handle all the objects - right now this will only work on string 
+						//Get the method name
+						methodName = methodName.substring(0,indexOfLeftBracket);
+					}else if (methodName.indexOf('(') > 0
+							&& methodName.indexOf(')') > 0) {
+						methodName = methodName.replace("(", "");
+						methodName = methodName.replace(")", "");
+					}
+					if(argumentOfMethod != null)
+					{
+						Method method = clazz.getDeclaredMethod(methodName, new Class[]{String.class});
+						value = (Object) method.invoke(ob, new Object[]{ argumentOfMethod });			
+					}else{
+						value = (Object) clazz.getDeclaredMethod(methodName, null)
+							.invoke(ob, null);
+					}
+					if (value == null)
+						return null;
+					value = evaluateMethod(methods, value.getClass(), value);
+				}
+			}
+			return value;
+		} catch (NoSuchMethodException nsme) {
+			nsme.printStackTrace();
+			return null;
+		}
+}
 
 	private String[] splitStringByDot(String st) {
 		Pattern p = Pattern.compile(".", Pattern.LITERAL);

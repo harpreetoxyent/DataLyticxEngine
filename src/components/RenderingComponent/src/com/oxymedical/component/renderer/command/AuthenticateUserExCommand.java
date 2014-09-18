@@ -75,7 +75,7 @@ public class AuthenticateUserExCommand extends BaseCommand implements IUiLibrary
 						try
 						{
 							Messagebox.show("Invalid arguments");
-						} catch (InterruptedException e)
+						} catch (Exception e)
 						{
 							e.printStackTrace();
 						}

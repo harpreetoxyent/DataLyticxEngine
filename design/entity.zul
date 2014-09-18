@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk>
+<window>
+<zscript src="/library/datalyticx.zs" />
+	<div sclass="page-header">
+		<label value="Data Lyticx"/>
+		<a label="Entity" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
+	</div>
+        <div style="float:none; width: 800px; margin:auto">
+		<listbox id="entity" width="650px">
+			<listhead>
+				<listheader label="Serial No"></listheader>
+				<listheader label="Entity"></listheader>
+			</listhead>
+				<attribute name="onCreate"><![CDATA[
+	invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Entities.EntityId, Entities.Entity from datalyticx.Entities");
+						if(returnHicData ==null)
+						{
+							return;
+						}
+						else
+						{
+						hicData = returnHicData;
+						}
+						showListData(hicData,entity);		
+				]]></attribute>
+		</listbox>
+	</div>
+</window>
+</zk>

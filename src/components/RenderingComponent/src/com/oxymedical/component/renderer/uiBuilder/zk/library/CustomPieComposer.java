@@ -5,6 +5,7 @@ import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Chart;
 import org.zkoss.zul.PieModel;
 import org.zkoss.zul.SimplePieModel;
+import org.zkoss.zul.Flashchart;
 
 
 public class CustomPieComposer extends GenericForwardComposer

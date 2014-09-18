@@ -4,7 +4,11 @@ import com.oxymedical.component.baseComponent.exception.ComponentException;
 
 public class DataLyticxQualityEngineException extends ComponentException {
 	
-	DataLyticxQualityEngineException(){
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 29476299336963931L;
+	public DataLyticxQualityEngineException(){
 		
 	}
 

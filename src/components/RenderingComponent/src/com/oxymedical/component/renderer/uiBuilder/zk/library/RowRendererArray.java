@@ -17,9 +17,6 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.RowRenderer;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.api.Column;
-import org.zkoss.zul.api.Columns;
-
 import com.oxymedical.component.renderer.data.ColumnDef;
 import com.oxymedical.component.renderer.data.GridDef;
 import com.oxymedical.component.renderer.data.GridDefConstants;
@@ -91,7 +88,7 @@ public class RowRendererArray implements RowRenderer
 		return match;
 	}
 	
-	@Override
+	
 	public void render(Row row, java.lang.Object data) throws Exception{
 		if(data != null){
 			String[] _data = (String[])data;
@@ -137,6 +134,12 @@ public class RowRendererArray implements RowRenderer
 				}
 			}
 		}
+	}
+
+	@Override
+	public void render(Row arg0, Object arg1, int arg2) throws Exception {
+		// TODO Auto-generated method stub
+		render(arg0, arg1);
 	}
 }
 

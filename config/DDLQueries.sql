@@ -22,7 +22,8 @@ drop table IF EXISTS Quality;
 create table Quality (Id BIGINT PRIMARY KEY not null AUTO_INCREMENT ,
 BU_EntityId BIGINT,
 Quality VarChar( 50),
-Percentage VarChar( 50), INDEX (Id) 
+Percentage VarChar( 50),
+RecordCount VarChar( 50), INDEX (Id) 
 );
 
 drop table IF EXISTS BU_Entity_Def;

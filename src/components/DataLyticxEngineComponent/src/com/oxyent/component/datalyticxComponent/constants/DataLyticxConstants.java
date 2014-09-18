@@ -4,7 +4,6 @@ import com.oxymedical.core.propertyUtil.PropertyUtil;
 
 public class DataLyticxConstants 
 {
-	
 	public static final String AuthenticateUserInLDAP = "AuthenticateUserInLDAP";
 	public static final String UserPresentInUserAdmin_KEY = "UserPresentInUserAdmin";
 	public static final String HibernatePath = "/com/oxyent/component/datalyticxComponent/model/hibernate.cfg.xml";
@@ -15,9 +14,5 @@ public class DataLyticxConstants
 	public static final String PACKAGE_NAME = "com.oxymedical.component.datalyticx.model"; 
 	public static final String BASEDIR = PropertyUtil.setUpProperties("GLASSFISH_HOME") + "\\lib";
 	public static final String DATABASESETTING = "data/datasettings.xml";
-	public static final String MATERIAL_MASTER ="MaterialMaster";
-	public static final String PLANT ="Plant";
-	public static final String ENTITY_DEFINITION ="EntityDefinition";
-	
 	
 }

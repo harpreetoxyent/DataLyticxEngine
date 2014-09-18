@@ -15,10 +15,8 @@ import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelExt;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listcell;
+import org.zkoss.zul.Row;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.api.Column;
-import org.zkoss.zul.api.Columns;
-import org.zkoss.zul.api.Row;
 import org.zkoss.zul.event.ListDataEvent;
 import org.zkoss.zul.event.ListDataListener;
 

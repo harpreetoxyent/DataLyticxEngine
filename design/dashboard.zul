@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<vlayout sclass="page-content" xmlns:n="native" spacing="0">
+  <div sclass="page-header">
+    <label value="Dashboard"/>
+    <a label="Indentify Discrepencies" iconSclass="z-icon-angle-double-right" sclass="subtitle"/>
+  </div>
+  <separator height="12px"/>
+  <hlayout spacing="24px">
+  <include src="pieChart.zul"/>
+  </hlayout>
+</vlayout>

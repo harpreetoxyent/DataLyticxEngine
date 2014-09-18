@@ -19,6 +19,11 @@ public class RowRendererItem implements RowRenderer
 		}
 	}
 
+	@Override
+	public void render(Row arg0, Object arg1, int arg2) throws Exception {
+		render(arg0, arg1);
+	}
+
 	
 }
 
@@ -33,5 +38,11 @@ public class RowRendererItem implements RowRenderer
 			listcell.setValue(data);
 			listcell.setParent(li);
 		}
+	}
+
+	@Override
+	public void render(Listitem arg0, Object arg1, int arg2) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }

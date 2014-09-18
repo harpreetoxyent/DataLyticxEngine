@@ -1,20 +1,28 @@
 package com.oxyent.component.datalyticxComponent;
 
-
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
 import org.dom4j.Document;
 
-import com.oxyent.component.datalyticxComponent.constants.DataLyticxConstants;
+import com.oxyent.component.datalyticxComponent.constants.DLQCommonMethods;
+import com.oxyent.datalyticx.Accuracy;
+import com.oxyent.datalyticx.Completeness;
 import com.oxyent.datalyticx.DataLyticxEntity;
+import com.oxyent.datalyticx.Field;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngine;
+import com.oxyent.datalyticx.engine.DataLyticxQualityEngineException;
 import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.db.DBComponent;
+import com.oxymedical.component.db.exception.DBComponentException;
 import com.oxymedical.component.importcomponent.ImportComponent;
-import com.oxymedical.component.render.resource_datalyticx.ActualData;
+import com.oxymedical.component.render.resource_datalyticx.IncorrectData;
+import com.oxymedical.component.render.resource_datalyticx.Quality;
 import com.oxymedical.component.rulesComponent.IRuleClass;
 import com.oxymedical.component.rulesComponent.RuleComponent;
 import com.oxymedical.core.commonData.HICData;
@@ -77,15 +85,17 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		try
 		{
 			IData data = hicData.getData();
-			String csvFileNameToImport = (String) data.getFormPattern().
-					getFormValues().get("csvFileNameToImport");
-
+			String csvFileNameToImport = (String) data.getFormPattern().getFormValues().get("csvFileNameToImport");
+			String tableName = (String) data.getFormPattern().getFormValues().get("tableName");
+			Object[] entityDataArray = importComponent.importCSVAllRowAndReturnObject(csvFileNameToImport, ",", tableName);
 			
 			initializeFieldsForValidation();
-
 			ruleComponent.buildReteHIC((HICData)hicData);
 			
-			intializeRule(csvFileNameToImport, hicData);
+			for(int loop=0; loop <entityDataArray.length; loop++){
+				intializeRule(entityDataArray[loop], hicData);
+				System.out.println("Rules have been executed "+loop+" times.");
+			}
 		}
 		catch(Exception exp)
 		{
@@ -94,27 +104,19 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		}
 		return hicData;
 	}
-
-	public void intializeRuleBackUp(String csvFileNameToImport, IHICData hicData) throws ComponentException
+	
+	public void intializeRule(Object entityData, IHICData hicData) throws ComponentException
 	{
 		System.out.println("----Inside intializeRules----");
 		try
-		{
-			//Check an incoming fact against our definitions of data quality
-			//Create an entity. This can represent MM, Plant, WC  or BOM
-			DataLyticxEntity entity = new DataLyticxEntity();
-			//For now add MM as dummy data to validate
-			Object entityData = importComponent.importCSVOneRowAndReturnObject(csvFileNameToImport, ",", "ActualData");
-			System.out.println("----Set Data inside enity from DB----entityData="+entityData);			
-			entity.setEntityData(entityData);
+		{	
+			//Populate entity object with data
+			DataLyticxEntity entity = new DataLyticxEntity(entityData,dataLyticxEngine.getDefinitionData());
 			Object[] facts = {entity};
-			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
-			//Check if any rule matches for MM
 			ruleClassList = ruleComponent.executeRules(facts);
-			hicData.getData().getFormPattern().getFormValues().put("completeness", ""+DataLyticxQualityEngine.completeness);
-			hicData.getData().getFormPattern().getFormValues().put("accuracy", ""+DataLyticxQualityEngine.accuracy);
-			System.out.println("Rules have been executed and consequence invoked");
+			
+			storeQualityData(entity);
 		}
 		catch (Exception e) 
 		{
@@ -123,31 +125,99 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		}
 	}
 	
-	public void intializeRule(String csvFileNameToImport, IHICData hicData) throws ComponentException
-	{
-		System.out.println("----Inside intializeRules----");
-		try
-		{
-			//Check an incoming fact against our definitions of data quality
-			//Create an entity. This can represent MM, Plant, WC  or BOM
-			DataLyticxEntity entity = new DataLyticxEntity();
-			//For now add MM as dummy data to validate
-			Object[] entityArrayData = importComponent.importCSVAllRowAndReturnObject(csvFileNameToImport, ",", "ActualData");
-			System.out.println("----Set Data inside enity from DB----entityArrayData="+entityArrayData);			
-			entity.setEntityArrayData(entityArrayData);
-			Object[] facts = {entity};
-			entity.setType(DataLyticxConstants.MATERIAL_MASTER);
-			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
-			//Check if any rule matches for MM
-			ruleClassList = ruleComponent.executeRules(facts);
-			hicData.getData().getFormPattern().getFormValues().put("completeness", ""+DataLyticxQualityEngine.completeness);
-			hicData.getData().getFormPattern().getFormValues().put("accuracy", ""+DataLyticxQualityEngine.accuracy);
-			System.out.println("Rules have been executed and consequence invoked");
+	private void storeQualityData(DataLyticxEntity entity) throws DataLyticxQualityEngineException {
+		Map<String, Field> fieldMap = entity.getFieldMap();
+		Iterator<String> itFieldMap = fieldMap.keySet().iterator();
+		int accuracyCount = 0;
+		int completeCount = 0;
+		int completeFieldCount = 0;
+		double qualityPercent = 0.0;
+		int accuracyFieldCount = 0;
+		while(itFieldMap.hasNext()){
+			String key = itFieldMap.next();
+			Field field = fieldMap.get(key);
+			com.oxyent.datalyticx.Quality quality = field.getQuality();
+			Accuracy accuracy = quality.getAccuracy();
+			if(accuracy != null){
+				if(accuracy.isAccurate()){
+					accuracyCount++;
+				}else{
+					storeIncorrectData(entity, field, "Accuracy");					
+				}
+				accuracyFieldCount++;
+			}
+			Completeness completeness = quality.getCompleteness();
+			if(completeness != null){
+				if(completeness.isCompleteness()){
+					completeCount++;
+				}else{
+					storeIncorrectData(entity, field, "Completeness");					
+				}
+				completeFieldCount++;
+			}
 		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			throw new ComponentException("Exception while inilializing Rules.");
+		if(accuracyCount !=0){
+			System.out.println("accuracyCount >>>> "+accuracyCount);
+			System.out.println("accuracyFieldCount >>>> "+accuracyFieldCount);
+			System.out.println("qualityPercent >>>> "+qualityPercent);
+			qualityPercent = ((double)accuracyCount / (double)accuracyFieldCount) * 100 ;
+		}
+		saveQualityData(entity, "Accuracy", qualityPercent);
+		if(completeCount !=0){
+			System.out.println("completeCount >>>> "+completeCount);
+			System.out.println("completeFieldCount >>>> "+completeFieldCount);
+			System.out.println("qualityPercent >>>> "+qualityPercent);
+			qualityPercent = ((double)completeCount / (double)completeFieldCount) * 100 ;
+		}
+		saveQualityData(entity, "Completeness", qualityPercent);
+	}
+	
+	private static void saveQualityData(DataLyticxEntity entity, String qualityName, double qualityPercent) throws DataLyticxQualityEngineException {
+		String BU = entity.getBusinessUnit();
+		String entityName = entity.getType();
+		String queryStr = "get BU_Entity.BU_EntityId from datalyticx.BU_Entity conditions BU_Entity.BU:=["+ BU+ "] and BU_Entity.Entity:=["+entityName+"]";
+		String[][] allValues = DLQCommonMethods.executeQueryReturnArray(queryStr,"indexDl.zul");
+		Long buEntityID = Long.parseLong(allValues[0][0]);
+		// Insert quality for Given BU and Entity in database
+		String qualityQuery = "get Quality.Id , Quality.RecordCount from datalyticx.Quality conditions " +
+				"Quality.BU_EntityId:=["+buEntityID+"] and Quality.Quality:=["+qualityName+"]";
+		String[][] qualityData = DLQCommonMethods.executeQueryReturnArray(qualityQuery,"indexDl.zul"); 
+		Quality quality = new Quality();
+		String qualityId = "";
+		Integer recordCount = 1;
+		if(qualityData != null && qualityData[0] != null){
+			qualityId = qualityData[0][0];
+			recordCount = Integer.parseInt(qualityData[0][1]);
+		}
+		if(qualityId != null && !"".equals(qualityId.trim())){				
+			quality.setId(Long.parseLong(qualityId));
+		}
+		quality.setBuEntityId(buEntityID);
+		quality.setQuality(qualityName);
+		quality.setPercentage(((Double)qualityPercent).toString());//Change this field to Double in db and then change in code accordingly
+		try {
+			dbComponent.saveObject(quality);
+		} catch (DBComponentException e) {
+			throw new DataLyticxQualityEngineException("DBComponentException in DataLyticxQualityEngine.saveQualityData :"+e.getMessage());
+		}	
+	}
+	
+	private static void storeIncorrectData(DataLyticxEntity entity, Field fieldObj, String qualityName)  throws DataLyticxQualityEngineException {
+		String BU = entity.getBusinessUnit();
+		String entityType = entity.getType();
+		String[][] allValues = DLQCommonMethods.executeQueryReturnArray("get BU_Entity.BU_EntityId from datalyticx.BU_Entity conditions BU_Entity.BU:=["+ BU+ "] and BU_Entity.Entity:=["+entityType+"]","index.zul");
+		Long buEntityID = Long.parseLong(allValues[0][0]);
+		
+		IncorrectData incorrectData = new IncorrectData();
+		incorrectData.setBuEntityId(buEntityID);
+		incorrectData.setFieldName(fieldObj.getName());
+		incorrectData.setIdealValue(fieldObj.getLegitimateValue());
+		incorrectData.setQualityName(qualityName);
+		incorrectData.setActualValue(fieldObj.getValue());
+		try {
+			dbComponent.saveObject(incorrectData);
+		} catch (DBComponentException e) {
+			throw new DataLyticxQualityEngineException("DBComponentException in DataLyticxQualityEngine.storeIncorrectData :"+e.getMessage());
 		}
 	}
 	
@@ -163,7 +233,6 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		} 
         catch (Exception e) 
         {
-			e.printStackTrace();
 			throw new ComponentException(e.getMessage());
 		}
 	}
@@ -177,15 +246,8 @@ public class DataLyticxComponent implements IDataLyticxEngineComponent , ICompon
 		}
 		catch(Exception exp)
 		{
-			exp.printStackTrace();
 			throw new ComponentException(exp.getMessage());			
 		}
-	}
-	
-	@EventSubscriber(topic = "runRulesOnInputCSVData")
-	public synchronized void runRulesOnInputCSVData(IHICData hicData) throws ComponentException
-	{
-		
 	}
 	
 	public static void main(String a[]) throws ComponentException 

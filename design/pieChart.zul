@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<zk class="pieChart" name="pieChart">
+	<zscript src="/library/datalyticx.zs" />
+	<window apply="com.oxyent.component.datalyticx.ui.DLQPieChartComposer">
+		<attribute name="onCreate"><![CDATA[
+	listDL.setVisible(false);
+]]></attribute>
+	<div class="right_section" style="float:none; width: 100%; margin:auto">
+		<grid>
+		 <rows>
+		    <row>
+			<charts id="chart" type="pie" title="Business Unit"
+				subtitle="" width="450" height="250"></charts>
+			<charts id="chart1" type="pie" title="Quality"
+				subtitle="" width="450" height="250"></charts>
+		    </row>
+		    <row>
+		    	<separator bar="true"/>
+			<separator bar="true"/>
+		    </row>
+		    <row>
+			<charts id="chart2" type="pie" title="Entity"
+				subtitle="" width="450" height="250"></charts>
+
+			<listbox id="listDL" class="listDL" style="text-align:center">
+				<listhead>
+					<listheader label="Business Unit"></listheader>
+					<listheader label="Entity"></listheader>
+					<listheader label="Quality Name"></listheader>
+					<listheader label="Field Name"></listheader>
+					<listheader label="Ideal Value"></listheader>
+					<listheader label="Actual Value"></listheader>
+				</listhead>
+			</listbox>
+		    </row>
+		</rows>
+		</grid>
+	</div>
+
+	</window>
+</zk>

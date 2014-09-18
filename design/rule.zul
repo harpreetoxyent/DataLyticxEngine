@@ -1,0 +1,48 @@
+<zk>
+	<zscript src="/library/datalyticx.zs" />
+	<style>
+	.title {
+		font-weight: bold;
+		font-size: 12px;
+	}
+	.demoTbx .z-tab {
+		margin-right: 2px;
+	}
+	</style>
+	<separator height="20px"/>
+	<tabbox sclass="demoTbx" width="1020px">
+		<toolbar>
+			You Can Edit The Rule Here.
+		</toolbar>
+		<tabs>
+			<tab label="Rule Source" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<textbox id="ta" rows="70" width="1000px" value="${ed.value}" onChange="ed.value = ta.value"
+					style="border: 0 none;font-size:14px;" >
+				<attribute name="onCreate"><![CDATA[
+				File erlFile = new File("/home/oxyent/DataLyticxEngine_git/DataLyticxEngine/config/rules/erls/definiton.erl");
+				BufferedReader in = new BufferedReader(new FileReader(erlFile.getAbsolutePath()));
+				String line;
+				String erlData="";
+				while((line = in.readLine()) != null)
+				{
+				    erlData = erlData + line + "\n";
+				}
+				in.close();
+				ta.value = erlData;
+			]]></attribute>
+				</textbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	<button label="Save Rule">
+		<attribute name="onClick"><![CDATA[
+			String erlData = ta.value;
+			File erlFileName = new File("/home/oxyent/DataLyticxEngine_git/DataLyticxEngine/config/rules/erls/definiton.erl");
+			FileUtils.writeStringToFile(new File(erlFileName.getAbsolutePath()), erlData);
+			Messagebox.show("File is saved.", "Information", Messagebox.OK, Messagebox.INFORMATION);
+		]]></attribute>
+	</button>
+</zk>

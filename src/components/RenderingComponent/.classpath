@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/calendar.jar"/>
 	<classpathentry kind="lib" path="lib/ant-contrib.jar"/>
 	<classpathentry kind="lib" path="lib/ant-ext.jar"/>
 	<classpathentry kind="lib" path="lib/ant-hibernate-config-0.1.1.jar"/>
@@ -23,32 +22,30 @@
 	<classpathentry kind="lib" path="lib/catalina.jar"/>
 	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/jcommon-1.0.21.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/jfreechart-1.0.17-experimental.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/jfreechart-1.0.17-swt.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/jfreechart-1.0.17.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/jfreesvg-1.4.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/orsoncharts-1.0-eval.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/orsonpdf-1.3-eval.jar"/>
-	<classpathentry kind="lib" path="lib/ZK6.0/swtgraphics2d.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-6-openjdk-amd64"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/basecomponent.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/core.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/framework.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/jaap.jar"/>
 	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/logging.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/log4j.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/slf4j-log4j12-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zcommon.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zel.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zhtml.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zk.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkbind.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkplus.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zul.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zweb.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zcommons-el.jar"/>
-	<classpathentry kind="lib" path="/home/oxyent/tomcat/lib/zkex.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zcommon.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zel.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zhtml.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zk.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkbind.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkplus.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zul.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zweb.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/bsh.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-codec.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/commons-io.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/slf4j-api.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/ext/slf4j-jdk14.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/theme/sapphire.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/theme/silvertail.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkforge/flashchart.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/calendar.jar"/>
+	<classpathentry kind="lib" path="lib/ZK7.0/zkcharts-1.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

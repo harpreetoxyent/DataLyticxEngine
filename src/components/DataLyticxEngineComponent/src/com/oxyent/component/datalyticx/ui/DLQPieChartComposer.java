@@ -1,6 +1,5 @@
 package com.oxyent.component.datalyticx.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +13,7 @@ import org.zkoss.chart.Point;
 import org.zkoss.chart.Series;
 import org.zkoss.chart.plotOptions.ColumnPlotOptions;
 import org.zkoss.chart.plotOptions.DataLabels;
+import org.zkoss.chart.plotOptions.PiePlotOptions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -28,7 +28,6 @@ import com.oxyent.datalyticx.engine.DataLyticxQualityEngine;
 import com.oxyent.datalyticx.engine.DataLyticxQualityEngineException;
 import com.oxymedical.component.db.exception.DBComponentException;
 import com.oxymedical.component.renderer.uiBuilder.zk.library.ItemRendererArray;
-import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
 
 public class DLQPieChartComposer extends SelectorComposer<Window> {
@@ -39,6 +38,10 @@ public class DLQPieChartComposer extends SelectorComposer<Window> {
 	private static final long serialVersionUID = 6349754106283377725L;
 @Wire
 Charts chart;
+@Wire
+Charts chart1;
+@Wire
+Charts chart2;
 @Wire
 Listbox listDL;
 DataQualityPieChartModel dataQualityChartModel;
@@ -63,13 +66,17 @@ public void doAfterCompose(Window comp) throws DataLyticxQualityEngineException 
 		"</span>: <b>{point.y:.2f}%</b> of total<br/>");
 	
 	initSeries();
+	
+	PiePlotOptions plotOptions = chart.getPlotOptions().getPie();
+	plotOptions.setAllowPointSelect(true);
+    plotOptions.setCursor("pointer");
 }
 
 	private void initSeries() throws DataLyticxQualityEngineException{
 		System.out.println("----------------Inside initseries----------");
 		
 		Series series = chart.getSeries();
-		List<Series> drilldowns = new ArrayList<Series>();		
+		//List<Series> drilldowns = new ArrayList<Series>();		
 		ColumnPlotOptions plotOptions = new ColumnPlotOptions();
 		series.setName("Business Units");
 		plotOptions.setColorByPoint(true);
@@ -81,51 +88,120 @@ public void doAfterCompose(Window comp) throws DataLyticxQualityEngineException 
 			Map.Entry<String, Double> entry = iterator.next();
 			String label = entry.getKey();
 			Point point = new Point(label, entry.getValue());
-			if (entry.getValue() > 1) {
-				point.setDrilldown(label);
-				List<DataQuality> dataQuality = DataQualityPieChartModel.getBusinessQuality(entry.getKey());
-				if (!dataQuality.isEmpty()) {
-					Series s = new Series();
-					s.setId(label);
-					s.setName("Quality");
-					for (DataQuality dataQ: dataQuality) {
-						Point p = new Point(dataQ.getQuality(), dataQ.getPercentage());
-						//String label1 = dataQ.getQuality();
-						//Starts
-						if(dataQ.getPercentage() > 1){
-							p.setDrilldown(label+"_"+dataQ.getQuality());
-								List<DataQuality> entityData = DataQualityPieChartModel.getQualityPerEntity((String)entry.getKey(),dataQ.getQuality());
-								setNextSeries(entityData, drilldowns, p, dataQ.getQuality(), "Entity",label);							
-							}
-						//End
-						s.addPoint(p);
-						}
-					drilldowns.add(s);
-				}	
-			}
+			point.setColor(getColor(entry.getValue()));
 			series.addPoint(point);
 		}
-		chart.getDrilldown().setSeries(drilldowns);	
+		chart.setVisible(true);
+		//chart.getDrilldown().setSeries(drilldowns);	
 	}
 	
-	public void setNextSeries(List<DataQuality> dataList, List<Series> drilldowns, Point p, String label, String name, String topLabel){
-		if (!dataList.isEmpty()) {
-			Series s = new Series();
-			s.setId(topLabel+"_"+label);
-			s.setName(name);
-			for(DataQuality dataQ: dataList){
-				Point p1 = new Point(dataQ.getEntity(),dataQ.getPercentage());
-				s.addPoint(p1);
+	private String getColor(Double value) {
+		String color = "";
+		if(value == 100){
+			color = "#008000";//Green
+		}else if(value >=95 && value<100){
+			color = "#FFFF00";//Yellow
+		}else if(value >=90 && value<95){
+			color = "#FFFF19";//Yellow
+		}else if(value >=85 && value<90){
+			color = "#FFFF32";//Yellow
+		}else if(value >=80 && value<85){
+			color = "#FFFF4c";//Yellow
+		}else if(value >=80 && value<85){
+			color = "#FFFF4c";//Yellow
+		}else if(value >=75 && value<80){
+			color = "#FF7F7F";//Red
+		}else if(value >=70 && value<75){
+			color = "#FF6666";//Red
+		}else if(value >=65 && value<70){
+			color = "#FF4c4c";//Red
+		}else if(value >=60 && value<65){
+			color = "#FF3232";//Red
+		}else{
+			color = "#FF0000";//Red			
+		}
+		return color;
+	}
+
+	@Listen("onPlotClick = #chart")
+	public void display2ndChart(ChartsEvent event) throws DataLyticxQualityEngineException {
+		try{
+			String data = (String)event.getCategory();
+			DataLyticxQueries dataLyticxData = new DataLyticxQueries();
+			if(dataLyticxData.compareBusinessUnit(data)){
+				businessUnit = data;
+				Point point = event.getPoint();
+				String businessUnitLabel = point.getName();
+				double entryPoint = (Double) point.getY();
+				if (entryPoint > 1) {
+					List<DataQuality> dataQuality = DataQualityPieChartModel.getBusinessQuality(businessUnitLabel);
+					if (!dataQuality.isEmpty()) {
+						chart1.getPlotData().getSeries().remove();
+						Series series = chart1.getSeries();
+						ColumnPlotOptions plotOptions = new ColumnPlotOptions();						
+						series.setName("Quality");
+						plotOptions.setColorByPoint(true);
+						series.setPlotOptions(plotOptions);
+						series.setId(businessUnitLabel);
+						for (DataQuality dataQ: dataQuality) {
+							Point p = new Point(dataQ.getQuality(), dataQ.getPercentage());
+							String label = dataQ.getQuality();
+							p.setColor(getColor(dataQ.getPercentage()));
+							series.addPoint(p);
+						}
+						chart1.setVisible(true);
+						plotOptions.setAllowPointSelect(true);
+					    plotOptions.setCursor("pointer");
+					}	
+				}
 			}
-			drilldowns.add(s);
-		}							
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Listen("onPlotClick = #chart1")
+	public void display3rdChart(ChartsEvent event) throws DataLyticxQualityEngineException {
+		try{
+			String data = (String)event.getCategory();
+			DataLyticxQueries dataLyticxData = new DataLyticxQueries();
+			if(dataLyticxData.compareQuality(data)){
+				quality = data;
+				Point point = event.getPoint();
+				String superLabel = point.getName();
+				double entryPoint = (Double) point.getY();
+				if (entryPoint > 1) {
+					List<DataQuality> entityData = DataQualityPieChartModel.getQualityPerEntity(businessUnit,(String)superLabel);
+					if (!entityData.isEmpty()) {
+						chart2.getPlotData().getSeries().remove();
+						Series series = chart2.getSeries();	
+						ColumnPlotOptions plotOptions = new ColumnPlotOptions();						
+						series.setName("Entity");
+						plotOptions.setColorByPoint(true);
+						series.setPlotOptions(plotOptions);
+						series.setId(businessUnit+"_"+superLabel);	
+						for(DataQuality dataQ: entityData){
+							Point p = new Point(dataQ.getEntity(),dataQ.getPercentage());
+							p.setColor(getColor(dataQ.getPercentage()));
+							series.addPoint(p);
+						}
+						chart2.setVisible(true);
+						Clients.scrollIntoView(chart2);
+						plotOptions.setAllowPointSelect(true);
+					    plotOptions.setCursor("pointer");
+					}	
+				}
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Listen("onClick = #chart")
 	public void hideListData(ChartsClickEvent event) {
 	    listDL.setVisible(false);
 	}
-	@Listen("onPlotClick = #chart")
+	@Listen("onPlotClick = #chart2")
 	public void displayListData(ChartsEvent event) throws DataLyticxQualityEngineException {
 		try{
 			String data = (String)event.getCategory();
@@ -149,6 +225,8 @@ public void doAfterCompose(Window comp) throws DataLyticxQualityEngineException 
 					listDL.setItemRenderer(new ItemRendererArray());
 					listDL.setVisible(true);
 					Clients.scrollIntoView(listDL);
+				}else{
+					listDL.setVisible(false);
 				}
 			} 
 		}catch (Exception e) {
@@ -156,7 +234,7 @@ public void doAfterCompose(Window comp) throws DataLyticxQualityEngineException 
 		}
 	}
 	 
-	 public String[][] executeQueryReturnArray(String queryStr) throws DataLyticxQualityEngineException{
+	public String[][] executeQueryReturnArray(String queryStr) throws DataLyticxQualityEngineException{
 		IHICData requestData = null;
 		IHICData outputHICData = null;
 		List listValue = null;
